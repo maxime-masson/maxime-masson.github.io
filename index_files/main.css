@@ -12,6 +12,11 @@ a:focus {
     box-sizing: border-box
 }
 
+
+.pswp-gallery {
+    text-align: center !important;
+}
+
 html {
     box-sizing: border-box;
     background-color: #fff;
