@@ -32,7 +32,7 @@ html {
 }
 
 li {
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
 }
 
 body {
@@ -2712,7 +2712,7 @@ select:focus {
 .page__content p,
 .page__content li,
 .page__content dl {
-    font-size: 1.2em
+    /* font-size: 1.2em */
 }
 
 .page__content p {
