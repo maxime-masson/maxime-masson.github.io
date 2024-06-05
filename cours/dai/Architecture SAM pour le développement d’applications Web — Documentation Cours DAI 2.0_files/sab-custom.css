@@ -1,0 +1,117 @@
+
+/* Archivo Narrow */
+@import url("https://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic");
+
+article.slide {
+  font-family: "Archivo Narrow", sans-serif;
+}
+
+
+.en, .l {
+    font-style: italic;
+}
+
+/* Customizing "normal" slides content */
+
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 3px 3px 5px #bbb;
+}
+
+h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h3, h4 {
+  font-size: 130%;
+  /* h3 differs by its darker colour */
+}
+
+h5 {
+  font-size: 120%;
+}
+
+h6 {
+  font-size: 110%;
+}
+
+blockquote {
+  margin: 0;
+}
+
+
+.screenshot {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+p.graphviz {
+    text-align: center;
+}
+/*
+.slides h4 {
+  margin-top: 0;
+} */
+
+.slides p {
+  margin: 0;
+  margin-top: 20px;
+}
+
+.slides ul {
+  _margin: 0;
+  margin-top: 20px;
+}
+
+/* Slides width */
+.slides > article {
+  width: 1200px;
+  height: 700px;
+  margin-left: -600px;
+  margin-top: -350px;
+}
+
+.slides > article.far-past {
+  display: block;
+  transform: translate(-2460px);
+}
+.slides > article.past {
+  display: block;
+  transform: translate(-1230px);
+}
+.slides > article.current {
+  display: block;
+  transform: translate(0);
+}
+.slides > article.next {
+  display: block;
+  transform: translate(1230px);
+}
+.slides > article.far-next {
+  display: block;
+  transform: translate(2460px);
+}
+
+/* better highlighted code */
+table.highlighttable {
+  margin: 0;
+}
+table.highlighttable td {
+  border: none;
+}
+table.highlighttable td.linenos {
+  padding-right: 0;
+  text-align: right;
+}
+table.highlighttable td.linenos pre {
+  box-shadow: none;
+}
+table.highlighttable pre, .highlight pre {
+  margin: 0;
+  margin-top: 20px;
+}
+
+/* .highlight pre {
+  margin: 0;
+  margin-top: 20px;
+} */

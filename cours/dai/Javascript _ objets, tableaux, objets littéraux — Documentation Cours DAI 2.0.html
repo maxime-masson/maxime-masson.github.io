@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/c3.html#1 -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <title>Javascript : objets, tableaux, objets littéraux — Documentation Cours DAI 2.0</title>
+
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/basic.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/styles.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/slides.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/pygments.css"
+    type="text/css">
+
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/sab-custom.css"
+    type="text/css">
+
+
+
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/pygments.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/slides.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/custom.css"
+    type="text/css">
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT: './',
+      VERSION: '2.0',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE: true
+    };
+  </script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/documentation_options.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/jquery.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/underscore.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/doctools.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/translations.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/common.js.télécharger"></script>
+
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/slides.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/sync.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/controller.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0_files/init.js.télécharger"></script>
+
+
+  <link rel="index" title="Index"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/genindex.html">
+  <link rel="search" title="Recherche"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/search.html">
+  <link rel="top" title="Documentation Cours DAI 2.0"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/index.html">
+  <link rel="next" title="Architecture SAM pour le développement d’applications Web"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/c4.html">
+  <link rel="prev" title="Javascript : variables, conditions, boucles et fonctions"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/c2.html">
+  <meta name="viewport" content="width=1100,height=750">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+<body class="loaded">
+
+  <section id="slide_container" class="slides layout-regular">
+
+
+
+    <article class="slide level-1 current" id="javascript-objets-tableaux-objets-litteraux">
+
+      <h1>Javascript : objets, tableaux, objets littéraux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#javascript-objets-tableaux-objets-litteraux"
+          title="View HTML">§</a></h1>
+
+      <!-- NB: using raw:: directive in order to accurately tag metadata -->
+
+      <p><a rel="author" href="hhttp://bjobard.perso.univ-pau.fr/">Bruno Jobard</a>
+        <!--
+        ,
+        <a rel="author"
+        href="https://champin.net/#pa"
+        >Pierre-Antoine Champin</a>
+  &amp; <a rel="author"
+        href="https://mmrissa.perso.univ-pau.fr"
+        >Michael Mrissa</a>
+        -->
+      </p>
+
+      <!--
+  <address>
+    <a href="https://ufr-sciences-pau.univ-pau.fr/fr/organisation/departements/informatique.html">Département Informatique</a> de l'UPPA</address>
+
+  <p><a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.fr">
+     <img alt="Creative Commons License" style="border-width:0"
+          src="_static/cc.png" /></a></p>
+
+  <p class="license">Ce travail est sous licence
+  <a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.fr">
+     Creative Commons Attribution-ShareAlike 3.0 France</a>.</p>
+       -->
+
+
+      <div class="slide-no">1</div>
+
+
+    </article>
+    <article class="slide level-2 next" id="les-objets">
+
+      <h2>Les objets<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-objets"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">2</div>
+
+
+    </article>
+    <article class="slide level-3 far-next" id="tout-est-objet-en-javascript">
+
+      <h3>Tout est objet en Javascript<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#tout-est-objet-en-javascript"
+          title="View HTML">§</a></h3>
+
+      <p>En Javascript, toutes les variables contiennent des <strong>objets</strong>, de nature différente.</p>
+      <p>Tout objet contient</p>
+      <ul class="simple">
+        <li>un <strong>constructeur</strong> : qui initialise ses propriétés avec des paramètres</li>
+        <li>des <strong>propriétés</strong> : qui sont des variables contenues dans l’objet</li>
+        <li>des <strong>méthodes</strong> : qui sont des fonctions contenues dans l’objet et pouvant modifier ses
+          propriétés</li>
+      </ul>
+      <p>On distingue :</p>
+      <ul class="simple">
+        <li>les objets natifs fournis par le langage Javascript</li>
+        <li>des objets supplémentaires créés par des développeurs en composant les objets natifs</li>
+      </ul>
+
+
+
+      <div class="slide-no">3</div>
+
+
+    </article>
+    <article class="slide level-3" id="exemple-avec-l-objet-string">
+
+      <h3>Exemple avec l’objet <code class="code docutils literal notranslate"><span class="pre">string</span></code><a
+          class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#exemple-avec-l-objet-string"
+          title="View HTML">§</a></h3>
+
+      <p><code class="code docutils literal notranslate"><span class="pre">string</span></code> est l’objet qui gère les
+        chaînes de caractères.</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s1">'Hello World'</span><span class="p">;</span>   <span class="c1">// construction d'une chaîne de caractère</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">message</span><span class="p">.</span><span class="nx">length</span> <span class="p">);</span> <span class="c1">// affichage de la propriété length (longueur de la chaîne)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">)</span> <span class="c1">// appel de la méthode qui renvoie la chaîne en majuscule</span>
+
+<span class="c1">// Affiche :</span>
+<span class="c1">// 11</span>
+<span class="c1">// HELLO WORLD</span>
+</pre>
+        </div>
+      </div>
+      <p>Le <strong>point</strong> (comme dans <code
+          class="code docutils literal notranslate"><span class="pre">message.length</span></code>, ou <code
+          class="code docutils literal notranslate"><span class="pre">message.toUpperCase()</span></code>) est le
+        symbole qui permet d’accéder aux propriétés et aux méthodes d’un objet.</p>
+
+
+
+      <div class="slide-no">4</div>
+
+
+    </article>
+    <article class="slide level-3" id="objets-natifs-deja-rencontres">
+
+      <h3>Objets natifs déja rencontrés<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#objets-natifs-deja-rencontres"
+          title="View HTML">§</a></h3>
+
+      <p>Jusqu’à présent :</p>
+      <ul class="simple">
+        <li><code class="code docutils literal notranslate"><span class="pre">Number</span></code> : l’objet qui gère
+          les nombres</li>
+        <li><code class="code docutils literal notranslate"><span class="pre">Boolean</span></code> : l’objet qui gère
+          les booléens</li>
+        <li><code class="code docutils literal notranslate"><span class="pre">String</span></code> : l’objet qui gère
+          les chaînes de caractères</li>
+      </ul>
+      <p>Nous allons maintenant découvrir l’objet <code
+          class="code docutils literal notranslate"><span class="pre">Array</span></code> qui permet de gérer les
+        tableaux.</p>
+      <p>(<em>array</em> signifie “tableau” en anglais)</p>
+
+
+
+      <div class="slide-no">5</div>
+
+
+    </article>
+    <article class="slide level-2" id="les-tableaux">
+
+      <h2>Les tableaux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-tableaux"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">6</div>
+
+
+    </article>
+    <article class="slide level-3" id="declaration-initialisation-d-un-tableau-et-acces-a-ses-elements">
+
+      <h3>Déclaration, initialisation d’un tableau et accès à ses éléments<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#declaration-initialisation-d-un-tableau-et-acces-a-ses-elements"
+          title="View HTML">§</a></h3>
+
+      <p>Un tableau est un objet particulier qui permet de stocker des <strong>valeurs</strong> associées à un
+        <strong>indice</strong>.
+      </p>
+      <p>Il se déclare et s’intérroge avec l’opérateur crochet <code
+          class="code docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">];</span>  <span class="c1">// initialise un tableau avec 3 éléments</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">length</span> <span class="p">);</span>  <span class="c1">// affiche le nombre d'éléments</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>      <span class="c1">// affiche premier élément du tableau</span>
+
+<span class="nx">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'orange'</span><span class="p">;</span>  <span class="c1">// on remplace banane par orange</span>
+<span class="nx">fruits</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'raisin'</span><span class="p">;</span>  <span class="c1">// on ajoute un élément à la cinquième position</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span> <span class="p">);</span> <span class="c1">// affiche le tableau</span>
+</pre>
+        </div>
+      </div>
+      <p>Affiche :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="mi">3</span>
+<span class="s1">'pomme'</span>
+<span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="s1">'raisin'</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">7</div>
+
+
+    </article>
+    <article class="slide level-3" id="operations-sur-les-tableaux">
+
+      <h3>Operations sur les tableaux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#operations-sur-les-tableaux"
+          title="View HTML">§</a></h3>
+
+      <p>Ajout et suppression d’éléments au début ou à la fin d’un tableau :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">];</span>
+
+<span class="nx">fruits</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'orange'</span><span class="p">);</span> <span class="c1">// ajoute à la fin du tableau</span>
+<span class="nx">fruits</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'raisin'</span><span class="p">);</span> <span class="c1">// ajoute à la fin du tableau</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span> <span class="p">);</span>
+<span class="nx">fruits</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">'citron'</span><span class="p">);</span>  <span class="c1">// ajoute au début</span>
+<span class="nx">fruits</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s1">'pêche'</span><span class="p">);</span>   <span class="c1">// ajoute au début</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span> <span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span> <span class="c1">// retire le premier élément du tableau</span>
+<span class="kd">let</span> <span class="nx">last</span>  <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>   <span class="c1">// retire le dernier élément du tableau</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Le premier était '</span><span class="o">+</span> <span class="nx">first</span> <span class="o">+</span> <span class="s1">', le dernier était '</span> <span class="o">+</span> <span class="nx">last</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'raisin'</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'pêche'</span><span class="p">,</span> <span class="s1">'citron'</span><span class="p">,</span> <span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'raisin'</span><span class="p">]</span>
+<span class="nx">Le</span> <span class="nx">premier</span> <span class="nx">était</span> <span class="nx">pêche</span><span class="p">,</span> <span class="nx">le</span> <span class="nx">dernier</span> <span class="nx">était</span> <span class="nx">raisin</span>
+<span class="p">[</span><span class="s1">'citron'</span><span class="p">,</span> <span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">8</div>
+
+
+    </article>
+    <article class="slide level-3" id="id1">
+
+      <h3>Operations sur les tableaux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#id1" title="View HTML">§</a>
+      </h3>
+
+      <p>Suppression d’éléments dans un tableau :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">pos</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'poire'</span><span class="p">);</span>  <span class="c1">// récupère la position de la première occurence</span>
+<span class="kd">let</span> <span class="nx">removedItem1</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// supprime 1 élément à la position pos</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span> <span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">removedItem2</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>     <span class="c1">// supprime l'avant-dernier élément</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">fruits</span> <span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Éléments supprimés : '</span><span class="o">+</span><span class="nx">removedItem1</span><span class="o">+</span><span class="s1">' et '</span><span class="o">+</span><span class="nx">removedItem2</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">]</span>
+
+<span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">]</span>
+
+<span class="nx">Éléments</span> <span class="nx">supprimés</span> <span class="o">:</span> <span class="nx">poire</span> <span class="nx">et</span> <span class="nx">banane</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">9</div>
+
+
+    </article>
+    <article class="slide level-3" id="chaines-de-caracteres-et-tableaux">
+
+      <h3>Chaînes de caractères et tableaux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#chaines-de-caracteres-et-tableaux"
+          title="View HTML">§</a></h3>
+
+      <p>On peut transformer des tableaux en chaînes de caractères et vice versa :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">chaine</span> <span class="o">=</span> <span class="nx">fruits</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">' -/- '</span><span class="p">);</span>  <span class="c1">// 5 caractères sont ajoutés entre chaque valeur du tableau</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">chaine</span> <span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">tableau</span> <span class="o">=</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>    <span class="c1">// la chaîne est découpée à chaque caractère '/'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">tableau</span> <span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">tabChiffres</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'les dix chiffres : '</span> <span class="o">+</span> <span class="nx">tabChiffres</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span> <span class="p">);</span>  <span class="c1">// sans virgule finale :-)</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="s1">'pomme -/- poire -/- banane'</span>
+
+<span class="p">[</span><span class="s1">'pomme -'</span><span class="p">,</span> <span class="s1">'- poire -'</span><span class="p">,</span> <span class="s1">'- banane'</span><span class="p">]</span>
+
+<span class="s1">'les dix chiffres : 0, 1, 2, 3, 4, 5, 6, 7, 8, 9'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">10</div>
+
+
+    </article>
+    <article class="slide level-3" id="parcourir-un-tableau-avec-des-boucles">
+
+      <h3>Parcourir un tableau avec des boucles<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#parcourir-un-tableau-avec-des-boucles"
+          title="View HTML">§</a></h3>
+
+      <p>Avec les boucles classiques :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">fruits2</span> <span class="o">=</span> <span class="p">[];</span>   <span class="c1">// initialisation avec un tableau vide</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">fruits1</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fruits2</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">fruits1</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits2</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span> <span class="nx">fruits1</span><span class="p">[</span><span class="nx">pos</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'poire'</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">pos</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'la poire est en position : '</span><span class="o">+</span> <span class="nx">pos</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="s1">'POMME'</span><span class="p">,</span> <span class="s1">'POIRE'</span><span class="p">,</span> <span class="s1">'BANANE'</span><span class="p">]</span>
+
+<span class="s1">'la poire est en position : 1'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">11</div>
+
+
+    </article>
+    <article class="slide level-3" id="parcourir-un-tableau-avec-les-methodes-foreach-et-map">
+
+      <h3>Parcourir un tableau avec les méthodes forEach() et map()<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#parcourir-un-tableau-avec-les-methodes-foreach-et-map"
+          title="View HTML">§</a></h3>
+
+      <p>Les méthodes <code class="code docutils literal notranslate"><span class="pre">forEach()</span></code> et <code
+          class="code docutils literal notranslate"><span class="pre">map()</span></code> des objets <code
+          class="code docutils literal notranslate"><span class="pre">Array</span></code> appliquent une fonction à
+        chacun des éléments.</p>
+      <p><code class="code docutils literal notranslate"><span class="pre">forEach()</span></code> ne fait qu’appeler la
+        fonction alors que <code class="code docutils literal notranslate"><span class="pre">map()</span></code>
+        retourne un nouveau tableau :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">];</span>
+
+<span class="nx">fruits1</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>           <span class="c1">// fonction anonyme à 3 arguments</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'l\'élément '</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s1">' se trouve à l\'indice '</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">let</span> <span class="nx">pronoms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'ma'</span><span class="p">,</span> <span class="s1">'ta'</span><span class="p">,</span> <span class="s1">'sa'</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">fruits2</span> <span class="o">=</span> <span class="nx">fruits1</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">pronoms</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="nx">v</span> <span class="p">);</span>            <span class="c1">// fonction fléchée</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits2</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="s2">"l'élément pomme se trouve à l'indice 0"</span>
+<span class="s2">"l'élément poire se trouve à l'indice 1"</span>
+<span class="s2">"l'élément banane se trouve à l'indice 2"</span>
+<span class="p">[</span><span class="s1">'ma pomme'</span><span class="p">,</span> <span class="s1">'ta poire'</span><span class="p">,</span> <span class="s1">'sa banane'</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">12</div>
+
+
+    </article>
+    <article class="slide level-3" id="filtrer-les-elements-d-un-tableau-avec-la-methode-filter">
+
+      <h3>Filtrer les éléments d’un tableau avec la méthode filter()<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#filtrer-les-elements-d-un-tableau-avec-la-methode-filter"
+          title="View HTML">§</a></h3>
+
+      <p>Seul les éléments pour lesquels la fonction renvoit <code
+          class="code docutils literal notranslate"><span class="pre">true</span></code> sont gardés :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'kaki'</span><span class="p">];</span>
+
+<span class="c1">// ne gardons que les éléments de moins de 6 caractères</span>
+<span class="kd">let</span> <span class="nx">fruits2</span> <span class="o">=</span> <span class="nx">fruits1</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// fonction anonyme</span>
+  <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span>
+<span class="p">}</span> <span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits2</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">fruits3</span> <span class="o">=</span> <span class="nx">fruits1</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="p">);</span>      <span class="c1">// fonction fléchée</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits3</span><span class="p">);</span>
+
+<span class="c1">// ne gardons que les éléments qui contiennent 'po'</span>
+<span class="kd">let</span> <span class="nx">fruits4</span> <span class="o">=</span> <span class="nx">fruits1</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">'po'</span><span class="p">))</span> <span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits4</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'kaki'</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'kaki'</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">13</div>
+
+
+    </article>
+    <article class="slide level-3" id="reduire-un-tableau-avec-la-methode-reduce">
+
+      <h3>Réduire un tableau avec la méthode reduce()<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#reduire-un-tableau-avec-la-methode-reduce"
+          title="View HTML">§</a></h3>
+
+      <p>Réduire un tableau de nombres en un nombre</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">somme</span> <span class="o">=</span> <span class="nx">notes</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span> <span class="p">(</span><span class="nx">accumul</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">accumul</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">);</span>    <span class="c1">//  --&gt; 58</span>
+
+<span class="kd">let</span> <span class="nx">moyenne</span> <span class="o">=</span> <span class="nx">notes</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span> <span class="p">(</span><span class="nx">acc</span><span class="p">,</span><span class="nx">v</span><span class="p">,</span><span class="nx">i</span><span class="p">,</span><span class="nx">a</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">acc</span> <span class="o">+</span> <span class="nx">v</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">notes</span><span class="p">.</span><span class="nx">length</span> <span class="o">||</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">moyenne</span><span class="p">);</span>  <span class="c1">//  --&gt; 11.6</span>
+</pre>
+        </div>
+      </div>
+      <p>Réduire un tableau de chaînes de caractères en une chaîne</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">fruits1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'poire'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">,</span> <span class="s1">'kaki'</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">fruits2</span> <span class="o">=</span> <span class="nx">fruits1</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span> <span class="p">(</span><span class="nx">acc</span><span class="p">,</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">acc</span><span class="o">+</span><span class="s1">'/'</span><span class="o">+</span><span class="nx">v</span><span class="p">)</span> <span class="p">);</span>  <span class="c1">// eq à fruits1.join('/')</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits2</span><span class="p">);</span>  <span class="c1">//  --&gt; 'pomme/poire/banane/kaki'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">14</div>
+
+
+    </article>
+    <article class="slide level-3" id="decomposer-et-destructurer-un-tableaux">
+
+      <h3>Décomposer et déstructurer un tableaux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#decomposer-et-destructurer-un-tableaux"
+          title="View HTML">§</a></h3>
+
+      <p>L’opérateur de décomposition <code
+          class="code docutils literal notranslate"><span class="pre">...</span></code> transforme un tableau en une
+        suite d’éléments :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">notes1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">notes2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">notes3</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">notes1</span><span class="p">,</span> <span class="p">...</span><span class="nx">notes2</span><span class="p">];</span>  <span class="c1">//  --&gt; [15, 6, 12, 17, 8, 14, 16]</span>
+
+<span class="kd">let</span> <span class="nx">noteMax</span><span class="p">;</span>
+<span class="nx">noteMax</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">notes3</span><span class="p">);</span>    <span class="c1">// Erreur ! max ne prend pas un tableau en argument</span>
+<span class="nx">noteMax</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">notes3</span><span class="p">);</span> <span class="c1">// Par contre il peut prendre plusieurs arguments</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'max : '</span><span class="o">+</span><span class="nx">noteMax</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="p">[</span><span class="nx">premier</span><span class="p">,</span> <span class="nx">deuxième</span><span class="p">,</span> <span class="p">...</span><span class="nx">reste</span><span class="p">]</span> <span class="o">=</span> <span class="nx">notes3</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1er = '</span><span class="o">+</span> <span class="nx">premier</span> <span class="o">+</span><span class="s1">', 2ème = '</span><span class="o">+</span> <span class="nx">deuxième</span> <span class="o">+</span><span class="s1">' et le reste = '</span><span class="o">+</span> <span class="nx">reste</span><span class="p">);</span>
+
+<span class="p">[</span><span class="nx">deuxième</span><span class="p">,</span> <span class="nx">premier</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">premier</span><span class="p">,</span> <span class="nx">deuxième</span><span class="p">]</span>   <span class="c1">// échanger des valeurs sans 3ème variable !</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1er = '</span><span class="o">+</span> <span class="nx">premier</span> <span class="o">+</span><span class="s1">', 2ème = '</span><span class="o">+</span> <span class="nx">deuxième</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="s1">'max : 17'</span>
+<span class="s1">'1er = 15, 2ème = 6 et le reste = 12,17,8,14,16'</span>
+<span class="s1">'1er = 6, 2ème = 15'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">15</div>
+
+
+    </article>
+    <article class="slide level-3" id="un-tableaux-comme-valeur-de-retour-d-une-fonction">
+
+      <h3>Un tableaux comme valeur de retour d’une fonction<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#un-tableaux-comme-valeur-de-retour-d-une-fonction"
+          title="View HTML">§</a></h3>
+
+      <p>En renvoyant un tableau, une fonction peut retourner plusieurs résultats :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
+
+<span class="kd">function</span> <span class="nx">minmax1</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(...</span><span class="nx">arr</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">[</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">minmax2</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(...</span><span class="nx">arr</span><span class="p">),</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">minmax3</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(...</span><span class="nx">arr</span><span class="p">),</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">)];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">minmax3</span><span class="p">(</span><span class="nx">notes</span><span class="p">)</span> <span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">16</div>
+
+
+    </article>
+    <article class="slide level-3" id="tableaux-a-plusieurs-dimensions">
+
+      <h3>Tableaux à plusieurs dimensions<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#tableaux-a-plusieurs-dimensions"
+          title="View HTML">§</a></h3>
+
+      <p>Chaque élément d’un tableau peut lui-même être un tableau :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">people1</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="s1">'Bistrukla'</span><span class="p">,</span> <span class="s1">'César'</span> <span class="p">],</span>
+  <span class="p">[</span><span class="s1">'Zeblues'</span>  <span class="p">,</span> <span class="s1">'Agathe'</span><span class="p">],</span>
+  <span class="p">[</span><span class="s1">'Assin'</span>    <span class="p">,</span> <span class="s1">'Marc'</span>  <span class="p">],</span>
+<span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">people2</span> <span class="o">=</span> <span class="nx">people1</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">' / '</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people2</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <p><strong>Questions :</strong></p>
+      <ul class="simple">
+        <li>Quel est le type de <code class="code docutils literal notranslate"><span class="pre">people2</span></code>
+          ?</li>
+        <li>Qu’affiche ce programme ?</li>
+      </ul>
+
+
+
+      <div class="slide-no">17</div>
+
+
+    </article>
+    <article class="slide level-3" id="id2">
+
+      <h3>Tableaux à plusieurs dimensions<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#id2" title="View HTML">§</a>
+      </h3>
+
+      <p>Chaque élément d’un tableau peut lui-même être un tableau :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">people1</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="s1">'Bistrukla'</span><span class="p">,</span> <span class="s1">'César'</span> <span class="p">],</span>
+  <span class="p">[</span><span class="s1">'Zeblues'</span>  <span class="p">,</span> <span class="s1">'Agathe'</span><span class="p">],</span>
+  <span class="p">[</span><span class="s1">'Assin'</span>    <span class="p">,</span> <span class="s1">'Marc'</span>  <span class="p">],</span>
+<span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">people2</span> <span class="o">=</span> <span class="nx">people1</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">' '</span><span class="o">+</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">' / '</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people2</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="c1">// Une chaîne de caractères :</span>
+<span class="s1">'César BISTRUKLA / Agathe ZEBLUES / Marc ASSIN'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">18</div>
+
+
+    </article>
+    <article class="slide level-2" id="les-objets-litteraux">
+
+      <h2>Les objets littéraux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-objets-litteraux"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">19</div>
+
+
+    </article>
+    <article class="slide level-3" id="declaration-d-un-objet-litteral-et-acces-a-ses-elements">
+
+      <h3>Déclaration d’un objet littéral et accès à ses éléments<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#declaration-d-un-objet-litteral-et-acces-a-ses-elements"
+          title="View HTML">§</a></h3>
+
+      <p>Un objet littéral permet de stocker des <strong>propriétés</strong> (couples de <code
+          class="code docutils literal notranslate"><span class="pre">clé</span> <span class="pre">:</span> <span class="pre">'valeur'</span></code>).
+      </p>
+      <p>Il se déclare avec des accolades <code
+          class="code docutils literal notranslate"><span class="pre">{}</span></code> et s’interroge avec le point
+        <code class="code docutils literal notranslate"><span class="pre">.</span></code> :
+      </p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">familleAddams</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">père</span>    <span class="o">:</span> <span class="s1">'Gomez'</span><span class="p">,</span>
+  <span class="nx">mère</span>    <span class="o">:</span> <span class="s1">'Morticia'</span><span class="p">,</span>
+  <span class="nx">enfants</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'Pugsley'</span><span class="p">,</span> <span class="s1">'Mercredi'</span><span class="p">],</span>
+  <span class="s1">'petits enfants'</span> <span class="o">:</span> <span class="p">[],</span>              <span class="c1">// les clés aux noms composés sont mis entre ''</span>
+<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'le père : '</span> <span class="o">+</span> <span class="nx">familleAddams</span><span class="p">.</span><span class="nx">père</span> <span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'Nombre d enfants : '</span><span class="o">+</span> <span class="nx">familleAddams</span><span class="p">.</span><span class="nx">enfants</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">fils</span>  <span class="o">=</span> <span class="nx">familleAddams</span><span class="p">.</span><span class="nx">enfants</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">fille</span> <span class="o">=</span> <span class="nx">familleAddams</span><span class="p">.</span><span class="nx">enfants</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'le fils : '</span><span class="o">+</span> <span class="nx">fils</span> <span class="o">+</span><span class="s1">' et la fille : '</span><span class="o">+</span> <span class="nx">fille</span><span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="s1">'le père : Gomez'</span>
+<span class="s1">'Nombre d enfants : 2'</span>
+<span class="s1">'le fils : Pugsley et la fille : Mercredi'</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">20</div>
+
+
+    </article>
+    <article class="slide level-3" id="ajout-et-acces-aux-elements">
+
+      <h3>Ajout et accès aux éléments<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#ajout-et-acces-aux-elements"
+          title="View HTML">§</a></h3>
+
+      <p>On peut ajouter un élément à tout moment en associant une valeur à une nouvelle clé :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">familleAddams</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">père</span>    <span class="o">:</span> <span class="s1">'Gomez'</span><span class="p">,</span>
+  <span class="nx">mère</span>    <span class="o">:</span> <span class="s1">'Morticia'</span><span class="p">,</span>
+  <span class="nx">enfants</span> <span class="o">:</span> <span class="p">[</span><span class="s1">'Pugsley'</span><span class="p">,</span> <span class="s1">'Mercredi'</span><span class="p">],</span>
+  <span class="s1">'petits enfants'</span> <span class="o">:</span> <span class="p">[],</span>
+<span class="p">};</span>
+<span class="c1">// Ajout de champs depuis "l'extérieur" de l'objet</span>
+<span class="nx">familleAddams</span><span class="p">.</span><span class="nx">oncle</span> <span class="o">=</span> <span class="s1">'Fetide'</span><span class="p">;</span>                <span class="c1">// accès avec le point</span>
+<span class="nx">familleAddams</span><span class="p">[</span><span class="s1">'grand mère'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Esmeralda'</span><span class="p">;</span>     <span class="c1">// accès avec les crochets</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span>   <span class="p">(</span><span class="nx">familleAddams</span><span class="p">)</span> <span class="p">);</span>   <span class="c1">// les membres de la famille</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span> <span class="p">(</span><span class="nx">familleAddams</span><span class="p">)</span> <span class="p">);</span>   <span class="c1">// les prénoms de la famille</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">familleAddams</span><span class="p">)</span> <span class="p">);</span>   <span class="c1">// le tableau de famille...</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="s1">'père'</span><span class="p">,</span> <span class="s1">'mère'</span><span class="p">,</span> <span class="s1">'enfants'</span><span class="p">,</span> <span class="s1">'petits enfants'</span><span class="p">,</span> <span class="s1">'oncle'</span><span class="p">,</span> <span class="s1">'grand mère'</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'Gomez'</span><span class="p">,</span> <span class="s1">'Morticia'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Pugsley'</span><span class="p">,</span> <span class="s1">'Mercredi'</span><span class="p">],</span> <span class="p">[],</span> <span class="s1">'Fetide'</span><span class="p">,</span> <span class="s1">'Esmeralda'</span><span class="p">]</span>
+<span class="p">[</span> <span class="p">[</span><span class="s1">'père'</span><span class="p">,</span> <span class="s1">'Gomez'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'mère'</span><span class="p">,</span> <span class="s1">'Morticia'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'enfants'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Pugsley'</span><span class="p">,</span> <span class="s1">'Mercredi'</span><span class="p">]],</span>
+  <span class="p">[</span><span class="s1">'petits enfants'</span><span class="p">,</span> <span class="p">[]],</span> <span class="p">[</span><span class="s1">'oncle'</span><span class="p">,</span> <span class="s1">'Fetide'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'grand mère'</span><span class="p">,</span> <span class="s1">'Esmeralda'</span><span class="p">]</span> <span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">21</div>
+
+
+    </article>
+    <article class="slide level-3" id="definition-de-methodes-dans-un-objet-litteral">
+
+      <h3>Définition de méthodes dans un objet littéral<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#definition-de-methodes-dans-un-objet-litteral"
+          title="View HTML">§</a></h3>
+
+      <p>Des fonctions peuvent êtres associées aux clés d’un objet. On les nomme alors les <strong>méthodes de
+          l’objet</strong> :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">coord</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1">// initialisé à 0 par défaut</span>
+  <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+
+  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// on associe une fonction à la clé init</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>   <span class="c1">// this désigne l'objet courant !</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">},</span>              <span class="c1">// notez la virgule obligatoire entre les propriétés !</span>
+
+  <span class="nx">position</span><span class="p">()</span> <span class="p">{</span>    <span class="c1">// méthode avec une syntaxe plus courte eq. à position: function() {...}</span>
+    <span class="k">return</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">];</span>   <span class="c1">// renvoie ici un tableau à deux éléments</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">coord</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">coord</span><span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">22</div>
+
+
+    </article>
+    <article class="slide level-3" id="attention-a-la-copie-superficielle-des-objets">
+
+      <h3>Attention à la copie superficielle des objets !<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#attention-a-la-copie-superficielle-des-objets"
+          title="View HTML">§</a></h3>
+
+      <p>L’affection d’un objet à un autre créé les mêmes clés mais recopie les références vers les valeurs :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">coord</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="nx">position</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">];</span>
+  <span class="p">}</span> <span class="p">,</span>
+<span class="p">};</span>
+<span class="nx">coord</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">coord</span><span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>   <span class="c1">// --&gt; [2, 3]</span>
+
+<span class="kd">let</span> <span class="nx">coord2</span> <span class="o">=</span> <span class="nx">coord</span><span class="p">;</span>  <span class="c1">// attention copie superficielle ! Autre nom pour le même objet !</span>
+<span class="nx">coord2</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">coord2</span><span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>  <span class="c1">// --&gt; [4, 3]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">coord</span> <span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>  <span class="c1">// --&gt; [4, 3]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">23</div>
+
+
+    </article>
+    <article class="slide level-3" id="consequence-sur-le-passage-d-objet-comme-arguments-de-fonctions">
+
+      <h3>Conséquence sur le passage d’objet comme arguments de fonctions<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#consequence-sur-le-passage-d-objet-comme-arguments-de-fonctions"
+          title="View HTML">§</a></h3>
+
+      <p>À savoir : la modification d’un argument objet passé à une fonction modifie l’objet original :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">coord</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="c1">// ...</span>
+<span class="p">};</span>
+<span class="kd">let</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">array</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<span class="nx">coord</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">coord</span><span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">change</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">arr</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">num</span>    <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// Éviter de modifier un tableau passé en argument</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">x</span>  <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// Éviter de modifier un  objet  passé en argument</span>
+<span class="p">}</span>
+<span class="nx">change</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">coord</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">array</span><span class="p">,</span> <span class="nx">coord</span><span class="p">.</span><span class="nx">position</span><span class="p">()</span> <span class="p">);</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="mi">2</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1">// valeurs initiales</span>
+<span class="mi">2</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1">// valeurs modifiées par la fonctions pour le tableau et l'objet</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">24</div>
+
+
+    </article>
+    <article class="slide level-3" id="utilisation-des-objets-litteraux">
+
+      <h3>utilisation des objets littéraux<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#utilisation-des-objets-litteraux"
+          title="View HTML">§</a></h3>
+
+      <p>Les <strong>objets littéraux</strong> sont bien adaptés quand on a besoin d”<em>un exemplaire</em> d’une
+        structure qui rassemble des propriétés et des méthodes.</p>
+      <p>Quand on manipule de <em>nombreux exemplaires</em> d’une telle structure, il faut passer par un mécanisme de
+        création d’objets basés sur le même modèle. On parle alors d”<strong>instances</strong> d’une même
+        <strong>classe</strong>.
+      </p>
+
+
+
+      <div class="slide-no">25</div>
+
+
+    </article>
+    <article class="slide level-2" id="objets-comme-instances-d-une-classe">
+
+      <h2>Objets comme instances d’une classe<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#objets-comme-instances-d-une-classe"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">26</div>
+
+
+    </article>
+    <article class="slide level-3" id="definition-d-une-classe-et-declaration-d-une-variable-de-type-class">
+
+      <h3>Définition d’une classe et déclaration d’une variable de type class<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#definition-d-une-classe-et-declaration-d-une-variable-de-type-class"
+          title="View HTML">§</a></h3>
+
+      <p>Des objets sont fabriqués (<em>instanciés</em>) à partir d’un modèle (une <em>classe</em>). Une instance est
+        créée à la déclaration en appelant le constructeur avec ses arguments.</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kr">class</span> <span class="nx">Coord</span> <span class="p">{</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// Un constructeur par classe et ses arguments</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>          <span class="c1">// ici, créé les propriétés x et y</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>          <span class="c1">// et les initialise avec les arguments</span>
+  <span class="p">}</span>
+  <span class="nx">position</span><span class="p">()</span> <span class="p">{</span>                   <span class="c1">// une méthode</span>
+    <span class="k">return</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">];</span>     <span class="c1">// qui renvoie un tableau</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coord</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>         <span class="c1">// déclare deux instances de la classe Coord</span>
+<span class="kd">let</span> <span class="nx">c2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coord</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>         <span class="c1">// qui sont construites avec les valeurs passées</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c1</span><span class="p">.</span><span class="nx">position</span><span class="p">(),</span> <span class="nx">c2</span><span class="p">.</span><span class="nx">position</span><span class="p">());</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">27</div>
+
+
+    </article>
+    <article class="slide level-3" id="exemple-d-utilisation-d-objets-pour-les-interfaces-web">
+
+      <h3>Exemple d’utilisation d’objets pour les interfaces Web<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#exemple-d-utilisation-d-objets-pour-les-interfaces-web"
+          title="View HTML">§</a></h3>
+
+      <p>Génération de listes depuis des tableaux de données Javascript :</p>
+      <div class="highlight-html notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"fruits"</span> <span class="p">&gt;</span> <span class="c">&lt;!-- le contenu sera généré par le code Javascript --&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"legumes"</span><span class="p">&gt;</span> <span class="c">&lt;!-- le contenu sera généré par le code Javascript --&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kr">class</span> <span class="nx">HtmlList</span> <span class="p">{</span><span class="cm">/*...*/</span><span class="p">}</span>   <span class="c1">// Une classe détaillée juste après</span>
+
+<span class="c1">// Déclaration de deux instances de la classe HtmlList</span>
+<span class="kd">let</span> <span class="nx">ul</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HtmlList</span><span class="p">(</span><span class="s1">'fruits'</span> <span class="p">,</span> <span class="s1">'ul'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'pomme'</span><span class="p">,</span> <span class="s1">'fraise'</span><span class="p">,</span> <span class="s1">'banane'</span><span class="p">]);</span>
+<span class="kd">let</span> <span class="nx">ol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HtmlList</span><span class="p">(</span><span class="s1">'legumes'</span><span class="p">,</span> <span class="s1">'ol'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'brocoli'</span><span class="p">,</span> <span class="s1">'artichaut'</span><span class="p">,</span> <span class="s1">'topinambour'</span><span class="p">]);</span>
+
+<span class="nx">ul</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>    <span class="c1">// Rempli le contenu de div#fruits  avec une liste ul</span>
+<span class="nx">ol</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>    <span class="c1">// Rempli le contenu de div#legumes avec une liste ol</span>
+</pre>
+        </div>
+      </div>
+      <style>
+        .rawhtml {
+          border: 1px solid black;
+          font-family: sherif;
+          font-size: x-large;
+        }
+
+        .rawhtml ul,
+        .rawhtml ol {
+          padding-left: 40px;
+          margin: 0;
+          margin-bottom: 0.3em;
+        }
+
+        .rawhtml li {
+          letter-spacing: -1px;
+          margin-bottom: 0;
+          font-size: 0.7em;
+          line-height: 1em;
+          padding: 0;
+        }
+      </style>
+      <div class="rawhtml">
+        <ul>
+          <li>pomme</li>
+          <li>fraise</li>
+          <li>banane</li>
+        </ul>
+        <ol>
+          <li>brocoli</li>
+          <li>artichaut</li>
+          <li>topinambour</li>
+        </ol>
+      </div>
+
+
+      <div class="slide-no">28</div>
+
+
+    </article>
+    <article class="slide level-3" id="id3">
+
+      <h3>Exemple d’utilisation d’objets pour les interfaces Web<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#id3" title="View HTML">§</a>
+      </h3>
+
+      <p>Définition de la classe <code
+          class="code docutils literal notranslate"><span class="pre">HtmlList</span></code> :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kr">class</span> <span class="nx">HtmlList</span> <span class="p">{</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>                            <span class="c1">// le type de la liste ('ul' ou 'ol')</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">items</span><span class="p">;</span>                          <span class="c1">// les items de la liste sous forme de tableau</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>  <span class="c1">// connecte la liste à un élément du document</span>
+  <span class="p">}</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>                                    <span class="c1">// génération du HTML</span>
+    <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">'&lt;'</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="o">+</span><span class="s1">'&gt;\n'</span><span class="p">;</span>
+    <span class="nx">html</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="s1">'  &lt;li&gt;'</span><span class="o">+</span><span class="nx">v</span><span class="o">+</span><span class="s1">'&lt;/li&gt;'</span><span class="p">)</span> <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">);</span>
+    <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'\n&lt;/'</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="o">+</span><span class="s1">'&gt;'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">html</span><span class="p">;</span>                <span class="c1">// injectin du HTML dans la balise connectée</span>
+  <span class="p">}</span>
+  <span class="nx">push</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ul</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'abricot'</span><span class="p">);</span>  <span class="c1">// ajoute un fruit à la liste d'items de l'objet</span>
+<span class="nx">ul</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>         <span class="c1">// modifie la liste ul affichée dans la page web !</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">29</div>
+
+
+    </article>
+    <article class="slide level-3" id="les-classes-javascript">
+
+      <h3>Les classes Javascript<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-classes-javascript"
+          title="View HTML">§</a></h3>
+
+      <p>C’est un ajout récent au langage pour cacher le méchanisme sous-jacent de Javascript pour la création d’objets
+        sur la base de <em>prototypes</em>.</p>
+      <p>Elles permettent de mettre en place les notions classiques de la <strong>programmation orientée objet</strong>
+        (héritage, polymorphisme) :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kr">class</span> <span class="nx">UlList</span> <span class="kr">extends</span> <span class="nx">HtmlList</span> <span class="p">{</span>    <span class="c1">// hérite des propriété et méthodes de la classe HtmlList</span>
+  <span class="nx">constructor</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="s1">'ul'</span><span class="p">,</span> <span class="nx">items</span><span class="p">);</span>        <span class="c1">// appelle le constructeur de la classe héritée</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">ul2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UlList</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'orange'</span><span class="p">]);</span>    <span class="c1">// nouvelle liste à puce attachée au div#fruits</span>
+<span class="nx">ul2</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'citron'</span><span class="p">);</span>                            <span class="c1">// utilise les méthodes héritées</span>
+<span class="nx">ul2</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>                                  <span class="c1">// la liste à puce contient maintenant :</span>
+                                               <span class="c1">//   * orange</span>
+                                               <span class="c1">//   * citron</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">30</div>
+
+
+    </article>
+    <article class="slide level-2" id="les-litteraux-de-gabarit">
+
+      <h2>Les littéraux de gabarit<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-litteraux-de-gabarit"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">31</div>
+
+
+    </article>
+    <article class="slide level-3" id="les-litteraux-de-gabarit-chaines-de-caracteres-multi-lignes">
+
+      <h3>Les littéraux de gabarit, chaînes de caractères multi-lignes<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#les-litteraux-de-gabarit-chaines-de-caracteres-multi-lignes"
+          title="View HTML">§</a></h3>
+
+      <p>C’est un autre moyen de construire des chaînes de caractères, entourées du caractère &nbsp;» ` &nbsp;»
+        (<em>back quote</em>).</p>
+      <ul class="simple">
+        <li>ils sont multi-lignes</li>
+        <li>on peut injecter des chaînes de caractères issues de variables ou d’expressions dans <code
+            class="code docutils literal notranslate"><span class="pre">${var|exp}</span></code> .</li>
+      </ul>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>                        <span class="c1">// avec chaines de caractères</span>
+  <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">'&lt;'</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="o">+</span><span class="s1">'&gt;\n'</span><span class="p">;</span>
+  <span class="nx">html</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="s1">'  &lt;li&gt;'</span><span class="o">+</span><span class="nx">v</span><span class="o">+</span><span class="s1">'&lt;/li&gt;'</span><span class="p">)</span> <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">);</span>
+  <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'\n&lt;/'</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="o">+</span><span class="s1">'&gt;'</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">html</span><span class="p">;</span>   <span class="c1">// injectin du HTML dans la balise connectée</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>                        <span class="c1">// avec littéraux de gabarit</span>
+  <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="sb">`&lt;</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="si">}</span><span class="sb">&gt;</span>
+<span class="sb">  </span><span class="si">${</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="sb">`&lt;li&gt;</span><span class="si">${</span><span class="nx">v</span><span class="si">}</span><span class="sb">&lt;/li&gt;`</span><span class="p">)</span> <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span> <span class="si">}</span><span class="sb"></span>
+<span class="sb">  &lt;/</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="si">}</span><span class="sb">&gt;`</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">html</span><span class="p">;</span>   <span class="c1">// injectin du HTML dans la balise connectée</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">32</div>
+
+
+    </article>
+    <article class="slide level-2" id="stockage-de-donnees-au-format-json">
+
+      <h2>Stockage de données au format JSON<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#stockage-de-donnees-au-format-json"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">33</div>
+
+
+    </article>
+    <article class="slide level-3" id="le-format-json">
+
+      <h3>Le format JSON<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#le-format-json"
+          title="View HTML">§</a></h3>
+
+      <p><strong>JSON</strong> est un format pour stocker des données structurées dans une chaine de caractères.</p>
+      <p>Ce format est souvent utilisé pour transporter des données entre un serveur et une page Web.</p>
+      <p>JSON signifie <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation
+      </p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="c1">// Exemple de données JSON</span>
+<span class="kr">const</span> <span class="nx">data_string1</span> <span class="o">=</span> <span class="s1">'{"name": "Hochon", "age": 18, "address": ["2 rue du soir", "64000", "Pau"]}'</span><span class="p">;</span>
+</pre>
+        </div>
+      </div>
+      <p>Une chaîne de caractères JSON peut être convertie en un objet Javascript (et vice versa) :</p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="kd">let</span> <span class="nx">person1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">data_string1</span> <span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'nom de la personne : '</span><span class="o">+</span><span class="nx">person1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>  <span class="c1">// affiche "Hochon"</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">firstname</span> <span class="o">=</span> <span class="s1">'Paul'</span><span class="p">;</span>                         <span class="c1">// ajout d'une propriété à person1</span>
+
+<span class="kr">const</span> <span class="nx">data_string2</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span>       <span class="c1">// on convertit l'objet en une chaîne JSON</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data_string2</span><span class="p">);</span>
+<span class="c1">// affiche : {"name": "Hochon", "age": 18, "address": ["2 rue du soir", "64000", "Pau"], "firstname": "Paul"}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">34</div>
+
+
+    </article>
+    <article class="slide level-3" id="json-quelques-contraintes">
+
+      <h3>JSON : quelques contraintes<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c3.html#json-quelques-contraintes"
+          title="View HTML">§</a></h3>
+
+      <p>À savoir :</p>
+      <ul class="simple">
+        <li>Une chaîne JSON ne contient que des données, pas de méthodes (ou fonctions)</li>
+        <li>Utiliser des guillemets autour des propriétés et valeurs, pas des apostrophes</li>
+        <li>toutes les propriétés doivent être entre guillemets.</li>
+      </ul>
+      <p>Trouvez les erreurs dans cette chaîne JSON :</p>
+      <div class="highlight-text notranslate">
+        <div class="highlight">
+          <pre><span></span>{ "'name': "Hochon", age: 18, "address": ["2 rue du soir", "64000", "Pau"],
+  firstname(){return "Paul"} }
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">35</div>
+
+
+    </article>
+
+    <div class="slide-area" id="prev-slide-area"></div>
+    <div class="slide-area" id="next-slide-area"></div>
+  </section>
+
+  <section id="slide_notes">
+
+  </section>
+
+
+</body>
+
+</html>

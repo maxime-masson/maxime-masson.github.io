@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/c4.html#1 -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <title>Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0</title>
+
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/basic.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/styles.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/slides.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/pygments.css"
+    type="text/css">
+
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/sab-custom.css"
+    type="text/css">
+
+
+
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/pygments.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/slides.css"
+    type="text/css">
+  <link rel="stylesheet"
+    href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/custom.css"
+    type="text/css">
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT: './',
+      VERSION: '2.0',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE: true
+    };
+  </script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/documentation_options.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/jquery.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/underscore.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/doctools.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/translations.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/common.js.télécharger"></script>
+
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/slides.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/sync.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/controller.js.télécharger"></script>
+  <script type="text/javascript"
+    src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/init.js.télécharger"></script>
+
+
+  <link rel="index" title="Index"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/genindex.html">
+  <link rel="search" title="Recherche"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/search.html">
+  <link rel="top" title="Documentation Cours DAI 2.0"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/index.html">
+  <link rel="next" title="TD1 - Boucles et conditionnelles en Javascript"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/td1.html">
+  <link rel="prev" title="Javascript : objets, tableaux, objets littéraux"
+    href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/slides/c3.html">
+  <meta name="viewport" content="width=1100,height=750">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+<body class="loaded">
+
+  <section id="slide_container" class="slides layout-regular">
+
+
+
+    <article class="slide level-1 current" id="architecture-sam-pour-le-developpement-d-applications-web">
+
+      <h1>Architecture SAM pour le développement d’applications Web<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#architecture-sam-pour-le-developpement-d-applications-web"
+          title="View HTML">§</a></h1>
+
+      <!-- NB: using raw:: directive in order to accurately tag metadata -->
+
+      <p><a rel="author" href="hhttp://bjobard.perso.univ-pau.fr/">Bruno Jobard</a>
+        <!--
+        ,
+        <a rel="author"
+        href="https://champin.net/#pa"
+        >Pierre-Antoine Champin</a>
+  &amp; <a rel="author"
+        href="https://mmrissa.perso.univ-pau.fr"
+        >Michael Mrissa</a>
+        -->
+      </p>
+
+      <!--
+  <address>
+    <a href="https://ufr-sciences-pau.univ-pau.fr/fr/organisation/departements/informatique.html">Département Informatique</a> de l'UPPA</address>
+
+  <p><a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.fr">
+     <img alt="Creative Commons License" style="border-width:0"
+          src="_static/cc.png" /></a></p>
+
+  <p class="license">Ce travail est sous licence
+  <a rel="license"
+     href="https://creativecommons.org/licenses/by-sa/3.0/fr/deed.fr">
+     Creative Commons Attribution-ShareAlike 3.0 France</a>.</p>
+       -->
+
+
+      <div class="slide-no">1</div>
+
+
+    </article>
+    <article class="slide level-2 next" id="architectures-logicielles-pour-les-applications-web">
+
+      <h2>Architectures logicielles pour les applications Web<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#architectures-logicielles-pour-les-applications-web"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">2</div>
+
+
+    </article>
+    <article class="slide level-3 far-next" id="contexte">
+
+      <h3>Contexte<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#contexte"
+          title="View HTML">§</a></h3>
+
+      <p>On peut définir une <strong>application Web</strong> comme une application dont l’interface utilisateur
+        s’affiche dans un navigateur Web.</p>
+      <p>Une application Web résulte le plus souvent du dialogue entre une <strong>partie client</strong> (le
+        navigateur) et une <strong>partie serveur</strong> (exécutée à distance).</p>
+      <p>Dans ce cours, nous nous focaliserons sur la partie client avec des applications tournant principalement dans
+        le navigateur.</p>
+
+
+
+      <div class="slide-no">3</div>
+
+
+    </article>
+    <article class="slide level-3" id="necessite-d-une-bonne-organisation-logicielle">
+
+      <h3>Nécessité d’une bonne organisation logicielle<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#necessite-d-une-bonne-organisation-logicielle"
+          title="View HTML">§</a></h3>
+
+      <p>La gestion de l’interface graphique d’une application est délicate car elle gère des données de natures
+        différentes :</p>
+      <ul class="simple">
+        <li>Les données propres à l’application<ul>
+            <li>une liste d’articles avec images, catégorie, et prix associés pour un site d’e-commerce par exemple.
+            </li>
+          </ul>
+        </li>
+        <li>Les données propres à l’état courant de l’application<ul>
+            <li>une liste d’articles filtrés suivant des critères de l’utilisateur par exemple</li>
+          </ul>
+        </li>
+        <li>Les données propres à l’état de l’interface<ul>
+            <li>certains boutons indisponibles pour un état particulier</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Et doit modifier ces données en fonction des interactions de l’utilisateur.</p>
+      <p>La difficulté réside dans la <strong>conservation de la cohérence</strong> de toutes ces données.</p>
+
+
+
+      <div class="slide-no">4</div>
+
+
+    </article>
+    <article class="slide level-3" id="multitude-d-infrastructures-logicielles-javascript-disponibles">
+
+      <h3>Multitude d’infrastructures logicielles Javascript disponibles<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#multitude-d-infrastructures-logicielles-javascript-disponibles"
+          title="View HTML">§</a></h3>
+
+      <p>De nombreuses infrastructures logicielles (<em>frameworks</em>) sont disponibles pour aider le développeur à
+        structurer son application.</p>
+      <p>Elles proposent une méthode et des composant pour faciliter l’organisation du code et la gestion de l’état de
+        l’application.</p>
+      <p>Les plus connues sont : React.js (Facebook), Angular.js (Google), Vuejs et tant d’autres…</p>
+      <p>Malgré leurs avantages, chacun de ces infrastructures ont tendance à enfermer le développeur dans un carcan
+        rigide et de lui imposer des contraintes supplémentaires.</p>
+      <p><strong>Nous verrons qu’il est possible de se passer de telles infrastructures par une simple organisation du
+          code en plusieurs composants dont nous définirons le rôle. Nous adopterons pour cela l’architecture
+          SAM.</strong></p>
+
+
+
+      <div class="slide-no">5</div>
+
+
+    </article>
+    <article class="slide level-2" id="architecture-sam">
+
+      <h2>Architecture SAM<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#architecture-sam"
+          title="View HTML">§</a></h2>
+
+
+
+
+      <div class="slide-no">6</div>
+
+
+    </article>
+    <article class="slide level-3" id="introduction">
+
+      <h3>Introduction<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#introduction"
+          title="View HTML">§</a></h3>
+
+      <p>L’architecture SAM (ou <em>SAM Pattern</em> en anglais) est une organisation du code particulièrement pensée
+        pour le développment d’applications Web.</p>
+      <p>Elle a été initialement proposée par <strong>Jean-Jacques Dubray</strong> en <strong>2016</strong>.</p>
+      <p>Les principes de son approche sont exposés sur <a class="reference external"
+          href="https://sam.js.org/">http://sam.js.org</a></p>
+      <p>Il ne s’agit pas d’une infrastructure logicielle (ou <em>framework</em>), mais d’une structuration du code à
+        appliquer lors de l’implémentation de l’application (<em>design pattern</em> en anglais).</p>
+      <p>Le nom SAM vient des premières lettres de 3 des 4 composants constituant l’architecture proposée :
+        <strong>S</strong>tate, <strong>A</strong>ction, <strong>M</strong>odel et View.
+      </p>
+
+
+
+      <div class="slide-no">7</div>
+
+
+    </article>
+    <article class="slide level-3" id="principes-de-l-architecture-sam">
+
+      <h3>Principes de l’architecture SAM<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#principes-de-l-architecture-sam"
+          title="View HTML">§</a></h3>
+
+      <p>Architecture constituée de 4 composants :</p>
+      <ul class="simple">
+        <li><strong>Actions</strong> – pour réagir aux intéractions de l’utilisateur</li>
+        <li><strong>Model</strong> – qui centralise les données essentielles</li>
+        <li><strong>State</strong> – état et représentation de l’application</li>
+        <li><strong>View</strong> – qui fabrique et affiche l’interface Web</li>
+      </ul>
+      <p>Propriétés remarquables :</p>
+      <ul class="simple">
+        <li><strong>Model</strong> est la seule source d’informations nécessaires à l’application</li>
+        <li><strong>View</strong> régénère entièrement l’interface à chaque changement du modèle</li>
+      </ul>
+
+
+
+      <div class="slide-no">8</div>
+
+
+    </article>
+    <article class="slide level-3" id="id3">
+
+      <h3>Principes de l’architecture SAM<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#id3" title="View HTML">§</a>
+      </h3>
+
+      <p>Ces composants sont implémentés en Javascript par des objets littéraux (<code
+          class="code docutils literal notranslate"><span class="pre">actions</span></code>, <code
+          class="code docutils literal notranslate"><span class="pre">model</span></code>, <code
+          class="code docutils literal notranslate"><span class="pre">state</span></code> et <code
+          class="code docutils literal notranslate"><span class="pre">view</span></code>).</p>
+      <div class="flex docutils container">
+        <p>Ces objets contiennent des méthodes de base :</p>
+        <div class="figure align-default" id="id1">
+          <img alt="Figure : diagramme des objets"
+            src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/generic_sam_obj.svg">
+          <p class="caption"><span class="caption-text">Méthodes de base des objets de l’architecture SAM</span></p>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">9</div>
+
+
+    </article>
+    <article class="slide level-3" id="sequence-d-appels-des-methodes-sam">
+
+      <h3>Séquence d’appels des méthodes SAM<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#sequence-d-appels-des-methodes-sam"
+          title="View HTML">§</a></h3>
+
+      <div class="figure align-default" id="id2">
+        <img alt="Figure : shéma des appels"
+          src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/generic_sam_sd.svg">
+        <p class="caption"><span class="caption-text">Enchainement des méthodes dans l’architecture SAM</span></p>
+      </div>
+
+
+
+      <div class="slide-no">10</div>
+
+
+    </article>
+    <article class="slide level-3" id="canevas-javascript-de-l-architecture-sam">
+
+      <h3>Canevas Javascript de l’architecture SAM<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#canevas-javascript-de-l-architecture-sam"
+          title="View HTML">§</a></h3>
+
+      <div class="flex docutils container">
+        <div class="highlight-javascript notranslate">
+          <div class="highlight">
+            <pre><span></span><span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1">//---------- ACTIONS ---</span>
+  <span class="nx">action1</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">model</span><span class="p">.</span><span class="nx">samPresent</span><span class="p">(</span>
+      <span class="p">{</span><span class="k">do</span><span class="o">:</span><span class="s1">'change_p1'</span><span class="p">,</span> <span class="nx">p1</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">p1</span><span class="p">});</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1">//-------------- MODEL ---</span>
+  <span class="nx">p1</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="c1">//... autres propriétés</span>
+
+  <span class="nx">samPresent</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="k">do</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="s1">'change_p1'</span><span class="o">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">p1</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">p1</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">state</span><span class="p">.</span><span class="nx">samUpdate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre>
+          </div>
+        </div>
+        <div class="highlight-javascript notranslate">
+          <div class="highlight">
+            <pre><span></span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1">//---------------------------- STATE ---</span>
+  <span class="c1">//... propriétés</span>
+  <span class="nx">samUpdate</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">samRepresent</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">samRepresent</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">representation</span> <span class="o">=</span> <span class="nx">view</span><span class="p">.</span><span class="nx">generate1</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">view</span><span class="p">.</span><span class="nx">samDisplay</span><span class="p">(</span><span class="nx">representation</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">view</span> <span class="o">=</span> <span class="p">{</span>   <span class="c1">//------------------------------ VIEW ---</span>
+  <span class="nx">samDisplay</span><span class="p">(</span><span class="nx">representation</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">getElementById</span><span class="p">(</span><span class="s1">'app'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">representation</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="nx">generate1</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="cm">/* code HTML */</span> <span class="p">},</span>
+<span class="p">}</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">11</div>
+
+
+    </article>
+    <article class="slide level-3" id="illustration-des-composants-sam-sur-un-exemple">
+
+      <h3>Illustration des composants SAM sur un exemple<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#illustration-des-composants-sam-sur-un-exemple"
+          title="View HTML">§</a></h3>
+
+      <p>Nous allons illustrer l’implémentation de l’architecture SAM avec l’exemple de l’affichage d’une liste de
+        départements selon plusieurs modes de représentation (sous forme d’une liste à puces ou d’un tableau), tel que
+        traité dans le TD3.</p>
+      <div class="figure align-center">
+        <a class="reference internal image-reference"
+          href="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/c4_TD3_départements.png"><img
+            alt="Visualisation de la liste des départements"
+            src="./Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0_files/c4_TD3_départements.png"
+            style="width: 375px;"></a>
+      </div>
+
+
+
+      <div class="slide-no">12</div>
+
+
+    </article>
+    <article class="slide level-3" id="actions-pour-reagir-aux-interactions-de-l-utilisateur">
+
+      <h3>Actions – pour réagir aux intéractions de l’utilisateur<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#actions-pour-reagir-aux-interactions-de-l-utilisateur"
+          title="View HTML">§</a></h3>
+
+      <p>L’objet <code class="code docutils literal notranslate"><span class="pre">actions</span></code> regroupe les
+        méthodes associées aux événements déclenchés par l’intéraction de l’utilisateur avec l’interface graphique.</p>
+      <p>Chaque méthode d’action prend un objet de données (<code
+          class="code docutils literal notranslate"><span class="pre">data</span></code>) contenant les éléments
+        nécessaires à caractériser la nature de l’interaction et construit un nouvel objet de données à présenter à
+        <code class="code docutils literal notranslate"><span class="pre">model</span></code>.
+      </p>
+      <div class="highlight-html notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">onchange</span><span class="o">=</span><span class="s">"actions.changeMode({e:event})"</span> <span class="p">&gt;</span> <span class="c">&lt;!-- on passe l'événement en argument --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">option</span>  <span class="na">value</span><span class="o">=</span><span class="s">"asList"</span> <span class="p">&gt;</span> Liste   <span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">option</span>  <span class="na">value</span><span class="o">=</span><span class="s">"asTable"</span><span class="p">&gt;</span> Tableau <span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">changeMode</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">selectedMode</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span> <span class="c1">// d'où on récupère la valeur du mode sélectionné</span>
+    <span class="nx">model</span><span class="p">.</span><span class="nx">samPresent</span><span class="p">({</span><span class="k">do</span><span class="o">:</span><span class="s1">'changeMode'</span><span class="p">,</span> <span class="nx">mode</span><span class="o">:</span> <span class="nx">selectedMode</span><span class="p">});</span> <span class="c1">// on présente ce mode à model</span>
+  <span class="p">},</span>
+  <span class="c1">//...</span>
+<span class="p">};</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">13</div>
+
+
+    </article>
+    <article class="slide level-3" id="model-centralise-les-donnees-essentielles">
+
+      <h3>Model – centralise les données essentielles<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#model-centralise-les-donnees-essentielles"
+          title="View HTML">§</a></h3>
+
+      <p>L’objet <code class="code docutils literal notranslate"><span class="pre">model</span></code> contient les
+        <strong>données essentielles</strong> au fonctionnement de l’application. Seule la méthode <code
+          class="code docutils literal notranslate"><span class="pre">samPresent(data)</span></code> peut les modifier
+        en fonction des propositions reçues en argument.
+      </p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">changeMode</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// une action de l'objet actions</span>
+  <span class="c1">//...</span>
+  <span class="nx">model</span><span class="p">.</span><span class="nx">samPresent</span><span class="p">({</span><span class="k">do</span><span class="o">:</span><span class="s1">'changeMode'</span><span class="p">,</span> <span class="nx">mode</span><span class="o">:</span> <span class="nx">selectedMode</span><span class="p">});</span> <span class="c1">// on construit un objet de données</span>
+<span class="p">}</span>                                           <span class="c1">// indiquant ce qu'on veut modifier dans le modèle</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">departments</span><span class="o">:</span> <span class="p">[],</span> <span class="c1">// tableau contenant les données sur les départements</span>
+  <span class="nx">mode</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>        <span class="c1">// mode d'affichage : 'asList' ou 'asTable'</span>
+
+  <span class="nx">samPresent</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// reçoit des propositions de changement dans data</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="nx">data</span><span class="p">.</span><span class="k">do</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="s1">'changeMode'</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">mode</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">mode</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">state</span><span class="p">.</span><span class="nx">samUpdate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// comme le modèle a changé, on demande à l'état de l'application</span>
+  <span class="p">}</span>                        <span class="c1">//   (state) de se mettre à jour</span>
+<span class="p">};</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">14</div>
+
+
+    </article>
+    <article class="slide level-3" id="state-etat-et-representation-de-l-application">
+
+      <h3>State – état et représentation de l’application<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#state-etat-et-representation-de-l-application"
+          title="View HTML">§</a></h3>
+
+      <p>L’objet <code class="code docutils literal notranslate"><span class="pre">state</span></code> met à jour avec
+        <code class="code docutils literal notranslate"><span class="pre">samUpdate(model)</span></code>
+        l”<strong>état</strong> dans lequel se trouve l’application.
+        Il en déduit la <strong>représentation</strong> qui convient à cet état.
+        Il appelle enfin l”<strong>affichage</strong> de cette nouvelle représentation.
+      </p>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="nx">samUpdate</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>              <span class="c1">// déduit l'état courant de l'application</span>
+    <span class="c1">//...                         //   des propriétés de model</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">samRepresent</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">samRepresent</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>           <span class="c1">// construit la représentation correspondant à cet état</span>
+    <span class="kd">let</span> <span class="nx">representation</span><span class="p">;</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">mode</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="s2">"asList"</span><span class="o">:</span>  <span class="nx">representation</span> <span class="o">=</span> <span class="nx">view</span><span class="p">.</span><span class="nx">asList</span> <span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>  <span class="k">break</span><span class="p">;</span> <span class="c1">// comme liste HTML</span>
+      <span class="k">case</span> <span class="s2">"asTable"</span><span class="o">:</span> <span class="nx">representation</span> <span class="o">=</span> <span class="nx">view</span><span class="p">.</span><span class="nx">asTable</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>  <span class="k">break</span><span class="p">;</span> <span class="c1">// comme tableau HTML</span>
+    <span class="p">}</span>
+    <span class="nx">view</span><span class="p">.</span><span class="nx">samDisplay</span><span class="p">(</span><span class="nx">representation</span><span class="p">);</span>  <span class="c1">// view affiche la représentation HTML générée</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">15</div>
+
+
+    </article>
+    <article class="slide level-3" id="view-fabrication-et-affichage-de-l-interface-web">
+
+      <h3>View – fabrication et affichage de l’interface Web<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#view-fabrication-et-affichage-de-l-interface-web"
+          title="View HTML">§</a></h3>
+
+      <p>L’objet <code class="code docutils literal notranslate"><span class="pre">view</span></code> va générer toutes
+        les portions de code HTML qui constituront l’interface de l’application. Il affichera la représentation
+        assemblée par <code class="code docutils literal notranslate"><span class="pre">state</span></code> dans le
+        document Web.</p>
+      <div class="highlight-html notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"app"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="c">&lt;!-- dans le document Web --&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">view</span> <span class="o">=</span> <span class="p">{</span>
+
+  <span class="nx">samDisplay</span><span class="p">(</span><span class="nx">representation</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">appElt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'app'</span><span class="p">);</span>
+    <span class="nx">appElt</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">representation</span><span class="p">;</span>  <span class="c1">// injecte le code HTML généré dans le document Web</span>
+  <span class="p">},</span>
+
+  <span class="nx">asList</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// représente les départements sous forme d'une liste HTML</span>
+    <span class="k">return</span> <span class="sb">`</span>
+<span class="sb">        &lt;ul&gt;</span>
+<span class="sb">          </span><span class="si">${</span><span class="nx">model</span><span class="p">.</span><span class="nx">departments</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="sb">`&lt;li&gt;&lt;b&gt;</span><span class="si">${</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="sb">&lt;/b&gt; (</span><span class="si">${</span><span class="nx">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="sb">)&lt;/li&gt;`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="sb"></span>
+<span class="sb">        &lt;/ul&gt;`</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">16</div>
+
+
+    </article>
+    <article class="slide level-3" id="sam-et-la-complexification-d-une-application">
+
+      <h3>SAM et la complexification d’une application<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#sam-et-la-complexification-d-une-application"
+          title="View HTML">§</a></h3>
+
+      <p>L’architecture SAM permet de bien gérer l’ajout de nouvelles fonctionnalités dans l’application grâce au rôle
+        clair de chaque composant.</p>
+      <p>Nous allons illustrer cette facilité en ajoutant le filtrage de la liste des départements du TD3.</p>
+      <p>Il s’agit ici de ne garder que les départements dont le nom contient une chaîne de caractères tapée par
+        l’utilisateur.</p>
+      <p>Voici les étapes à suivre :</p>
+      <ul class="simple">
+        <li>ajouter une action pour récupérer la chaîne de caractères quand le filtre change ;</li>
+        <li>stocker ce nouveau filtre dans <code
+            class="code docutils literal notranslate"><span class="pre">model</span></code> ;</li>
+        <li>mettre à jour la liste des départements filtrés dans <code
+            class="code docutils literal notranslate"><span class="pre">state</span></code> ;</li>
+        <li>afficher la liste filtrée plutôt que la liste de tous les départements.</li>
+      </ul>
+
+
+
+      <div class="slide-no">17</div>
+
+
+    </article>
+    <article class="slide level-3" id="actions-recuperer-le-filtre-quand-il-a-change">
+
+      <h3>Actions – récupérer le filtre quand il a changé<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#actions-recuperer-le-filtre-quand-il-a-change"
+          title="View HTML">§</a></h3>
+
+      <p>On crée une méthode <code
+          class="code docutils literal notranslate"><span class="pre">actions.filter()</span></code> qui est exécutée à
+        chaque nouveau caractère tapé dans le champ texte.</p>
+      <p>Cette méthode récupère la valeur du champ texte et la présente à <code
+          class="code docutils literal notranslate"><span class="pre">model</span></code> comme nouveau filtre.</p>
+      <div class="highlight-html notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Filtre<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">"actions.filter({e: event})"</span> <span class="p">/&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="nx">filter</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">filterValue</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">model</span><span class="p">.</span><span class="nx">samPresent</span><span class="p">({</span><span class="k">do</span><span class="o">:</span><span class="s1">'changeFilter'</span><span class="p">,</span> <span class="nx">filter</span><span class="o">:</span> <span class="nx">filterValue</span><span class="p">});</span>
+  <span class="p">},</span>
+  <span class="c1">//...</span>
+<span class="p">};</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">18</div>
+
+
+    </article>
+    <article class="slide level-3" id="model-stocke-ce-nouveau-filtre">
+
+      <h3>Model – stocke ce nouveau filtre<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#model-stocke-ce-nouveau-filtre"
+          title="View HTML">§</a></h3>
+
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span> <span class="nx">filter</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">//...</span>
+   <span class="nx">model</span><span class="p">.</span><span class="nx">samPresent</span><span class="p">({</span><span class="k">do</span><span class="o">:</span><span class="s1">'changeFilter'</span><span class="p">,</span> <span class="nx">filter</span><span class="o">:</span> <span class="nx">filterValue</span><span class="p">});</span> <span class="c1">// on construit un objet de données</span>
+ <span class="p">}</span>                                              <span class="c1">// indiquant ce qu'on veut modifier dans le modèle</span>
+
+<span class="p">..</span> <span class="nx">code</span><span class="o">-</span><span class="nx">block</span><span class="o">::</span>
+
+ <span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="nx">departments</span><span class="o">:</span> <span class="p">[],</span> <span class="c1">// tableau contenant les données sur les départements</span>
+   <span class="nx">depFilter</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>   <span class="c1">// filtre à appliquer aux données sur les départements</span>
+   <span class="c1">//...</span>
+
+   <span class="nx">samPresent</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// reçoit des propositions de changement dans data</span>
+     <span class="k">switch</span><span class="p">(</span> <span class="nx">data</span><span class="p">.</span><span class="k">do</span> <span class="p">)</span> <span class="p">{</span>
+       <span class="k">case</span> <span class="s1">'changeMode'</span>  <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">mode</span>      <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">mode</span><span class="p">;</span>   <span class="k">break</span><span class="p">;</span>
+       <span class="k">case</span> <span class="s1">'changeFilter'</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">depFilter</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">filter</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+     <span class="p">}</span>
+     <span class="nx">state</span><span class="p">.</span><span class="nx">samUpdate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// comme le modèle a changé, on demande à l'état de l'application</span>
+   <span class="p">}</span>                        <span class="c1">//   (state) de se mettre à jour</span>
+ <span class="p">};</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">19</div>
+
+
+    </article>
+    <article class="slide level-3" id="state-mettre-a-jour-la-liste-des-departements-filtres">
+
+      <h3>State – mettre à jour la liste des départements filtrés<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#state-mettre-a-jour-la-liste-des-departements-filtres"
+          title="View HTML">§</a></h3>
+
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">currentFilter</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span> <span class="c1">// le filtre courant appliqué à departments</span>
+  <span class="nx">depFiltered</span><span class="o">:</span> <span class="p">[],</span>          <span class="c1">// version filtrée de departments</span>
+
+  <span class="nx">samUpdate</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span> <span class="o">!==</span> <span class="nx">model</span><span class="p">.</span><span class="nx">depFilter</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// si le filtre a changé</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">depFilter</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">depFiltered</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterDepartments</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">departments</span><span class="p">);</span> <span class="c1">// recalcule la liste</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">samRepresent</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">filterDepartments</span><span class="p">(</span><span class="nx">depArray</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span> <span class="o">==</span> <span class="s1">''</span><span class="p">)</span> <span class="k">return</span> <span class="nx">depArray</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">depArray</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">v</span> <span class="p">=&gt;</span> <span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">20</div>
+
+
+    </article>
+    <article class="slide level-3" id="view-afficher-la-liste-filtree">
+
+      <h3>View – afficher la liste filtrée<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#view-afficher-la-liste-filtree"
+          title="View HTML">§</a></h3>
+
+      <p>La seule modification par rapport à la version précédente est l’affichage du tableau filtré <code
+          class="code docutils literal notranslate"><span class="pre">state.depFiltered</span></code> à la place du
+        tableau complet de départements <code
+          class="code docutils literal notranslate"><span class="pre">model.departments</span></code>.</p>
+      <div class="highlight-html notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"app"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="c">&lt;!-- dans le document Web --&gt;</span>
+</pre>
+        </div>
+      </div>
+      <div class="highlight-javascript notranslate">
+        <div class="highlight">
+          <pre><span></span><span class="nx">view</span> <span class="o">=</span> <span class="p">{</span>
+
+  <span class="nx">samDisplay</span><span class="p">(</span><span class="nx">representation</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">appElt</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'app'</span><span class="p">);</span>
+    <span class="nx">appElt</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">representation</span><span class="p">;</span>  <span class="c1">// injecte le code HTML généré dans le document Web</span>
+  <span class="p">},</span>
+
+  <span class="nx">asList</span><span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">state</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// représente les départements filtrés sous forme d'une liste HTML</span>
+    <span class="k">return</span> <span class="sb">`</span>
+<span class="sb">        &lt;ul&gt;</span>
+<span class="sb">          </span><span class="si">${</span><span class="nx">state</span><span class="p">.</span><span class="nx">depFiltered</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="sb">`&lt;li&gt;&lt;b&gt;</span><span class="si">${</span><span class="nx">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="sb">&lt;/b&gt; (</span><span class="si">${</span><span class="nx">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="sb">)&lt;/li&gt;`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="sb"></span>
+<span class="sb">        &lt;/ul&gt;`</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</pre>
+        </div>
+      </div>
+
+
+
+      <div class="slide-no">21</div>
+
+
+    </article>
+    <article class="slide level-3" id="conclusion">
+
+      <h3>Conclusion<a class="headerlink"
+          href="https://bjobard.perso.univ-pau.fr/Cours/DAI/Assets/Supports/html/c4.html#conclusion"
+          title="View HTML">§</a></h3>
+
+      <p>L’architecture SAM structure clairement une application Web.</p>
+      <p>Elle est constituée de 4 objets distincts :</p>
+      <ul class="simple">
+        <li><code class="code docutils literal notranslate"><span class="pre">actions</span></code> - pour réagir aux
+          intéractions de l’utilisateur</li>
+        <li><code class="code docutils literal notranslate"><span class="pre">model</span></code> - qui centralise les
+          données essentielles</li>
+        <li><code class="code docutils literal notranslate"><span class="pre">state</span></code> - état et
+          représentation de l’application</li>
+        <li><code class="code docutils literal notranslate"><span class="pre">view</span></code> - qui fabrique et
+          affiche l’interface Web</li>
+      </ul>
+      <p>SAM permet d’ajouter facilement des fonctionnalités à l’application.</p>
+
+
+
+      <div class="slide-no">22</div>
+
+
+    </article>
+
+    <div class="slide-area" id="prev-slide-area"></div>
+    <div class="slide-area" id="next-slide-area"></div>
+  </section>
+
+  <section id="slide_notes">
+
+  </section>
+
+
+</body>
+
+</html>

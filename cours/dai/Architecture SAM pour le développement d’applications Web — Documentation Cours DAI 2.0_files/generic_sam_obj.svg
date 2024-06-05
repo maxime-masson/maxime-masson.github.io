@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="310px" preserveAspectRatio="none" style="width:388px;height:310px;" version="1.1" viewBox="0 0 388 310" width="388px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f16443ivaba8ei" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0" />
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal" />
+        </filter>
+    </defs>
+    <g>
+        <!--class actions-->
+        <rect fill="#FEFECE" filter="url(#f16443ivaba8ei)" height="73.6094" id="actions" style="stroke: #A80036; stroke-width: 1.5;" width="100" x="32" y="20.5" />
+        <ellipse cx="56.9" cy="36.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M59.8688,42.1406 Q59.2906,42.4375 58.65,42.5859 Q58.0094,42.7344 57.3063,42.7344 Q54.8063,42.7344 53.4859,41.0859 Q52.1656,39.4375 52.1656,36.3125 Q52.1656,33.1875 53.4859,31.5313 Q54.8063,29.875 57.3063,29.875 Q58.0094,29.875 58.6578,30.0313 Q59.3063,30.1875 59.8688,30.4844 L59.8688,33.2031 Q59.2438,32.625 58.65,32.3516 Q58.0563,32.0781 57.4313,32.0781 Q56.0875,32.0781 55.4,33.1484 Q54.7125,34.2188 54.7125,36.3125 Q54.7125,38.4063 55.4,39.4766 Q56.0875,40.5469 57.4313,40.5469 Q58.0563,40.5469 58.65,40.2734 Q59.2438,40 59.8688,39.4219 L59.8688,42.1406 Z " /><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="46" x="73.1" y="40.6543">actions</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="131" y1="52.5" y2="52.5" />
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="131" y1="60.5" y2="60.5" />
+        <ellipse cx="43" cy="72.4023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74" x="52" y="74.7104">action1(data)</text>
+        <ellipse cx="43" cy="85.207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74" x="52" y="87.5151">action2(data)</text>
+        <!--class model-->
+        <rect fill="#FEFECE" filter="url(#f16443ivaba8ei)" height="99.2188" id="model" style="stroke: #A80036; stroke-width: 1.5;" width="128" x="167" y="8" />
+        <ellipse cx="208.1" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M211.0688,29.6406 Q210.4906,29.9375 209.85,30.0859 Q209.2094,30.2344 208.5063,30.2344 Q206.0063,30.2344 204.6859,28.5859 Q203.3656,26.9375 203.3656,23.8125 Q203.3656,20.6875 204.6859,19.0313 Q206.0063,17.375 208.5063,17.375 Q209.2094,17.375 209.8578,17.5313 Q210.5063,17.6875 211.0688,17.9844 L211.0688,20.7031 Q210.4438,20.125 209.85,19.8516 Q209.2563,19.5781 208.6313,19.5781 Q207.2875,19.5781 206.6,20.6484 Q205.9125,21.7188 205.9125,23.8125 Q205.9125,25.9063 206.6,26.9766 Q207.2875,28.0469 208.6313,28.0469 Q209.2563,28.0469 209.85,27.7734 Q210.4438,27.5 211.0688,26.9219 L211.0688,29.6406 Z " /><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="227.9" y="28.1543">model</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="168" x2="294" y1="40" y2="40" />
+        <ellipse cx="178" cy="51.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="187" y="54.2104">m_prop1</text>
+        <ellipse cx="178" cy="64.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="187" y="67.0151">m_prop2</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="168" x2="294" y1="73.6094" y2="73.6094" />
+        <ellipse cx="178" cy="85.5117" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="187" y="87.8198">init(data)</text>
+        <ellipse cx="178" cy="98.3164" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="102" x="187" y="100.6245">samPresent(data)</text>
+        <!--class state-->
+        <rect fill="#FEFECE" filter="url(#f16443ivaba8ei)" height="132.8281" id="state" style="stroke: #A80036; stroke-width: 1.5;" width="152" x="6" y="167" />
+        <ellipse cx="61.25" cy="183" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M64.2188,188.6406 Q63.6406,188.9375 63,189.0859 Q62.3594,189.2344 61.6563,189.2344 Q59.1563,189.2344 57.8359,187.5859 Q56.5156,185.9375 56.5156,182.8125 Q56.5156,179.6875 57.8359,178.0313 Q59.1563,176.375 61.6563,176.375 Q62.3594,176.375 63.0078,176.5313 Q63.6563,176.6875 64.2188,176.9844 L64.2188,179.7031 Q63.5938,179.125 63,178.8516 Q62.4063,178.5781 61.7813,178.5781 Q60.4375,178.5781 59.75,179.6484 Q59.0625,180.7188 59.0625,182.8125 Q59.0625,184.9063 59.75,185.9766 Q60.4375,187.0469 61.7813,187.0469 Q62.4063,187.0469 63,186.7734 Q63.5938,186.5 64.2188,185.9219 L64.2188,188.6406 Z " /><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="33" x="81.75" y="187.1543">state</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="157" y1="199" y2="199" />
+        <ellipse cx="17" cy="210.9023" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="46" x="26" y="213.2104">s_prop1</text>
+        <ellipse cx="17" cy="223.707" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="46" x="26" y="226.0151">s_prop2</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="7" x2="157" y1="232.6094" y2="232.6094" />
+        <ellipse cx="17" cy="244.5117" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="108" x="26" y="246.8198">samUpdate(model)</text>
+        <polygon fill="#FFFF44" points="17,252.3164,21,256.3164,17,260.3164,13,256.3164" style="stroke: #B38D22; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="126" x="26" y="259.6245">samRepresent(model)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="7" x2="157" y1="266.2188" y2="266.2188" />
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="14" y="275.1211" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="26" y="280.4292">process1(...)</text>
+        <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="14" y="287.9258" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="26" y="293.2339">process2(...)</text>
+        <!--class view-->
+        <rect fill="#FEFECE" filter="url(#f16443ivaba8ei)" height="99.2188" id="view" style="stroke: #A80036; stroke-width: 1.5;" width="184" x="193" y="184" />
+        <ellipse cx="267.75" cy="200" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M270.7188,205.6406 Q270.1406,205.9375 269.5,206.0859 Q268.8594,206.2344 268.1563,206.2344 Q265.6563,206.2344 264.3359,204.5859 Q263.0156,202.9375 263.0156,199.8125 Q263.0156,196.6875 264.3359,195.0313 Q265.6563,193.375 268.1563,193.375 Q268.8594,193.375 269.5078,193.5313 Q270.1563,193.6875 270.7188,193.9844 L270.7188,196.7031 Q270.0938,196.125 269.5,195.8516 Q268.9063,195.5781 268.2813,195.5781 Q266.9375,195.5781 266.25,196.6484 Q265.5625,197.7188 265.5625,199.8125 Q265.5625,201.9063 266.25,202.9766 Q266.9375,204.0469 268.2813,204.0469 Q268.9063,204.0469 269.5,203.7734 Q270.0938,203.5 270.7188,202.9219 L270.7188,205.6406 Z " /><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="26" x="288.25" y="204.1543">view</text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="194" x2="376" y1="216" y2="216" />
+        <ellipse cx="204" cy="227.9023" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="213" y="230.2104">samDisplay(representation)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,2.0;" x1="194" x2="376" y1="236.8047" y2="236.8047" />
+        <ellipse cx="204" cy="248.707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="138" x="213" y="251.0151">generate1(model, state)</text>
+        <ellipse cx="204" cy="261.5117" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="138" x="213" y="263.8198">generate2(model, state)</text>
+        <ellipse cx="204" cy="274.3164" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="49" x="213" y="276.6245">error(...)</text>
+        <!--link actions to model-->
+        <!--link actions to state-->
+        <!--link state to view-->
+        <!--
+@startuml
+class actions {
++ action1(data)
++ action2(data)
+}
+
+class model {
++ m_prop1
++ m_prop2
++ init(data)
++ samPresent(data)
+}
+class state {
++ s_prop1
++ s_prop2
+- -
++ samUpdate(model)
+# samRepresent(model)
+..
+- process1(...)
+- process2(...)
+}
+
+class view {
+
++ samDisplay(representation)
+..
++ generate1(model, state)
++ generate2(model, state)
++ error(...)
+}
+@enduml
+
+PlantUML version 1.2017.15(Mon Jul 03 18:45:34 CEST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_181-b13
+Operating System: Linux
+OS Version: 4.15.0-36-generic
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+-->
+    </g>
+</svg>
