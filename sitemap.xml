@@ -13,47 +13,42 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/index.html</loc>
+  <loc>https://maxime-masson.github.io/publications</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/publications.html</loc>
+  <loc>https://maxime-masson.github.io/communications</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/talks.html</loc>
+  <loc>https://maxime-masson.github.io/teaching</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/teaching.html</loc>
+  <loc>https://maxime-masson.github.io/supervision</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/supervision.html</loc>
+  <loc>https://maxime-masson.github.io/projects</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/projects.html</loc>
+  <loc>https://maxime-masson.github.io/profile</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/profile.html</loc>
+  <loc>https://maxime-masson.github.io/travel</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://maxime-masson.github.io/travel.html</loc>
-  <lastmod>2024-05-26T10:20:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://maxime-masson.github.io/contact.html</loc>
+  <loc>https://maxime-masson.github.io/contact</loc>
   <lastmod>2024-05-26T10:20:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
