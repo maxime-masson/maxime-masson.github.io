@@ -6263,6 +6263,11 @@ select:focus {
     content: ""
 }
 
+
+.badge {
+    font-weight: 400 !important;
+}
+
 .fa-hubspot:before {
     content: ""
 }
