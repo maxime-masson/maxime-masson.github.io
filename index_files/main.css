@@ -1870,6 +1870,16 @@ th {
     }
 }
 
+.badge-info {
+    border-radius: 0px;
+
+}
+
+.badge-danger {
+    border-radius: 0px;
+    opacity: .8;
+}
+
 .page__footer {
     clear: both;
     float: left;
