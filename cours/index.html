@@ -2,38 +2,91 @@
 <html lang="en">
 
 <head>
-    <meta name="robots" content="noindex, nofollow, noarchive">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours Web</title>
+    <title>Cours d'informatique - UPPA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-family: 'Unispace', sans-serif;
+
+        }
+
+        .course-list {
+            user-select: none;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .course-item {
+            background-color: #ecf0f1;
+            margin: 10px 0;
+            padding: 15px;
+
+            cursor: pointer;
+            border-left: 5px solid #117101;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-item:hover {
+            background-color: #d1e7f3;
+        }
+
+        .course-title {
+            font-size: 1.2em;
+            color: #117101;
+        }
+
+        .course-description {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+    </style>
 </head>
 
-<body style="background-color: rgb(192, 192, 192);">
+<body>
 
+    <div class="container">
+        <h1>Cours d'informatique - UPPA</h1>
+        <ul class="course-list" onclick="window.location.replace('./dai')">
+            <li class="course-item">
+                <div class="course-title">Développement d'applications internet (DAI)</div>
+                <div class="course-description">Licence 2 Informatique</div>
+            </li>
+            <li class="course-item" onclick="alert('Pas encore disponible.')">
+                <div class="course-title">Techniques de programmation</div>
+                <div class="course-description">Licence 1 Informatique</div>
+            </li>
+        </ul>
+    </div>
 
-
-    <h1>CIW (Conception d'Interface Web) - L1</h1>
-    <ul style="font-size: 25px">
-        <li><a href="./CIW/Cours00_Conception_Interfaces_Web.pdf">Cours 0 : Introduction à la conception d'interface
-                web</a></li>
-        <li><a href="./CIW/Cours01_Infrastructure_du_Web.pdf">Cours 1 : Infrastructure du web</a></li>
-        <li><a href="./CIW/Cours02_site_web_en_HTML5_et_CSS3.pdf">Cours 2 : Site web en HTML5 et CSS3 (1) </a></li>
-        <li><a href="./CIW/Cours03_site_web_en_HTML5_et_CSS3.pdf">Cours 3 : Site web en HTML5 et CSS3 (2)</a></li>
-        <li><a href="./CIW/Cours04_Mise_en_page_CSS.pdf">Cours 4 : Mise en page CSS</a></li>
-        <li><a href="./CIW/Cours05_Javascript.pdf">Cours 5 : JavaScript</a></li>
-    </ul>
-
-    <h1>DAI (Développement d'Application Internet) - L2</h1>
-    <ul style="font-size: 25px">
-        <li><a href="./dai/Introduction — Documentation Cours DAI 2.0.html">Cours 1 : Introduction</a></li>
-        <li><a href="./dai/Javascript _ variables, conditions, boucles et fonctions — Documentation Cours DAI 2.0.html">Cours
-                2 : Variables, conditions, boucles et fonctions</a></li>
-        <li><a href="./dai/Javascript _ objets, tableaux, objets littéraux — Documentation Cours DAI 2.0.html">Cours 3 :
-                Objets, tableaux, objets littéraux</a></li>
-        <li><a
-                href="./dai/Architecture SAM pour le développement d’applications Web — Documentation Cours DAI 2.0.html">Cours
-                4 : Architecture SAM</a></li>
-    </ul>
 </body>
 
 </html>
