@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1 – Gestion d'une liste de tâches</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>TP1 – Gestion d'une liste de tâches</h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Todo List – Introduction</h2>
+        <p>L'objectif de ce TP est de programmer la gestion d'une liste de tâches (ajouter,
+            supprimer, modifier).</p>
+        <div class="col_6 column">
+            <p class="language-none">Dans un dossier
+                <code class="language-none">DAI/TP1/</code>, enregistrez les fichiers
+                <a href="./TP1_Assets/todo.xhtml">
+                    <code class="language-none">todo.xhtml</code>
+                </a> et
+                <a href="./TP1_Assets/todo.js">
+                    <code class="language-none">todo.js</code>
+                </a>.
+            </p>
+            <p>À ce stade, un titre, un champ de saisie, un bouton et l'item d'une liste apparaissent.</p>
+            <p>La saisie d'un texte et l'appui sur le bouton "Todo" provoque l'affichage
+                <b>dans la console du navigateur (maj-ctrl-k)</b> des tâches stockées dans l'application.
+            </p>
+            <p>Votre mission est de compléter le code afin de parvenir à une gestion complète
+                de la liste de tâches identique à l'application ci-dessous.</p>
+        </div>
+        <div>
+            <iframe src="./TP1_Assets/todo_iframe.html" frameborder="1" width="350px" height="300px"></iframe>
+        </div>
+        <div>
+            <p>Pour obtenir ce résultat, vous modifierez le fichier
+                <code class="language-javascript">todo<span class="token punctuation">.</span>js</code> selon les étapes
+                suivantes.
+            </p>
+
+            <!-- --------------------------------------------------------------- -->
+            <h2>Étape 1 – Affichage de la liste de tâches</h2>
+            <p>L'application stocke la liste des tâches à faire dans le tableau
+                <code class="language-javascript">items</code> de l'objet litéral
+                <code class="language-javascript">model</code>.
+            </p>
+            <p>L'affichage de l'interface Web est faite par la méthode
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">todoUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                qui fait appel à
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">listItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                pour remplir une liste à puce avec des items.
+            </p>
+            <p>Modifiez la méthode
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">listItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                pour fabriquer des items contenant les éléments du tableau
+                <code class="language-javascript">model<span class="token punctuation">.</span>items</code>.
+            </p>
+            <p>Grâce à cette modification, tout nouvel item saisie apparaitra à la fin de la
+                liste.</p>
+            <!-- --------------------------------------------------------------- -->
+            <h2>Étape 2 – Marquer une tâche comme faite</h2>
+            <p>Le but de cette étape est de marquer une tâche faite en cliquant dessus.</p>
+            <p>L'état de la tâche effectuée sera matérialisée par un style barré (
+                <span style="text-decoration:line-through;">tâche1</span>).
+            </p>
+            <p>La stratégie est la suivante :</p>
+            <ol>
+                <li>Dans l'interface Web, rendre chaque item sensible à l'événement clic qui déclenchera
+                    l'appel d'une fonction :
+                    <code class="language-none">onclick="actions.doneItem()"</code> ;
+                </li>
+                <li>La fonction
+                    <code
+                        class="language-javascript"><span class="token function">doneItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                    inversera la propriété
+                    <code class="language-javascript">done</code> - "<i>fait</i>" en anglais - de l'item concerné ;
+                </li>
+                <li>Lors du réaffichage des items, un attribut
+                    <code class="language-none">class="done"</code> est ajouté si l'item est marqué comme fait. Une
+                    règle de
+                    style CSS raye les items de classe
+                    <code class="language-javascript">done</code>.
+                </li>
+            </ol> Ces étapes sont détaillées ci-dessous.
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 2.1 – Connaître l'état d'une tâche</h3>
+            <p>Pour l'instant l'objet
+                <code class="language-javascript">model</code> stocke les tâches dans un tableau (
+                <code class="language-javascript">items</code> ) de chaînes de caractères.
+            </p>
+            <p>Il faut étendre les éléments du tableau à un objet litéral qui contiendra le
+                texte et une variable booléenne qui précise si la tâche a été faite ou non.</p>
+            <p>Modifiez la fonction
+                <code
+                    class="language-javascript"><span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                pour initialiser
+                l'application avec un tableau d'objets literaux :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> initialTodos </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">text</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token template-string"><span class="token template-punctuation string"><span class="str">`</span></span><span class="token string"><span class="str">À faire hier</span></span><span class="token template-punctuation string"><span class="str">`</span></span></span><span class="pln">       </span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="kwd">done</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">true</span></span><span class="pln">  </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">text</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token template-string"><span class="token template-punctuation string"><span class="str">`</span></span><span class="token string"><span class="str">À faire aujourd'hui</span></span><span class="token template-punctuation string"><span class="str">`</span></span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="kwd">done</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">false</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">text</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token template-string"><span class="token template-punctuation string"><span class="str">`</span></span><span class="token string"><span class="str">À faire demain</span></span><span class="token template-punctuation string"><span class="str">`</span></span></span><span class="pln">     </span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="kwd">done</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">false</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Ce changement de structure implique deux modifications du code :</p>
+            <ul>
+                <li class="first">Modifiez la méthode
+                    <code
+                        class="language-javascript">view<span class="token punctuation">.</span><span class="token function">listItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                    pour que la liste d'items s'affiche correctement.
+                </li>
+                <li class="last">L'ajout d'un item dans
+                    <code
+                        class="language-javascript">model<span class="token punctuation">.</span><span class="token function">samPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                    doit respecter le nouveau format du tableau
+                    <code class="language-javascript">model<span class="token punctuation">.</span>items</code>.
+                </li>
+            </ul>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 2.2 – Rendre les items sensibles au clic de souris</h3>
+            <p>Modifiez la fabrication des items de la liste de la méthode
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">listItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                de manière à générer ce code :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">0</span><span class="pun">})</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire hier</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">1</span><span class="pun">})</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire aujourd'hui</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">2</span><span class="pun">})</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire demain</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>
+                <code class="language-javascript">index</code> servira à savoir quel item a été cliqué.
+            </p>
+            <p class="astuce">
+                <b>Astuce :</b> Le code généré est visible dans le navigateur avec le menu contextuel
+                "Examiner l'élément".
+            </p>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 2.3 – Inverser l'état d'une tâche faite : 'vrai'
+                &lt;-&gt; 'faux'</h3>
+            <p>Le changement d'état d'une tâche requiert d'intervenir à deux endroits du code.</p>
+            <ol>
+                <li>Ajouter une méthode
+                    <code
+                        class="language-javascript">action<span class="token punctuation">.</span><span class="token function">doneItem</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code>
+                    qui communique à
+                    <code class="language-javascript">model</code> l'index de l'item à modifier :
+                    <div>
+                        <div class="code-toolbar">
+                            <pre class="prettyprint language-javascript"
+                                tabindex="0"><code class="language-javascript"><span class="pln">actions </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token function"><span class="pln">doneItem</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token keyword"><span class="kwd">do</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'doneItem'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">index</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                        </div>
+                    </div>
+                </li>
+                <li>Ajouter une section dans la méthode
+                    <code
+                        class="language-javascript">model<span class="token punctuation">.</span><span class="token function">samPresent</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code>
+                    pour inverser la valeur booléenne de la propriété
+                    <code class="language-javascript">done</code> de l'item concerné :
+                    <div>
+                        <div class="code-toolbar">
+                            <pre class="prettyprint language-javascript"
+                                tabindex="0"><code class="language-javascript"><span class="pln">model </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">switch</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">data</span><span class="token punctuation"><span class="pun">.</span></span><span class="kwd">do</span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">case</span></span><span class="pln"> </span><span class="token string"><span class="str">'doneItem'</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> index </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">items</span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="kwd">done</span><span class="pln"> </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token operator"><span class="pun">!</span></span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">items</span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="kwd">done</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">break</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 2.4 – Affichage des tâches faites</h3>
+            <p>Pour les tâches pour lesquelles la propriété
+                <code
+                    class="language-javascript">done <span class="token operator">==</span> <span class="token boolean">true</span></code>
+                il faut ajouter
+                <code class="language-none">class="done"</code> dans les
+                <code
+                    class="languagehttparkup language-javascript"><span class="token operator">&lt;</span>li<span class="token operator">&gt;</span></code>
+                correspondant.
+            </p>
+            <p>Ainsi, pour l'initialisation fournie dans l'étape 2.1, nous obtenons le code
+                :</p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">0</span><span class="pun">})</span><span class="atv">"</span></span><span class="pln"> </span><span class="token keyword"><span class="atn">class</span></span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"done"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire hier</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">1</span><span class="pun">})</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire aujourd'hui</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">doneItem</span><span class="pun">({</span><span class="pln">index</span><span class="pun">:</span><span class="lit">2</span><span class="pun">})</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">À faire demain</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>La méthode
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">todoUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>peut
+                commencer le code HTML généré par une section
+                <code class="language-javascript">style</code> :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">style</span><span class="pln"> </span><span class="atn">type</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"text/css"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+li</span><span class="token punctuation"><span class="pun">.</span></span><span class="kwd">done</span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+text</span><span class="token operator"><span class="pun">-</span></span><span class="pln">decoration</span><span class="token operator"><span class="pun">:</span></span><span class="pln"> line</span><span class="token operator"><span class="pun">-</span></span><span class="pln">through</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">style</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <div class="col_12 center column">
+                <iframe src="./TP1_Assets/todo_v2_iframe.html" frameborder="1" width="350px" height="200px"></iframe>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <h2>Étape 3 – Suppression des tâches faites</h2>
+            <p>On insère après la liste un bouton "Remove done items" qui supprimera les items
+                marqués comme faits du tableau de tâches (
+                <code class="language-javascript">model<span class="token punctuation">.</span>items</code>) et de la
+                liste
+                à l'écran :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">button</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">removeDoneItems</span><span class="pun">()</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">Remove done items</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">button</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>La méthode
+                <code
+                    class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">removeDoneItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                invite simplement le modèle à supprimer les tâches faites :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="token function"><span class="pln">removeDoneItems</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token keyword"><span class="kwd">do</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'removeDoneItems'</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Le tableau d'items est remplacé par une version filtrée du tableau (sans les tâches déjà faites).</p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="token keyword"><span class="kwd">case</span></span><span class="pln"> </span><span class="token string"><span class="str">'removeDoneItems'</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">items </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">items</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">filter</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln"> </span><span class="token comment"><span class="com">/* complétez le filtre */</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">break</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                </div>
+            </div>
+            <div class="col_12 center column">
+                <iframe src="./TP1_Assets/todo_v3_iframe.html" frameborder="1" width="350px" height="250px"></iframe>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 3.1 – Griser le bouton</h3>
+            <p>Améliorez l'interface en grisant le dernier bouton si aucune tâche de la liste
+                n'est faite.</p>
+            <p>On grise un bouton avec l'attribut "
+                <code class="language-javascript">disabled</code>". Ainsi si le tableau ne contient aucune tâche faite,
+                le
+                code
+                généré du bouton sera le suivant :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">button</span><span class="pln"> </span><span class="atn">disabled</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"disabled"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">Remove done items</span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">button</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Vous pourrez créer une propriété booléenne
+                <code class="language-javascript">hasDoneItems</code> appartenant à
+                <code class="language-javascript">state</code> dans la méthode
+                <code
+                    class="language-javascript">state<span class="token punctuation">.</span><span class="token function">samUpdate</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span></code>
+                : à chaque passage dans cette méthode la variable
+                <code class="language-javascript">hasDoneItems</code> reçoit "vrai" si le tableau de tâche contient au
+                moins
+                une
+                tâche marquée comme faite, "faux" sinon.
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="pln">state </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">samUpdate</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">model</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">// check if model.items has 'done' property set to true</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">hasDoneItems </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token comment"><span class="com">/* TODO: reçoit vrai si au moins un 'done' dans model.items */</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Ainsi, au moment de l'affichage dans
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">todoUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>,
+                si la propriété
+                <code class="language-javascript">state<span class="token punctuation">.</span>hasDoneItems</code> est
+                faux,
+                alors le bouton sera grisé.
+            </p>
+            <div class="col_12 center column">
+                <iframe src="./TP1_Assets/todo_v4_iframe.html" frameborder="1" width="350px" height="250px"></iframe>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <h2>Étape 4 – Modification des intitulés des tâches</h2>
+            <p>Nous souhaitons maintenant avoir la possibilité de modifier l'intitulé des tâches.</p>
+            <p>Nous allons donc doter notre application d'un bouton permettant de passer dans
+                un mode d'édition.</p>
+            <p>Dans le mode d'édition, la stratégie est la suivante :</p>
+            <ul>
+                <li class="first">chaque item est remplacé par un champ de saisie initialisé avec la valeur de
+                    l'item ;</li>
+                <li class="last">l'éventuel changement d'un intitulé est répercuté dans le tableau d'items.</li>
+            </ul>
+            <p>Une fois l'édition terminée, un clic sur le bouton permettra la sortie du mode
+                d'édition avec un retour à l'affichage initial des tâches.</p>
+            <p>Voici où vous amènera l'étape 4 :</p>
+            <div class="col_12 center column">
+                <iframe src="./TP1_Assets/todo_v5_iframe.html" frameborder="1" width="350px" height="350px"></iframe>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 4.1 – Entrée et sortie du mode d'édition</h3>
+            <p>Pour concrétiser ce mode, ajoutez une propriété
+                <code class="language-javascript">isEditMode</code> dans l'objet
+                <code class="language-javascript">model</code> qu'on initialisera à
+                <code class="language-javascript"><span class="token boolean">false</span></code>.
+            </p>
+            <p>Ajoutez ensuite un bouton qui affiche "Edit Mode" si
+                <code
+                    class="language-javascript">model<span class="token punctuation">.</span>isEditMode<span class="token operator">===</span><span class="token boolean">false</span></code>
+                et "Todo Mode" sinon :
+                <br>
+                <button onclick="toggleEditMode(event)">Edit Mode</button> (
+                <code id="editModeComment"
+                    class="language-javascript">model<span class="token punctuation">.</span>isEditMode<span class="token operator">===</span><span class="token boolean">false</span></code>)
+            </p>
+            <script>
+                let isEditMode = false;
+
+                function toggleEditMode(e) {
+                    console.log(e.target.textContent);
+                    isEditMode = !isEditMode;
+                    e.target.textContent = isEditMode ? 'Todo Mode' : 'Edit Mode';
+                    document.getElementById('editModeComment').textContent = isEditMode ?
+                        'model.isEditMode===true' : 'model.isEditMode===false';
+                }
+
+            </script>
+            <p>Il faut maintenant faire en sorte qu'un clic sur le bouton fasse entrer ou sortir
+                de ce mode d'édition.</p>
+            <p>Pour cela, l'événement
+                <code class="language-javascript">onclick</code> lancera une nouvelle action :
+                <code
+                    class="language-javascript"><span class="token function">toggleEditMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                (
+                <em>toggle</em> signifie "basculer" en anglais. Ici le bouton permet de basculer
+                du mode normal au mode édition et inversement.)
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">button</span><span class="pln"> </span><span class="atn">onclick</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">toggleEditMode</span><span class="pun">()</span><span class="atv">"</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="pln">...</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Cette action ne fait que prévenir
+                <code class="language-javascript">model</code> qu'on souhaite basculer de mode :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="token function"><span class="pln">toggleEditMode</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token keyword"><span class="kwd">do</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'toggleEditMode'</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Modifiez
+                <code
+                    class="language-javascript"><span class="token function">samPresent</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code>
+                pour basculer
+                <code class="language-javascript">model<span class="token punctuation">.</span>isEditMode</code> quand
+                <code class="language-javascript">data<span class="token punctuation">.</span>do</code> vaut
+                <code class="language-javascript"><span class="token string">'toggleEditMode'</span></code>.
+            </p>
+            <p>À ce stade, le bouton doit passer de "Edit Mode" à "Todo Mode" et inversement.</p>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 4.2 – Affichage des tâches dans des champs de saisie</h3>
+            <p>Dans l'étape 1, la méthode
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">todoUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                fait appel à
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">listItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                pour afficher les tâches. Maintenant, si l'application
+                est en mode édition, alors elle fera appel à
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">editItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                qui affichera une liste à puce de champs de saisie :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">input</span><span class="pln"> </span><span class="atn">value</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"..."</span></span><span class="pln"> </span><span class="token operator"><span class="tag">/</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Pour limiter l'impact visuel du changement d'affichage entre texte et champs de saisie, vous pourrez
+                ajouter ces styles CSS :</p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-css" tabindex="0"><code class="language-css"><span class="token selector"><span class="pln">ul</span><span class="token combinator"><span class="pun">&gt;</span></span><span class="pln">li</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token property"><span class="pln">line</span><span class="pun">-</span><span class="pln">height</span></span><span class="token punctuation"><span class="pun">:</span></span><span class="pln"> </span><span class="token number"><span class="lit">4.5</span></span><span class="token unit"><span class="lit">ex</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token property"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span></span><span class="token punctuation"><span class="pun">:</span></span><span class="pln"> </span><span class="token number"><span class="lit">0.5</span></span><span class="token unit"><span class="lit">ex</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token selector"><span class="pln">ul</span><span class="token combinator"><span class="pun">&gt;</span></span><span class="pln">li</span><span class="token combinator"><span class="pun">&gt;</span></span><span class="pln">input</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token property"><span class="pln">margin</span><span class="pun">-</span><span class="pln">left</span></span><span class="token punctuation"><span class="pun">:</span></span><span class="pln"> </span><span class="token number"><span class="pun">-</span><span class="lit">0.5</span></span><span class="token unit"><span class="lit">ex</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span></code></pre>
+
+                </div>
+            </div>
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 4.3 – Enregistrement des modifications</h3>
+            <p>Si l'utilisateur modifie l'intitulé d'une des tâches alors il faut la répercuter
+                dans
+                <code class="language-javascript">model<span class="token punctuation">.</span>items</code>.
+            </p>
+            <p>On déterminera qu'un intitulé à changé si un événement
+                <code class="language-javascript">onchange</code> est déclenché.
+            </p>
+            <p>Vous modifierez donc
+                <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">editItemsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                pour générer du code similaire à :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="languagehttparkup language-javascript"><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">input</span><span class="pln"> </span><span class="atn">onchange</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">editItem</span><span class="pun">({</span><span class="pln">e</span><span class="pun">:</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">:</span><span class="lit">0</span><span class="pun">})</span><span class="atv">"</span></span><span class="pln"> </span><span class="atn">value</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"..."</span></span><span class="pln"> </span><span class="token operator"><span class="tag">/</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">input</span><span class="pln"> </span><span class="atn">onchange</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">editItem</span><span class="pun">({</span><span class="pln">e</span><span class="pun">:</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">:</span><span class="lit">1</span><span class="pun">})</span><span class="atv">"</span></span><span class="pln"> </span><span class="atn">value</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"..."</span></span><span class="pln"> </span><span class="token operator"><span class="tag">/</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="pln">
+</span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="tag">input</span><span class="pln"> </span><span class="atn">onchange</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"</span><span class="pln">actions</span><span class="pun">.</span><span class="pln">editItem</span><span class="pun">({</span><span class="pln">e</span><span class="pun">:</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">:</span><span class="lit">2</span><span class="pun">})</span><span class="atv">"</span></span><span class="pln"> </span><span class="atn">value</span><span class="token operator"><span class="pun">=</span></span><span class="token string"><span class="atv">"..."</span></span><span class="pln"> </span><span class="token operator"><span class="tag">/</span></span><span class="token operator"><span class="tag">&gt;</span></span><span class="token operator"><span class="tag">&lt;</span></span><span class="token operator"><span class="tag">/</span></span><span class="tag">li</span><span class="token operator"><span class="tag">&gt;</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>Les propriétés
+                <code class="language-javascript">index</code> permettront de retrouver quel intitulé a été changé.
+            </p>
+            <p>Pour connaître la nouvelle valeur de l'intitulé, nous aurons besoin de l'objet
+                <code class="language-javascript">event</code> qui rassemble toutes les propriétés relative à
+                l'événement
+                déclenché.
+            </p>
+            <p>La propriété
+                <code class="language-javascript">event<span class="token punctuation">.</span>target</code> fait
+                référence
+                à l'élément qui a reçu l'événement (ici l'élément
+                <code
+                    class="languagehttparkup language-javascript"><span class="token operator">&lt;</span>input <span class="token operator">/</span><span class="token operator">&gt;</span></code>).
+            </p>
+            <p>Ce qui permet à
+                <code
+                    class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">editItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                de récupérer la valeur modifiée et de la présenter
+                au modèle pour enregistrement :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript" tabindex="0"><code class="language-javascript"><span class="token function"><span class="pln">editItem</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> text </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">e</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">target</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">value</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token keyword"><span class="kwd">do</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'editItem'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">text</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> text</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token literal-property property"><span class="pln">index</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">,</span></span></code></pre>
+
+                </div>
+            </div>
+            <p>À vous de modifier
+                <code
+                    class="language-javascript">model<span class="token punctuation">.</span><span class="token function">samPresent</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code>
+                pour remplacer la tâche d'indice
+                <code class="language-javascript">index</code> par le nouveau texte :
+            </p>
+            <div>
+                <div class="code-toolbar">
+                    <pre class="prettyprint language-javascript"
+                        tabindex="0"><code class="language-javascript"><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">items</span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">index</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">text </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">text</span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                </div>
+            </div>
+
+            <!-- --------------------------------------------------------------- -->
+            <h3>Étape 4.4 – Bouton "Edit Mode" grisé</h3>
+            <p>Par soucis de finition, si la liste ne comporte aucune tâche le bouton "Edit Mode" doit être grisé.</p>
+        </div>
+</body>
+
+</html>

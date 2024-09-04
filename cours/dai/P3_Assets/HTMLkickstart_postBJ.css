@@ -1,0 +1,42 @@
+
+ul,ol {
+    margin: 0 0 0 25px;
+}
+
+li {
+  padding: 2px 0px;
+}
+
+th,td {
+  border-bottom: 1px solid;
+}
+
+/*---------------------------------
+	PRE & CODE
+-----------------------------------*/
+
+code {
+  font-family: monospace;
+  font-size: inherit;
+  border: none;
+  padding: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: inherit;
+}
+pre {
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 0;
+  background: #F5F2F0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  font-family: monospace;
+  font-size: inherit;
+}

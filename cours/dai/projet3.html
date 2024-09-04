@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Noté – Traducteur</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- --------------------------------------------------------------- -->
+        <h1>Projet – Traducteur</h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>Votre mission consiste à développer l'interface Web d'un traducteur
+            en ligne entre plusieurs langues. L'opération de traduction proprement
+            dite sera effectuée par des requêtes au service de traduction de
+            Google.</p>
+        <p>Pour obtenir la note maximale, votre interface devra se comporter
+            comme la démonstration ci-dessous :</p>
+        <div class="col_12 center column">
+            <iframe src="./P3_Assets/traducteur_iframe.html" frameborder="1" width="850px" height="700px"></iframe>
+        </div>
+        <p>Vous pouvez voir la démonstration <a href="./P3_Assets/traducteur_iframe.html" target="traducteur">dans une
+                page indépendante</a>.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Départ</h2>
+        <p>Vous partirez d'une interface HTML statique qu'il faudra intégrer à
+            votre application. Un canevas de cette application vous est aussi
+            fournie.</p>
+        <p>L'application sait déjà s'initialiser avec un tableau de traductions
+            et afficher une partie de l'entête de la page. </p>
+        <p>La fonction permettant d'interroger le service de traduction de
+            Google est aussi présente.</p>
+        <p class="language-none">Dans un dossier <code class="language-none">DAI/Projet/</code>,
+            enregistrez les fichiers <a href="./P3_Assets/Traducteur.xhtml">
+                <code class="language-none">traducteur.xhtml</code>
+            </a>, <a href="./P3_Assets/dataTranslations1.js">
+                <code class="language-none">dataTranslations1.js</code>
+            </a>, <a href="./P3_Assets/googleTranslation.js">
+                <code class="language-none">googleTranslation.js</code>
+            </a> et <a href="./P3_Assets/translator.js">
+                <code class="language-none">translator.js</code>
+            </a>. </p>
+        <p class="indication"><b>Pour info :</b> L'interface a été construite
+            avec <a href="https://getbootstrap.com/docs/4.1/components/input-group/">Bootstrap
+                4</a> qui met à disposition un ensemble de classes CSS pour
+            accélérer le développement et obtenir une apparence cohérente.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Évaluation</h2>
+        <p>Seule la présence des fonctionnalités entrera dans l'évaluation de
+            votre projet. La qualité du code ne sera pas prise en compte, sachant
+            qu'un code de piètre qualité vous empêchera très rapidement d'ajouter
+            de nouvelles fonctionnalités...</p>
+        <p>Voici les fonctionnalités qui seront évaluées :</p>
+        <ul>
+            <li class="first">Entête de la page</li>
+            <li>Onglets de navigation</li>
+            <li>Formulaire de requête</li>
+            <li>Tableau des traductions</li>
+            <li>Gestion de la pagination</li>
+            <li>Tri des colonnes</li>
+            <li>Affichage des onglets par langue</li>
+            <li class="last">Suppression d'éléments</li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Distinction Affichage/Interaction</h3>
+        <p>Pour chacune des fonctionnalités la distinction sera faite entre la
+            capacité de l'application à afficher une partie de son interface
+            graphique en fonction des données du modèle et sa capacité à réagir
+            aux intéractions de l'utilisateur.</p>
+        <p>Par exemple, des points seront accordés si l'application sait
+            afficher dans le formulaire de requête toutes les informations
+            stockées dans le modèle (langues source et destination disponibles et
+            sélectionnées) même si elle ne peut déclencher la demande d'une
+            traduction.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Processus de développement</h2>
+        <p>Il est impératif de comprendre la responsabilité de chaque composant
+            de l'<b>architecture SAM</b> (<i>actions</i>, <i>model</i>,
+            <i>state</i>, <i>view</i>) telle qu'elle a été détaillée en cours et
+            explicitée dans les travaux pratiques.
+        </p>
+        <p>Selon les principes de cette architecture, rappelons que :</p>
+        <ul>
+            <li class="first">L'<b>interface Web</b> déclenche des actions en leur fournissant
+                des informations utiles ;</li>
+            <li>Les <b>actions</b> récoltent et préparent les données à présenter
+                au modèle (<i>model</i>) pour qu'il se modifie en conséquence ;</li>
+            <li>Selon les données présentées, le <b>modèle</b> modifie ses
+                propriétés concernées. Il est responsable de la conservation de la
+                cohérence de ses propriétés. <u>Seul lui y a le droit de les
+                    modifier !</u> (les autres composants peuvent toutefois y accéder
+                en lecture) ;</li>
+            <li>Le composant <b>state</b> (état courant de l'application) dérive
+                du modèle autant de propriétés qui seront nécessaires pour fabriquer
+                l'interface graphique. Ces propriétés sont mises à jour à chaque
+                passage à mesure des modifications du modèle ;</li>
+            <li class="last">L'interface graphique est enfin construite par le composant
+                <b>view</b> pour refléter les informations rassemblées dans
+                <i>model</i> et <i>state</i>.
+            </li>
+        </ul>
+        <p>Le suivi scrupuleux de cette méthode vous garantira une structuration
+            maintenable de votre application.</p>
+        <p class="indication"><b>Conseil :</b> Pour chacune des fonctionnalités
+            de l'application, il faudra d'abord se concentrer sur la création ou
+            la dérivation des données nécessaires à son affichage, avant de
+            s'intéresser aux actions déclenchées par l'interface graphique.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Détail des fonctionnalités</h2>
+        <p>Les détails qui suivent expriment le cahier des charges que vous
+            devrez respecter pour chacune des fonctionnalités. En cas de doute sur
+            une fonctionnalité veuillez vous reporter à la démonstration en haut
+            pour connaître le comportement à reproduire.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Entête de la page</h3>
+        <p>Pour l'instant, seul le bouton "À propos" est actif. Il permet
+            d'afficher le nom du (des) auteur(s) du projet.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Onglets de navigation</h3>
+        <p>Les onglets (<i>tabs</i> en anglais) doivent respecter les règles
+            suivantes :</p>
+        <ul>
+            <li class="first">Le premier est toujours l'onglet "Traductions", le seul qui
+                possède le formulaire de requête. Il affiche toutes les traductions,
+                toutes langues confondues.</li>
+            <li>Quand l'onglet "Traductions" est sélectionné, les 3 onglets
+                suivants affichent les langues possédant le plus de mots (colonnes
+                "Depuis" et "Vers" cumulées).</li>
+            <li>Quand une langue est sélectionnée l'onglet correspondant s'affiche
+                en deuxième position. Les 2 onglets suivants montrent les langues
+                par ordre de mots disponibles décroissants.</li>
+            <li>Le nombre associé à chaque onglet renseigne du nombre de lignes
+                disponibles pour chacun.</li>
+            <li class="last">Le dernier onglet rassemble les langues non représentées dans les
+                onglets précédents.</li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Formulaire de requête</h3>
+        <p>Contraintes à respecter :</p>
+        <ul>
+            <li class="first">Les listes déroulantes "Depuis" et "Vers" ont une liste de langues
+                distincte.</li>
+            <li>Le bouton d'échange (double flèches) permet d'inverser les
+                langues. Il est toutefois désactivé dans les situations suivantes :
+                <ul>
+                    <li class="first">les langues "Depuis" et "Vers" sont les mêmes ;</li>
+                    <li class="last">quand une langue sélectionnée n'est pas présente dans l'autre
+                        liste.</li>
+                </ul>
+            </li>
+            <li>Le bouton "Traduire" est désactivé quand les langues "Depuis" et
+                "Vers" sont les mêmes.</li>
+            <li class="last">L'appui sur le bouton traduire lance la traduction de l'expression
+                qui sera ajoutée au tableau de traductions.</li>
+        </ul>
+        <p class="indication"><b>Attention :</b> Il est possible que
+            l'interrogation du service de traduction soit défaillante sur certains
+            réseaux. <br> Dans ce cas, si on souhaite traduire le mot "pomme" de
+            français en anglais et que le service de traduction est indisponible,
+            on insérera la ligne <code
+                class="language-javascript"><span class="token punctuation">[</span><span class="token string">'fr'</span><span class="token punctuation">,</span> <span class="token string">'pomme'</span><span class="token punctuation">,</span> <span class="token string">'en'</span><span class="token punctuation">,</span> <span class="token string">'pomme'</span><span class="token punctuation">]</span></code>
+            dans
+            le tableau de traduction. </p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Tableau de traductions</h3>
+        <p>Le tableau affiche les traductions disponibles avec les
+            caractéristiques suivantes :</p>
+        <ul>
+            <li class="first"><u>Colonne 1</u> : indice de la traduction dans le tableau du
+                modèle ; </li>
+            <li><u>Colonne 2 et 4</u> : le code des langues source et destination
+                ;</li>
+            <li><u>Colonne 3 et 5</u> : les expressions originale et traduite ;
+            </li>
+            <li class="last"><u>Colonne 6</u> : une case à cocher pour sélectionner la ligne ;
+            </li>
+        </ul>
+        <p>Notez qu'il faut pouvoir déterminer si une expression doit s'écrire
+            de droite à gauche...</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Gestion de la pagination</h3>
+        <p>Pour un onglet, le nombre de pages dépend du nombre de lignes par
+            page et du nombre de traductions disponibles.</p>
+        <p>À cela s'ajoute les considérations suivantes :</p>
+        <ul>
+            <li class="first">Les boutons "Précédent" et "Suivant" sont désactivés si on se
+                trouve sur la première ou la dernière page respectivement.</li>
+            <li class="last">Le choix d'une page n'affiche que les lignes de traduction
+                correspondantes.</li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Tri des colonnes</h3>
+        <p>Le contenu du tableau peut être trié en cliquant sur les entêtes du
+            tableau.</p>
+        <p>Pour chaque colonne, le tri peut être croissant ou décroissant. Deux
+            clics consécutifs sur la même entête inverse l'ordre de tri.</p>
+        <p>Un clic sur une autre entête rétabli le tri précédent pour cette
+            colonne.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Affichage des onglets par langue</h3>
+        <p>Un clic sur un onglet de langue affiche toutes les traductions
+            concernant cette langue.</p>
+        <p>Pour ces onglets, il n'y a pas de formulaire de requête.</p>
+        <p>Les mots dans la langue sélectionnée apparaissent en début de ligne
+            suivis de leur expression traduite correponsante.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Suppression d'éléments</h3>
+        <p>Le bouton "Suppr. tous" demande une confirmation avant de supprimer
+            toutes les traductions de l'onglet actif.</p>
+        <p>Le bouton "Suppr." devient actif dès qu'une case est cochée. Un clic
+            dessus ne supprime que les lignes sélectionnées.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2 id="soumission">Procédure de soumission du travail réalisé</h2>
+        <p>Le travail est à soumettre le <b>vendredi 18 décembre à 23:59</b> au
+            plus tard.</p>
+        <p>Pour préparer la soumission de votre travail :
+        </p>
+        <ul>
+            <li class="first">renommez le dossier contenant le code source de votre application
+                en <code class="language-javascript">ProjetDAI_NOM_Prenom</code> ; <ul>
+                    <li class="first">vérifiez que votre application fonctionne toujours.</li>
+                    <li class="last"> Sinon il est possible que vous deviez changer des chemins
+                        absolus en chemins relatifs.</li>
+                </ul>
+            </li>
+            <li>compressez le dossier au format <code
+                    class="language-javascript"><span class="token punctuation">.</span>zip</code> de manière à
+                obtenir une archive <code
+                    class="language-javascript">ProjetDAI_NOM_Prenom<span class="token punctuation">.</span>zip</code> ;
+            </li>
+            <li class="last">Vous téléverserez cette archive sur l'<a
+                    href="https://elearn.univ-pau.fr/mod/assign/view.php?id=299461">ENT
+                    Elearn</a>.</li>
+        </ul>
+        <p class="indication"><b>Attention :</b> Il est de votre responsabilité
+            de vous assurer que votre application fonctionne parfaitement une fois
+            l'archive décompréssée ! Vérifiez-le avant de soumettre cette archive.
+        </p>
+        <p>Il est possible de soumettre plusieurs fois l'archive. Seule la
+            dernière sera prise en compte.</p>
+        <br>
+    </div>
+</body>
+
+</html>

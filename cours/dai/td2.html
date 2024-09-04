@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD2 – Fonctions en Javascript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* 
+        a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- --------------------------------------------------------------- -->
+        <h1>TD2 – Fonctions en Javascript
+        </h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>Dans ce TD, vous construirez des fonctions Javascript pour vérifier
+            la validité d'un mot de passe saisi par l'utilisateur.</p>
+        <p>Votre travail devra aboutir à un comportement similaire à la démonstration ci-dessous.</p>
+        <div><iframe src="./TD2_Assets/check_password_iframe.html" frameborder="0" width="600px"
+                height="550px"></iframe></div>
+
+        <h2>Exercice – Vérification d'un mot de passe</h2>
+        <p>Copiez les fichiers suivants dans un dossier <code class="language-none">DAI/TD2/</code> :
+            <a href="./TD2_Assets/check_password.xhtml"><code
+                    class="language-javascript">check_password<span class="token punctuation">.</span>xhtml</code></a>,
+            <a href="./TD2_Assets/check_password.js"><code
+                    class="language-javascript">check_password<span class="token punctuation">.</span>js</code></a>
+            et <a href="./TD2_Assets/check_functions.js"><code
+                    class="language-javascript">check_functions<span class="token punctuation">.</span>js</code></a>
+        </p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Fonctions de vérification</h3>
+        <p>Commencez par compléter les fonctions de vérifications se trouvant dans
+            <code class="language-javascript">check_functions<span class="token punctuation">.</span>js</code>.
+        </p>
+        <p>À la fin du fichier, toutes les fonctions sont testées avec des valeurs
+            dont on connait le résultat escompté. Vous pouvez voir le résultat de
+            ces tests dans la console.</p>
+        <p>Le travail de cette partie sera terminé quand tous les tests passeront
+            avec succès.</p>
+        <p><b>Indications :</b> Vous aurez besoin des fonctions suivantes :</p>
+        <ul>
+            <li class="first"><code
+                    class="language-javascript">str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span></code>
+                : donne le i<sup>ème</sup> caractère
+                de la chaîne de caractères <code class="language-javascript">str</code></li>
+            <li><code
+                    class="language-javascript">str<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                : renvoie la chaîne de caractères
+                <code class="language-javascript">str</code> en majuscule
+            </li>
+            <li class="last"><code
+                    class="language-javascript">str<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                : renvoie la chaîne de caractères
+                <code class="language-javascript">str</code> en minuscule
+            </li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Gestion de l'interface</h3>
+        <p>Complétez la gestion de l'interface dans <code
+                class="language-javascript">check_password<span class="token punctuation">.</span>js</code>
+            afin que la conformité du mot de passe soit testé selon tous les critères
+            demandés.</p>
+    </div>
+</body>
+
+</html>

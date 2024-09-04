@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD1 – Boucles et conditionnelles en Javascript</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- --------------------------------------------------------------- -->
+        <h1>TD1 – Boucles et conditionnelles en Javascript</h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>L'objectif de ce TD est de manipuler les concepts algorithmiques de base avec Javascript.</p>
+        <p>Vous implémenterez les défis proposés dans le cours sur les <a href="./c2.html" target="_blank">bases du
+                langage
+                Javascript</a>.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Environnement de développement</h2>
+        <p>Vous aurez besoin de :</p>
+        <ul>
+            <li class="first">Un éditeur de code pour HTML, CSS et Javascript :
+                <ul><code>Visual Studio Code</code></ul>
+                <ul><code>Sublime Text</code></ul>
+                <ul><code>Atom</code></ul>
+            </li>
+            <li>
+                La <b>console Javascript</b> du navigateur pour afficher :
+                <ul>
+                    <li class="first">Les messages d'erreur</li>
+                    <li class="last">Et la sortie de la fonction
+                        <code>console.log()</code>
+                    </li>
+                </ul>
+                Raccourcis pour accéder à la console :
+                <ul class="language-none">
+                    <li class="last">
+                        <code>Ctrl + Maj + J</code>
+                    </li>
+                </ul>
+            </li>
+            <li>Pour garder une arborescence organisée, créez un dossier
+                <code>L2/DAI/TD1/</code>.
+            </li>
+            <li class="last">Pour vous faciliter la mise en route, vous pourrez partir de ce modèle :
+                <a href="./TD1_Assets/mapage.xhtml">mapage.xhtml</a>
+                que vous modifierez à loisir après l'avoir téléchargé dans votre dossier et renommé.
+            </li>
+        </ul>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Exercice 1 - Boucle for</h2>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Préparation</h3>
+        <p>Copiez les fichiers <a href="./TD1_Assets/mapage.xhtml"><code>mapage.xhtml</code></a>
+            et <a href="./TD1_Assets/dixchiffres_for.js"><code>dixchiffres_for.js</code></a>
+            dans le dossier
+            <code>L2/DAI/TD1/</code>.
+        </p>
+        <p>Renommez le fichier HTML en <code>exo1.html</code> et connectez-lui le fichier Javascript.</p>
+        <p>Au chargement de la page, vous devez voir apparaître une fenêtre avec les 10 chiffres.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Modification du code</h3>
+        <p>Modifiez le code afin de supprimer la virgule finale.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Exercice 2 - Boucle while</h2>
+        <p>Dans des fichiers <code>exo2.html</code> et <code>dixchiffres_while.js</code>, modifiez le code suivant :
+        </p>
+
+
+
+        <div class="code-toolbar">
+            <pre class="prettyprint language-javascript" tabindex="0"><code class="language-javascript">let message = '';
+let i = 0;
+while (i < 10) {
+  message = message + i + ', ';
+  i = i + 1;
+}
+alert(message);</code></pre>
+        </div>
+        <p>Afin qu’il affiche les 10 chiffres par ordre décroissant de 9 à 0, et sans virgule finale !</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Exercice 3 - Boucle do ... while</h2>
+        <p>Dans des fichiers <code>exo3.html</code> et <code>controle_saisie.js</code>, transformez le code suivant :
+        </p>
+
+        <div class="code-toolbar">
+            <pre class="prettyprint language-javascript" tabindex="0"><code class="language-javascript">let nombre;
+do {
+  nombre = prompt('Entrez un nombre supérieur à 10');
+} while (nombre <= 10);
+alert(nombre + ' est bien supérieur à 10 !');</code></pre>
+        </div>
+        <p>Afin de s'assurer de la saisie d’un nombre <b>entier</b> et <b>impair</b> compris dans l’intervalle <b>[10;
+                20]</b>.</p>
+        <p><b>Indice :</b> Utilisez la fonction <code>parseInt</code> et l’opérateur <code>%</code> (modulo).</p>
+        <p>Testez avec les valeurs : 12, 8, 2.5, toto et 15 par exemple.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Exercice 4 - Affichage des erreurs</h2>
+        <p>Dupliquez les fichiers de l'exercice précédent et renommez-les en <code>exo4.html</code> et
+            <code>controle_saisie_v2.js</code>.
+        </p>
+        <p>Il s'agit maintenant de donner à l'utilisateur le nombre et le détail des erreurs commises dans sa saisie.
+        </p>
+        <p>Vous imiterez le plus fidèlement possible les messages affichés sur la <a
+                href="./c2.html#boucles-sans-compteur">variante
+                2 du cours</a>.</p>
+
+    </div>
+</body>
+
+</html>

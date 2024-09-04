@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Commande de fruits et légumes</title>
+  <link href="/cours/dai/P2_Assets/beer.min.css" rel="stylesheet" />
+  <script src="/cours/dai/P2_Assets/beer.min.js" type="text/javascript"></script>
+  <link href="/cours/dai/P2_Assets/commande.css" rel=" stylesheet" />
+</head>
+
+
+<body class="is-dar">
+  <div id="app">
+    <div class="row small-margin">
+      <div class="row middle-align no-margin">
+        <div class="col s8 m9 l10">
+          <h4 class="center-align"> Commande de fruits et légumes</h4>
+        </div>
+        <div class="col s4 m3 l2">
+          <nav class="right-align small-margin">
+            <button onclick="samActions.exec({do:&apos;viewCartToggle&apos;})" class="no-marin border">
+              <i class="large">shopping_basket</i>
+            </button>
+            <button class="no-margin" data-ui="#dropdown3_">
+              <i class="large">account_circle</i>
+              <div id="dropdown3_" data-ui="#dropdown3_" class="dropdown left no-wrap">
+                <a>Auteurs : <b>Tata</b> et <b>Toto</b>
+                </a>
+              </div>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s3 m2 l2" style="position:sticky; top: 10px;">
+          <!-- ______________________________________________________ Filtres -->
+          <aside>
+            <h5>Filtres</h5>
+            <h6>Catégories</h6>
+            <div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;categories&apos;, name:&apos;toutes&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">toutes</span>
+                  <a><span class="badge circle right color-2-text color-2a">9</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;categories&apos;, name:&apos;fruits&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">fruits</span>
+                  <a><span class="badge circle right color-2-text color-2a">5</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;categories&apos;, name:&apos;légumes&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">légumes</span>
+                  <a><span class="badge circle right color-2-text color-2a">4</span></a>
+                </label>
+              </div>
+
+            </div>
+            <div class="small-space" />
+            <h6>Origines</h6>
+            <div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;toutes&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">toutes</span>
+                  <a><span class="badge circle right color-2-text color-2a">9</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Espagne&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">Espagne</span>
+                  <a><span class="badge circle right color-2-text color-2a">1</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;France&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">France</span>
+                  <a><span class="badge circle right color-2-text color-2a">5</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Maroc&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">Maroc</span>
+                  <a><span class="badge circle right color-2-text color-2a">2</span></a>
+                </label>
+              </div>
+
+              <div>
+                <label class="checkbox">
+                  <input type="checkbox"
+                    onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Pérou&apos;, e:event})"
+                    checked="checked" />
+                  <span class="capitalize">Pérou</span>
+                  <a><span class="badge circle right color-2-text color-2a">1</span></a>
+                </label>
+              </div>
+
+            </div>
+            <div class="small-space" />
+            <h6>Recherche</h6>
+
+            <div class="middle-align small-margin">
+              <label class="switch">
+                <input type="checkbox" onclick="samActions.exec({do:&apos;globalSearchToggle&apos;})" />
+                <span>globale</span>
+              </label>
+            </div>
+            <div class="field prefix round fill border small">
+              <i>search</i>
+              <input type="text" onchange="samActions.exec({do:&apos;search&apos;, e:event})" class="align-middle"
+                value="a" />
+            </div>
+
+            <div class="small-space" />
+            <h5>Paramètres</h5>
+
+            <div class="middle-align small-margin">
+              <label class="switch">
+                <input type="checkbox" onclick="samActions.exec({do:&apos;imagesToggle&apos;})" checked="checked" />
+                <span>Articles <br />avec images</span>
+              </label>
+            </div>
+            <div class="middle-align small-margin">
+              <label class="switch">
+                <input type="checkbox" onclick="samActions.exec({do:&apos;animationsToggle&apos;})" checked="checked" />
+                <span>Animations</span>
+              </label>
+            </div>
+            <div class="middle-align small-margin">
+              <label class="switch">
+                <input type="checkbox" onclick="samActions.exec({do:&apos;darkThemeToggle&apos;})" />
+                <span>Thème <br /> sombre</span>
+              </label>
+            </div>
+
+
+          </aside>
+        </div>
+        <div class=" col s9 m10 l10">
+          <!-- _________________________________ Récap filtres et recherche -->
+
+
+          <div class="row top-align no-margin">
+            <nav class="col s8 wrap no-margin">
+
+              <label class="medium-text color-2-text">8 articles -</label>
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;categories&apos;, name:&apos;fruits&apos;})"
+                class="chip small no-margin capitalize ">
+                fruits<i class="small">close</i>
+              </span>
+
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;categories&apos;, name:&apos;légumes&apos;})"
+                class="chip small no-margin capitalize ">
+                légumes<i class="small">close</i>
+              </span>
+
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Espagne&apos;})"
+                class="chip small no-margin capitalize ">
+                Espagne<i class="small">close</i>
+              </span>
+
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;France&apos;})"
+                class="chip small no-margin capitalize ">
+                France<i class="small">close</i>
+              </span>
+
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Maroc&apos;})"
+                class="chip small no-margin capitalize ">
+                Maroc<i class="small">close</i>
+              </span>
+
+
+              <span
+                onclick="samActions.exec({do:&apos;changeFilter&apos;, filterName:&apos;origins&apos;, name:&apos;Pérou&apos;})"
+                class="chip small no-margin capitalize ">
+                Pérou<i class="small">close</i>
+              </span>
+
+
+              <span onclick="samActions.exec({do:&apos;removeSearch&apos;})" class="chip small no-margin">
+                Rech : "a"<i class="small">close</i>
+              </span>
+
+
+              <!-- 
+    <article class="small-margin grid-view">
+      
+      
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/avocat.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Avocats</h6>
+              <div class="small-margin"><label>Origine : </label>Pérou</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">1.50 € / <span class="avoidwrap">Pièce</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'4', e:event})" 
+                         class="center-align color-1a" value="" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'4', quantity:'0'})" 
+                          class="circle no-margin disabled"  disabled="disabled">
+                    <i>add</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/fraises.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Fraises</h6>
+              <div class="small-margin"><label>Origine : </label>France</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">3.00 € / <span class="avoidwrap">Barquette 250g</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'5', e:event})" 
+                         class="center-align color-1a" value="2" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'5', quantity:'2'})" 
+                          class="circle no-margin "  >
+                    <i>add</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/fraises.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Fraises</h6>
+              <div class="small-margin"><label>Origine : </label>France</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">5.00 € / <span class="avoidwrap">Barquette 500g</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'6', e:event})" 
+                         class="center-align " value="3" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'6', quantity:'3'})" 
+                          class="circle no-margin "  >
+                    <i>edit</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/fraises.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Fraises</h6>
+              <div class="small-margin"><label>Origine : </label>Espagne</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">8.00 € / <span class="avoidwrap">Plateau 1kg</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'7', e:event})" 
+                         class="center-align " value="1" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'7', quantity:'1'})" 
+                          class="circle no-margin "  >
+                    <i>edit</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/orange.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Oranges</h6>
+              <div class="small-margin"><label>Origine : </label>Maroc</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">1.50 € / <span class="avoidwrap">kg</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'3', e:event})" 
+                         class="center-align " value="2.5" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'3', quantity:'2.5'})" 
+                          class="circle no-margin "  >
+                    <i>edit</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/pamplemousse.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Pamplemousses</h6>
+              <div class="small-margin"><label>Origine : </label>Maroc</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">3.00 € / <span class="avoidwrap">kg</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'8', e:event})" 
+                         class="center-align color-1a" value="" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'8', quantity:'0'})" 
+                          class="circle no-margin disabled"  disabled="disabled">
+                    <i>add</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/poivrons_jaune_orange.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Poivrons jaunes</h6>
+              <div class="small-margin"><label>Origine : </label>France</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">2.00 € / <span class="avoidwrap">kg</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'1', e:event})" 
+                         class="center-align color-1a" value="2.5" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'1', quantity:'2.5'})" 
+                          class="circle no-margin "  >
+                    <i>add</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="card no-padding small-margin">
+            
+          <div class="card-image center-align">
+            <img src="./images/poivrons_jaune_orange.jpg" />
+          </div>        
+        
+            <div class="small-padding">
+              <h6 class="no-margin">Poivrons oranges</h6>
+              <div class="small-margin"><label>Origine : </label>France</div>
+              <div class="chip large">
+                <label>Prix: </label><span class="large-text">2.00 € / <span class="avoidwrap">kg</span> </span>
+              </div>
+              <div class="row no-margin">
+                <div class="col s8 field round fill border center-align">
+                  <input type="text" onchange="samActions.exec({do:'changeQuantity', id:'2', e:event})" 
+                         class="center-align color-1a" value="1" />
+                  <label>Quantité</label>
+                </div>
+                <div class=" col s4">
+                  <button onclick="samActions.exec({do:'pushToCart', id:'2', quantity:'1'})" 
+                          class="circle no-margin "  >
+                    <i>add</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+  </article>
+       -->
+            </nav>
+            <nav class="col s4 right-align no-margin">
+
+              <button onclick="samActions.exec({do:&apos;gridListView&apos;, view:&apos;list&apos;})"
+                class="small no-margin ">
+                <i>view_list</i></button>
+              <button onclick="samActions.exec({do:&apos;gridListView&apos;, view:&apos;grid&apos;})"
+                class="small           disabled" disabled="disabled">
+                <i>grid_view</i></button>
+
+            </nav>
+          </div>
+
+          <!-- ___________________________________________________ Articles -->
+
+
+          <article class="small-margin grid-view">
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./avocat.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Avocats</h6>
+                <div class="small-margin"><label>Origine : </label>Pérou</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">1.50 € / <span class="avoidwrap">Pièce</span> </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;4&apos;, e:event})"
+                      class="center-align color-1a" value="" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;4&apos;, quantity:&apos;0&apos;})"
+                      class="circle no-margin disabled" disabled="disabled">
+                      <i>add</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./fraises.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Fraises</h6>
+                <div class="small-margin"><label>Origine : </label>France</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">3.00 € / <span class="avoidwrap">Barquette 250g</span>
+                  </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;5&apos;, e:event})"
+                      class="center-align color-1a" value="2" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;5&apos;, quantity:&apos;2&apos;})"
+                      class="circle no-margin ">
+                      <i>add</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./fraises.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Fraises</h6>
+                <div class="small-margin"><label>Origine : </label>France</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">5.00 € / <span class="avoidwrap">Barquette 500g</span>
+                  </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;6&apos;, e:event})"
+                      class="center-align " value="3" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;6&apos;, quantity:&apos;3&apos;})"
+                      class="circle no-margin ">
+                      <i>edit</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./fraises.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Fraises</h6>
+                <div class="small-margin"><label>Origine : </label>Espagne</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">8.00 € / <span class="avoidwrap">Plateau 1kg</span>
+                  </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;7&apos;, e:event})"
+                      class="center-align " value="1" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;7&apos;, quantity:&apos;1&apos;})"
+                      class="circle no-margin ">
+                      <i>edit</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./orange.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Oranges</h6>
+                <div class="small-margin"><label>Origine : </label>Maroc</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">1.50 € / <span class="avoidwrap">kg</span> </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;3&apos;, e:event})"
+                      class="center-align " value="2.5" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;3&apos;, quantity:&apos;2.5&apos;})"
+                      class="circle no-margin ">
+                      <i>edit</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./pamplemousse.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Pamplemousses</h6>
+                <div class="small-margin"><label>Origine : </label>Maroc</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">3.00 € / <span class="avoidwrap">kg</span> </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;8&apos;, e:event})"
+                      class="center-align color-1a" value="" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;8&apos;, quantity:&apos;0&apos;})"
+                      class="circle no-margin disabled" disabled="disabled">
+                      <i>add</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./poivrons_jaune_orange.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Poivrons jaunes</h6>
+                <div class="small-margin"><label>Origine : </label>France</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">2.00 € / <span class="avoidwrap">kg</span> </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;1&apos;, e:event})"
+                      class="center-align color-1a" value="2.5" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;1&apos;, quantity:&apos;2.5&apos;})"
+                      class="circle no-margin ">
+                      <i>add</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card no-padding small-margin">
+
+              <div class="card-image center-align">
+                <img src="./poivrons_jaune_orange.jpg" />
+              </div>
+
+              <div class="small-padding">
+                <h6 class="no-margin">Poivrons oranges</h6>
+                <div class="small-margin"><label>Origine : </label>France</div>
+                <div class="chip large">
+                  <label>Prix: </label><span class="large-text">2.00 € / <span class="avoidwrap">kg</span> </span>
+                </div>
+                <div class="row no-margin">
+                  <div class="col s8 field round fill border center-align">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;2&apos;, e:event})"
+                      class="center-align color-1a" value="1" />
+                    <label>Quantité</label>
+                  </div>
+                  <div class=" col s4">
+                    <button
+                      onclick="samActions.exec({do:&apos;pushToCart&apos;, id:&apos;2&apos;, quantity:&apos;1&apos;})"
+                      class="circle no-margin ">
+                      <i>add</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </article>
+
+
+          <!-- ___________________________________________________ Pagination -->
+
+          <nav class="center-align">
+            <button
+              onclick="samActions.exec({do:&apos;changePage&apos;, direction:&apos;prev&apos;, view:&apos;grid&apos;})"
+              class="square border disabled" disabled="disabled">
+              <i>navigate_before</i>
+            </button>
+
+            <button
+              onclick="samActions.exec({do:&apos;changePage&apos;, direction:&apos;1&apos;, view:&apos;grid&apos;})"
+              class="square no-margin border">1</button>
+
+            <button
+              onclick="samActions.exec({do:&apos;changePage&apos;, direction:&apos;next&apos;, view:&apos;grid&apos;})"
+              class="square border disabled" disabled="disabled">
+              <i>navigate_next</i>
+            </button>
+            <div class="field suffix small">
+              <select onchange="samActions.exec({do:&apos;changeLinesPerPage&apos;, view:&apos;grid&apos;, e:event})">
+
+                <option value="1" selected="selected">1 ligne par page</option>
+
+
+                <option value="2">2 lignes par page</option>
+
+
+                <option value="3">3 lignes par page</option>
+
+              </select>
+              <i>arrow_drop_down</i>
+            </div>
+          </nav>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- Récapitulatif de la commande -->
+
+    <div class="panier row small-margin">
+      <div class="col s0 m1 l2" />
+      <section class="col s12 m10 l8">
+        <div class="card ">
+          <h4>Panier</h4>
+          <div>
+            <table border="0" class="right-align large-text">
+              <thead>
+                <th class="center-align"><a
+                    onclick="samActions.exec({do:&apos;sortCart&apos;,property:&apos;name&apos;})">
+                    Articles <i class="small">unfold_more</i></a></th>
+                <th class="center-align"><a
+                    onclick="samActions.exec({do:&apos;sortCart&apos;,property:&apos;quantity&apos;})">
+                    Qté<i class="small">unfold_more</i></a></th>
+                <th class="center-align">Unit</th>
+                <th class="center-align">P.U.</th>
+                <th class="center-align"><a
+                    onclick="samActions.exec({do:&apos;sortCart&apos;,property:&apos;total&apos;})">
+                    Prix<i class="small">unfold_more</i></a></th>
+                <th>
+                </th>
+              </thead>
+
+              <tr class="ligne-paire">
+                <td class="left-align">Fraises</td>
+                <td class="quantite">
+                  <div class="field fill small">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;6&apos;, e:event})"
+                      class="right-align" value="3" />
+                  </div>
+                </td>
+                <td class="left-align">Barquette 500g</td>
+                <td>5.00 €</td>
+                <td>15.00 €</td>
+                <td class="center-align">
+                  <label class="checkbox">
+                    <input type="checkbox" onclick="samActions.exec({do:&apos;deleteToggle&apos;, id:&apos;6&apos;})" />
+                    <span />
+                  </label>
+                </td>
+              </tr>
+
+
+              <tr class="ligne-impaire">
+                <td class="left-align">Fraises</td>
+                <td class="quantite">
+                  <div class="field fill small">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;7&apos;, e:event})"
+                      class="right-align" value="1" />
+                  </div>
+                </td>
+                <td class="left-align">Plateau 1kg</td>
+                <td>8.00 €</td>
+                <td>8.00 €</td>
+                <td class="center-align">
+                  <label class="checkbox">
+                    <input type="checkbox" onclick="samActions.exec({do:&apos;deleteToggle&apos;, id:&apos;7&apos;})" />
+                    <span />
+                  </label>
+                </td>
+              </tr>
+
+
+              <tr class="ligne-paire">
+                <td class="left-align">Oranges</td>
+                <td class="quantite">
+                  <div class="field fill small">
+                    <input type="text"
+                      onchange="samActions.exec({do:&apos;changeQuantity&apos;, id:&apos;3&apos;, e:event})"
+                      class="right-align" value="2.5" />
+                  </div>
+                </td>
+                <td class="left-align">kg</td>
+                <td>1.50 €</td>
+                <td>3.75 €</td>
+                <td class="center-align">
+                  <label class="checkbox">
+                    <input type="checkbox" onclick="samActions.exec({do:&apos;deleteToggle&apos;, id:&apos;3&apos;})" />
+                    <span />
+                  </label>
+                </td>
+              </tr>
+
+              <tfoot class="orange-light-3">
+                <th colspan="4">Total :</th>
+                <th>26.75 €</th>
+                <th class="center-align">
+                  <button type="button" onclick="samActions.exec({do:&apos;cartDelete&apos;})" disabled="disabled"
+                    class="small disabled"><i>delete</i></button>
+                </th>
+              </tfoot>
+            </table>
+          </div>
+          <div class="medium-margin right-align">
+            <button class="" onclick="envoyerCommande(&apos;Tata et Toto&apos;, samState.state.cart.values, 26.75)"><i
+                class="small-margin">send</i> Envoyer la commande</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+  </div>
+
+
+  <!-- Ne pas supprimer
+       Cette portion permet de déterminer la largeur disponible
+       pour l'affichage des articles.
+  -->
+  <div class="row small-margin">
+    <div class="row">
+      <div class="col s3 m2 l2" />
+      <div class=" col s9 m10 l10">
+        <article id="articleWidth" class="small-margin grid-view" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Les scripts -->
+  <script type="text/javascript" src="./artiPart1.js"></script>
+  <script type="text/javascript" src="./artiPart2.js"></script>
+  <!-- <script type="text/javascript" src="commande.js"></script> -->
+  <script type="text/javascript" src="./commande_obfuscated.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 – Horloge et alarmes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- --------------------------------------------------------------- -->
+        <h1>TP2 – Horloge et alarmes</h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>L'objectif de ce TP est de programmer la gestion d'une horloge et de plusieurs alarmes.</p>
+        <p class="language-none">Dans un dossier
+            <code class="language-none">DAI/TP2/</code>, enregistrez les fichiers
+            <a href="./TP2_Assets/clock_v1.xhtml">
+                <code class="language-none">clock_v1.xhtml</code>
+            </a>, <a href="./TP2_Assets/clock.css">
+                <code class="language-none">clock.css</code>
+            </a> et
+            <a href="./TP2_Assets/clock_v1.js">
+                <code class="language-none">clock_v1.js</code>
+            </a>.
+        </p>
+        <p>À vous de modifier le code pour obtenir le rendu suivant : </p>
+        <div>
+            <iframe src="./TP2_Assets/clock_iframe.html" frameborder="1" width="600px" height="400px"></iframe>
+        </div>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Gestion des timers en Javascript</h2>
+        <p>Javascript offre quelques méthodes pour gérer des événements temporels. Il s'agit de
+            <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            pour déclencher un événement ponctuel et <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            pour des événements à intervalles réguliers. <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">clearInterval</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            et <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">clearTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            permettent de les stopper.
+        </p>
+        <p>Dans le fichier <code class="language-javascript">clock_v1<span class="token punctuation">.</span>js</code>
+            la fonction <code
+                class="language-javascript"><span class="token function">sandbox</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            montre comment utiliser ces méthodes pour afficher
+            l'heure dans la console toutes les 2 secondes et lancer une alarme 7 secondes après le chargement de la
+            page. Nous profitons du déclenchement de l'alarme
+            pour desactiver l'affichage récurrent de l'heure.</p>
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-javascript" tabindex="0"><code class="language-javascript"><span class="token keyword"><span class="kwd">function</span></span><span class="pln"> </span><span class="token function"><span class="pln">sandbox</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token keyword"><span class="kwd">function</span></span><span class="pln"> </span><span class="token function"><span class="pln">actions_updateTime</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> date </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">new</span></span><span class="pln"> </span><span class="token class-name"><span class="typ">Date</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> hh </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> date</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">getHours</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> mm </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> date</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">getMinutes</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> ss </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> date</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">getSeconds</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> time </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">hh</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">mm</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">ss</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+console</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">log</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">message </span><span class="token operator"><span class="pun">+</span></span><span class="pln"> time</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">join</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token string"><span class="str">':'</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+
+</span><span class="token keyword"><span class="kwd">function</span></span><span class="pln"> </span><span class="token function"><span class="pln">actions_fireAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+console</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">log</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">data</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">message</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+window</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">clearInterval</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">intervalId</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">  </span><span class="token comment"><span class="com">// et arrête l'horloge !</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> intervalId </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> window</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">setInterval</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token operator"><span class="pun">=&gt;</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token function"><span class="pln">actions_updateTime</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token literal-property property"><span class="pln">message</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'Il est : '</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token number"><span class="lit">2000</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">// Lance une alarme dans 7 secondes !</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> seconds </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token number"><span class="lit">7</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> currentDate </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">new</span></span><span class="pln"> </span><span class="token class-name"><span class="typ">Date</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="pln">let</span></span><span class="pln">   alarmDate   </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">new</span></span><span class="pln"> </span><span class="token class-name"><span class="typ">Date</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+alarmDate</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">setSeconds</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">alarmDate</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">getSeconds</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token operator"><span class="pun">+</span></span><span class="pln"> seconds</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> delay </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> alarmDate </span><span class="token operator"><span class="pun">-</span></span><span class="pln"> currentDate</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">   </span><span class="token comment"><span class="com">// durée en millisecondes</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> timeoutId  </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> window</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">setTimeout</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token operator"><span class="pun">=&gt;</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token function"><span class="pln">actions_fireAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">{</span></span><span class="token literal-property property"><span class="pln">message</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'Alarme déclenchée !'</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> delay</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span></code></pre>
+
+            </div>
+        </div>
+        <p>Ce code a plusieurs intérêts. Il montre notamment :</p>
+        <ul>
+            <li class="first">des fonctions définies à l'intérieur d'une fonction ;</li>
+            <li>la manipulation d'une date et l'accès à ses champs heures, minutes et secondes</li>
+            <li>la manière d'enclencher le lancement différé d'une fonction avec arguments ;</li>
+            <li>le moyen de désactiver la récurrence du déclenchement ;</li>
+            <li class="last">comment calculer la durée (<code class="language-javascript">delay</code>) entre deux dates
+                en millisecondes.</li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Organisation du code fourni</h2>
+        <p>L'application est structurée selon l'architecture SAM (<a href="/cours/dai/c4.html">voir cours</a>).</p>
+        <p>L'interface utilisateur est fournie sous forme de balises HTML + règles CSS.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Interface utilisateur</h3>
+        <p>L'interface est scindée en deux sections. Une pour l'affichage de l'heure,
+            la seconde pour la gestion des alarmes.</p>
+        <p>chaque section seront générées séparément par l'application selon les
+            besoins de rafraichissement de leur contenu.</p>
+        <p>À vous de transférer le code HTML fourni dans les méthodes de l'objet <code
+                class="language-javascript">view</code> de l'architecture SAM.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>SAM – Actions</h3>
+        <p>Le prototype des fonctions qui ont été nécessaires à la démonstration de l'applications sont fournies à titre
+            indicatif :</p>
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-javascript"
+                    tabindex="0"><code class="language-javascript"><span class="pln">actions </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">updateTime</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">  </span><span class="token comment"><span class="com">// bouton "Heure courante" et setInterval()</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">startTime</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">   </span><span class="token comment"><span class="com">// bouton "Démarrer"</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">stopTime</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">    </span><span class="token comment"><span class="com">// button "Arrêter"</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">addAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">    </span><span class="token comment"><span class="com">// button "Ajouter une alarme"</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">changeAlarmHoursMinutes</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">  </span><span class="token comment"><span class="com">// sélection de l'heure et des minutes</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">changeAlarmDescription</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">   </span><span class="token comment"><span class="com">// saisie d'une description</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">removeAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">   </span><span class="token comment"><span class="com">// button "Enlever cette alarme"</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">setAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">      </span><span class="token comment"><span class="com">// checkbox pour enclencher une alarme</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">fireAlarm</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">      </span><span class="token comment"><span class="com">// lancée par le setTimeout() de l'alarme</span></span><span class="pln">
+
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+            </div>
+        </div>
+        <!-- --------------------------------------------------------------- -->
+        <h3>SAM – Model</h3>
+        <p>Les données du modèle sont décomposées en deux objets <code class="language-javascript">time</code> et <code
+                class="language-javascript">alarms</code> :</p>
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-javascript" tabindex="0"><code class="language-javascript"><span class="pln">model </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">time</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">value</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">[</span></span><span class="token string"><span class="str">'01'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="token string"><span class="str">'23'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="token string"><span class="str">'45'</span></span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">  </span><span class="token comment"><span class="com">// heures, minutes, secondes</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">isOn</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">false</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">              </span><span class="token comment"><span class="com">// rafraichissement récurrent de l'heure</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">intervalId</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">null</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">         </span><span class="token comment"><span class="com">// ref sur le timer récurrent</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">sectionId</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'time'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">        </span><span class="token comment"><span class="com">// identifiant de la section HTML</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">hasChanged</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">true</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">         </span><span class="token comment"><span class="com">// rafraichissement de la section nécessaire ou pas</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">alarms</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">values</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">                 </span><span class="token comment"><span class="com">//  tableau d'objets représentants des alarmes</span></span><span class="pln">
+</span><span class="token comment"><span class="com">// {</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//   time: [],               // heures, minutes, secondes de l'alarme</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//   message: '',            // description de l'alarme</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//   timeoutId: null,        // ref sur le timer d'alarme</span></span><span class="pln">
+</span><span class="token comment"><span class="com">// },</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">sectionId</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">'alarms'</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">      </span><span class="token comment"><span class="com">// identifiant de la section HTML</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">hasChanged</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">true</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">         </span><span class="token comment"><span class="com">// rafraichissement de la section nécessaire ou pas</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">samPresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">data</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token comment"><span class="com">//...</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span></code></pre>
+
+            </div>
+        </div>
+        <!-- --------------------------------------------------------------- -->
+        <h3>SAM – State</h3>
+        <p>Vous n'aurez pas à modifier l'objet <code class="language-javascript">state</code>.</p>
+        <p>Notez toutefois comment le rafraichissement des parties <code class="language-javascript">time</code> ou
+            <code class="language-javascript">alarms</code> est contrôlé :
+        </p>
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-javascript"
+                    tabindex="0"><code class="language-javascript"><span class="pln">state </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">samUpdate</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">model</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samRepresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+
+</span><span class="token function"><span class="pln">samRepresent</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">model</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="pln">let</span></span><span class="pln"> representation </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token string"><span class="str">'Oops, should not see this...'</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+
+</span><span class="token keyword"><span class="kwd">if</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">time</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">hasChanged</span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">      </span><span class="token comment"><span class="com">// alors nouvelle représentation pour l'heure</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">time</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">hasChanged </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">false</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+representation </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> view</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">timeUI</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+view</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samDisplay</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">time</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">sectionId</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> representation</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">if</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">alarms</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">hasChanged</span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">    </span><span class="token comment"><span class="com">// alors nouvelle représentation pour les alarmes</span></span><span class="pln">
+model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">alarms</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">hasChanged </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token boolean"><span class="kwd">false</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+representation </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> view</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">alarmsUI</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">this</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+view</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">samDisplay</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">model</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">alarms</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">sectionId</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> representation</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+            </div>
+        </div>
+        <!-- --------------------------------------------------------------- -->
+        <h3>SAM – View</h3>
+        <p>Les méthodes <code
+                class="language-javascript">view<span class="token punctuation">.</span><span class="token function">timeUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            et <code
+                class="language-javascript">view<span class="token punctuation">.</span><span class="token function">alarmsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            sont
+            responsables de la génération de l'interface utilisateur pour l'affichage de l'heure
+            et la gestion des alarmes.</p>
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-javascript"
+                    tabindex="0"><code class="language-javascript"><span class="pln">view </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">// Injecte le HTML dans une balise de la page Web.</span></span><span class="pln">
+</span><span class="token function"><span class="pln">samDisplay</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">sectionId</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> representation</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> section </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> document</span><span class="token punctuation"><span class="pun">.</span></span><span class="token function"><span class="pln">getElementById</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="pln">sectionId</span><span class="token punctuation"><span class="pun">)</span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+section</span><span class="token punctuation"><span class="pun">.</span></span><span class="pln">innerHTML </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> representation</span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">// Renvoit le HTML pour l'affichage de l'heure</span></span><span class="pln">
+</span><span class="token function"><span class="pln">timeUI</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">model</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> state</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">return</span></span><span class="pln"> </span><span class="token template-string"><span class="token template-punctuation string"><span class="str">`</span></span><span class="token string"><span class="str">&lt;p&gt;Affichage de l'heure et des boutons&lt;/p&gt;</span></span><span class="token template-punctuation string"><span class="str">`</span></span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+
+</span><span class="token comment"><span class="com">// Renvoit le HTML pour la gestion des alarmes</span></span><span class="pln">
+</span><span class="token function"><span class="pln">alarmsUI</span></span><span class="token punctuation"><span class="pun">(</span></span><span class="token parameter"><span class="pln">model</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln"> state</span></span><span class="token punctuation"><span class="pun">)</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token keyword"><span class="kwd">return</span></span><span class="pln"> </span><span class="token template-string"><span class="token template-punctuation string"><span class="str">`</span></span><span class="token string"><span class="str">&lt;p&gt;Affichage des alarmes et des boutons&lt;/p&gt;</span></span><span class="token template-punctuation string"><span class="str">`</span></span></span><span class="token punctuation"><span class="pun">;</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+            </div>
+        </div>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Étape 1 – Rafraichissement de l'heure</h2>
+        <p>Dans un premier temps, vous pourrez vous attelez à l'affichage de l'heure et des boutons associés.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 1.1 – Affichage de l'heure</h3>
+        <p>La toute première étape consiste à faire afficher l'heure stoquée dans le modèle.
+            C'est la fonction <code
+                class="language-javascript">view<span class="token punctuation">.</span><span class="token function">timeUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            qui s'en charge.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 1.2 – Bouton "Heure courante"</h3>
+        <p>Affichez le bouton en reprenant le code HTML de <code
+                class="language-javascript">clock_v1<span class="token punctuation">.</span>xhtml</code>.</p>
+        <p>Connectez le bouton avec la méthode <code
+                class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">updateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            avec l'événement <code class="language-javascript">onclick</code>.</p>
+        <p>Complétez cette méthode pour déterminer l'heure courante et la passer à <code
+                class="language-javascript">model<span class="token punctuation">.</span><span class="token function">samPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+        </p>
+        <p>Complétez la partie de <code
+                class="language-javascript">model<span class="token punctuation">.</span><span class="token function">samPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            pour mettre à jour <code
+                class="language-javascript">model<span class="token punctuation">.</span>time<span class="token punctuation">.</span>value</code>.
+        </p>
+        <p>À ce stade l'heure courante devrait s'afficher sur l'interface !</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 1.3 – Bouton "Démarrer"</h3>
+        <p>L'appui sur le bouton "Démarrer" aura les effets suivants :</p>
+        <ul>
+            <li class="first">appel de la méthode <code
+                    class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">startTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                ;</li>
+            <li>cette méthode enclenchera l'appel récurrent de <code
+                    class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">updateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                toutes les secondes;</li>
+            <li>la propriété <code class="language-javascript">intervalId</code> recevra la référence du timer enclenché
+                ;</li>
+            <li>la propriété <code class="language-javascript">isOn</code> passera à vrai ;</li>
+            <li class="last">Le bouton changera de "Démarrer" à "Arrêter".</li>
+        </ul>
+        <p>Le défilement de l'heure devrait avoir démarré !</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 1.4 – Bouton "Arrêter"</h3>
+        <p>Arrêt de l'affichage récurrent de l'heure.</p>
+        <p>À vous de jouer !</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Étape 2 – Manipulation des alarmes</h2>
+        <p>L'utilisateur pourra ajouter autant de lignes alarme qu'il le souhaite.</p>
+        <p>Chaque nouvelle alarme est préréglée à la minute supérieure pour pouvoir être enclenchée rapidemnent
+            en cochant la case en début de ligne.</p>
+        <p>Un bouton "Enlever cette alarme" désactive une alarme enclenchée et supprime la ligne de l'interface.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 2.1 – Ajouter une ligne alarme</h3>
+        <p>Intégrez le bouton "Ajouter une alarme" dans <code
+                class="language-javascript">view<span class="token punctuation">.</span><span class="token function">alarmsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+            Un clic dessus lancera la fonction
+            <code
+                class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">addAlarm</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+        </p>
+        <p>L'ajout d'une ligne alarme requiert les étapes suivantes :</p>
+        <ul>
+            <li class="first">Ajouter dans le tableau <code
+                    class="language-javascript">model<span class="token punctuation">.</span>alarms<span class="token punctuation">.</span>values</code>
+                un objet alarme avec ses propriétés suivantes :
+                <div>
+                    <div class="code-toolbar">
+                        <pre class="prettyprint language-javascript"
+                            tabindex="0"><code class="language-javascript"><span class="token keyword"><span class="kwd">const</span></span><span class="pln"> newAlarm </span><span class="token operator"><span class="pun">=</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">{</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">time</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token punctuation"><span class="pun">[</span></span><span class="pln">hh</span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">mm1</span><span class="token punctuation"><span class="pun">,</span></span><span class="token string"><span class="str">'00'</span></span><span class="token punctuation"><span class="pun">]</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">message</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token string"><span class="str">''</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token literal-property property"><span class="pln">timeoutId</span></span><span class="token operator"><span class="pun">:</span></span><span class="pln"> </span><span class="token keyword"><span class="kwd">null</span></span><span class="token punctuation"><span class="pun">,</span></span><span class="pln">
+</span><span class="token punctuation"><span class="pun">}</span></span><span class="token punctuation"><span class="pun">;</span></span></code></pre>
+
+                    </div>
+                </div>
+                où <code class="language-javascript">hh</code> et <code class="language-javascript">mm1</code>
+                représente l'heure du modèle et les minutes + 1 minute. <br> (Il est recommandé
+                de demander à un objet <code class="language-javascript">Date</code> le soin de calculer l'ajout de la
+                minute supplémentaire dans le
+                cas où le nombre de minutes serait égal à 59...)
+            </li>
+            <li class="last">Pour chaque alarme du modèle, afficher dans <code
+                    class="language-javascript">view<span class="token punctuation">.</span><span class="token function">alarmsUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+                une ligne d'alarme.
+                <ul>
+                    <li class="first">remplir les options des heures avec des valeurs de <code
+                            class="language-javascript"><span class="token string">'00'</span></code> à <code
+                            class="language-javascript"><span class="token string">'23'</span></code> et
+                        des minutes de <code class="language-javascript"><span class="token string">'00'</span></code> à
+                        <code class="language-javascript"><span class="token string">'59'</span></code>.
+                    </li>
+                    <li class="last">l'horaire de l'alarme est affiché en sélectionnant les options (<code
+                            class="languagehttparkup language-javascript"><span class="token operator">&lt;</span>option selected<span class="token operator">=</span><span class="token string">"selected"</span> <span class="token operator">...</span><span class="token operator">&gt;</span></code>)
+                        correspondantes. </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 2.2 – Connecter les actions correspondantes</h3>
+        <p>La case à cocher, les champs de sélection, le champ texte et le bouton devront réagir à des événements
+            adaptés pour
+            appeler les actions correspondantes.</p>
+        <p>Ainsi le changement des heures ou minutes de l'alarme, ou de sa description déclenchera une action afin
+            de répercuter ce changement dans l'alarme correspondante dans le modèle.</p>
+        <p>Il est conseillé d'envoyer aux actions l'indice de la ligne d'alarme (<code
+                class="language-javascript">index</code>) afin de
+            savoir quelle est l'alarme qui doit être modifiée.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 2.3 – Activation et désactivation d'une alarme</h3>
+        <p>Une alarme est activée par un clic sur la case à cocher en début de ligne qui appellera <code
+                class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">setAlarm</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+        </p>
+        <p>C'est cette fonction qui fera appel à <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            afin de programmer le déclenchement
+            de <code
+                class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">fireAlarm</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            dans un délais à calculer.</p>
+        <p>Notez que si la case est décochée ou que la ligne est supprimée par l'appui sur le bouton "Enlever cette
+            alarme",
+            alors l'alarme correspondante devra être désactivée (<code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">clearTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>).
+        </p>
+        <p>Notez aussi que si une alarme est activitée, ses champs d'éditions sont grisés afin d'empêcher leur
+            modification.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Étape 2.4 – Déclenchement d'une alarme</h3>
+        <p>Une fois le temps écoulé, le timer appelera la fonction <code
+                class="language-javascript">actions<span class="token punctuation">.</span><span class="token function">fireAlarm</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+        </p>
+        <p>Une boîte de dialogue <code
+                class="language-javascript">window<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            sera appelée et affichera l'heure prévue de l'alarme et
+            sa description.</p>
+        <p>Une fois qu'une alarme se soit déclenchée, vous veillerez à décocher la case de la ligne correspondante.</p>
+    </div>
+</body>
+
+</html>

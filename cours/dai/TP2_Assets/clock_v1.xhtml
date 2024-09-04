@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Horloge</title>
+  <link rel="stylesheet" href="clock.css" />
+</head>
+
+<body>
+  <section id="time">   Gestion de l'heure  </section>
+  <section id="alarms"> Gestion des alarmes </section>
+
+  <!-- À déplacer vers les fonctions de view ! -->
+  <section>
+    <time>00:00:00</time>
+    <div>
+      <button class="time">Heure courante</button>
+      <button class="time">Démarrer / Stop</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="alarmes">
+      <div class="alarme">
+        <input type="checkbox" />
+        <select>
+          <option value="00">00</option>
+          <option value="23">23</option>
+        </select>
+        <select>
+          <option value="00">00</option>
+          <option value="59">59</option>
+        </select>
+        <input type="text" placeholder="Description de l'alarme" />
+        <button class="enlever">Enlever cette alarme</button>
+      </div>
+    </div>
+    <button class="ajouter">Ajouter une alarme</button>
+  </section>
+
+  <script type="text/javascript" src="clock_v1.js"></script>
+
+</body>
+
+</html>

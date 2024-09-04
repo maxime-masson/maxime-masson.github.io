@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Todo List</title>
+</head>
+
+<body>
+  <div id="app">
+    <style type="text/css">
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+    <h2> Todo List </h2>
+    <input id="inputText" type="text" />
+    <button onclick="actions.addItem( {inputField:&apos;inputText&apos;} )">Todo</button>
+    <ul>
+      <li onclick="actions.doneItem({index:0})" class="done">À faire hier</li>
+      <li onclick="actions.doneItem({index:1})">À faire aujourd'hui</li>
+      <li onclick="actions.doneItem({index:2})">À faire demain</li>
+    </ul>
+    <button onclick="actions.removeDoneItems()">Remove done items</button>
+  </div>
+
+  <script type="text/javascript" src="./todo_v4_obfuscated.js"></script>
+</body>
+
+</html>

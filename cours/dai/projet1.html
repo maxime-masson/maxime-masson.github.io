@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Noté – Développement d'un portfolio de cryptos-monnaies</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Projet – Portfolio Cryptos</h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>Votre mission consiste à développer l'interface Web d'un portfolio de
+            cryptomonnaies. Il s'agit d'afficher le montant correspondant à la
+            quantité de cryptomonnaies (bitcoin, ethereum, ...) possédée par
+            l'utilisateur, dans la monnaie cible de son choix (euro, dollar, ...).
+        </p>
+        <p>Pour obtenir la note maximale, votre interface devra se comporter
+            comme la démonstration ci-dessous :</p>
+        <style media="screen">
+            .iframe-container {
+                overflow: hidden;
+                padding-top: 950px;
+                position: relative;
+                height: 670px;
+            }
+
+            .iframe-container iframe {
+                border: 1px solid grey;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 1600px;
+            }
+
+            /* 4x3 Aspect Ratio */
+            .iframe-container-4x3 {
+                _padding-top: 75%;
+            }
+        </style>
+        <div class="iframe-container">
+            <iframe src="./P1_Assets/cryptop.xhtml"></iframe>
+        </div>
+        <p>Vous pouvez voir la démonstration <a href="./P1_Assets/cryptop.xhtml" target="traducteur">dans une page
+                indépendante</a>.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Fonctionnement de l'application</h3>
+        <p>L'utilisateur : </p>
+        <ul>
+            <li class="first">clique dans l'onglet "Cryptos" pour sélectionner les cryptos qui
+                l'intéressent (ou les désélectionner) et qu'on peut filtrer selon
+                leur code/nom ou leur valeur.</li>
+            <li>change leur quantité dans l'onglet "Ajouter" pour les ajouter à
+                son portfolio.</li>
+            <li>clique dans l'onglet "Monnaies cibles" pour sélectionner (ou
+                désélectionner) ses monnaies préférées.</li>
+            <li>change la monnaie cible courante dans l'onglet "Préférences" (il
+                faut mettre les données sur "En ligne").</li>
+            <li>modifie la quantité de ses cryptomonnaies pour connaître la
+                valeur de son portfolio.</li>
+            <li>supprime une crypto de son portfolio en mettant une quantité à
+                nulle.</li>
+            <li class="last">clique sur "Actualiser" pour mettre à jour la valeur de son
+                portfolio (quand des données sont "En ligne").</li>
+        </ul>
+        <p></p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>C'est parti !</h2>
+        <p>Vous partirez d'un canevas de l'application qui sait déjà afficher
+            une version statique de l'interface Web et charger des données locales
+            ou distantes.</p>
+        <p class="language-none">Dans un dossier <code class="language-none">DAI/Projet/</code>,
+            décompressez l'archive <a href="./P1_Assets/CryptoPortfolio.zip"><code
+                    class="language-none">CryptoPortfolio.zip</code></a>.
+            Pour ce projet, vous modifirez les fichiers en gras suivants : </p>
+        <div class="">
+            <div class="code-toolbar">
+                <pre class="prettyprint language-none"
+                    tabindex="0"><code class="language-none"><span class="typ">CryptoPortfolio</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop</span><span class="pun">.</span><span class="pln">xhtml
+</span><span class="pun">├──</span><span class="pln"> cryptop</span><span class="pun">.</span><span class="pln">css
+</span><span class="pun">├──</span><span class="pln"> cryptop__main</span><span class="pun">.</span><span class="pln">js     </span><span class="com"># lancement de l'application et de sandbox</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop__utils</span><span class="pun">.</span><span class="pln">js    </span><span class="com"># éventuelles fonctions utilitaires</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop__config0</span><span class="pun">.</span><span class="pln">js  </span><span class="com"># Config initiale 0</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop__config1</span><span class="pun">.</span><span class="pln">js  </span><span class="com"># Config initiale 1</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop__config2</span><span class="pun">.</span><span class="pln">js  </span><span class="com"># Config initiale 2</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop_actions</span><span class="pun">.</span><span class="pln">js   </span><span class="com"># SAM - Actions</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop_model</span><span class="pun">.</span><span class="pln">js     </span><span class="com"># SAM - Model</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop_state</span><span class="pun">.</span><span class="pln">js     </span><span class="com"># SAM - State</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> cryptop_view</span><span class="pun">.</span><span class="pln">js      </span><span class="com"># SAM - View</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> coinlayer</span><span class="pun">.</span><span class="pln">js                </span><span class="com"># Appels aux fonctions de l'API coinlayer.com</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> coinlayer_utils</span><span class="pun">.</span><span class="pln">js          </span><span class="com"># interfaçage de Coinlayer avec notre application</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> data_coinlayer_list</span><span class="pun">.</span><span class="pln">js      </span><span class="com"># Données locales : liste des cryptos et monnaies</span><span class="pln">
+</span><span class="pun">├──</span><span class="pln"> data_coinlayer_live</span><span class="pun">.</span><span class="pln">js      </span><span class="com"># Données locales : valeur des cryptos</span><span class="pln">
+</span><span class="pun">└──</span><span class="pln"> data_fiat_currencies</span><span class="pun">.</span><span class="pln">js     </span><span class="com"># Données locales : informations sur les monnaies</span></code></pre>
+
+            </div>
+        </div>
+        <p class="indication"><b>Pour info :</b> L'interface a été construite
+            avec <a href="https://getbootstrap.com/docs/4.1/components/badge/">Bootstrap
+                4</a> qui met à disposition un ensemble de classes CSS pour
+            accélérer le développement et obtenir une apparence cohérente.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Évaluation</h2>
+        <p>Seule la présence des fonctionnalités entrera dans l'évaluation de
+            votre projet. La qualité du code ne sera pas prise en compte, sachant
+            qu'un code de piètre qualité vous empêchera très rapidement d'ajouter
+            de nouvelles fonctionnalités...</p>
+        <p class="indication"><b>Attention :</b> Je vous conseille toutefois de
+            résister à la tentation d'intégrer du code que vous n'avez pas
+            développé. Cela se voit facilement quand on a les bons outils et mieux
+            vaut avoir quelques points en moins quand une fonctionnalité manque
+            que de voir sa note divisée par 2, 3, 4, ... en fonction du nombre de
+            projet se partageant le même code...</p>
+        <p>Voici les fonctionnalités qui seront évaluées :</p>
+        <ol>
+            <li><b>Une interface graphique reflétant toutes les données du modèle
+                    :</b>
+                <ul>
+                    <li class="first">vos noms dans les crédits dans les préférences</li>
+                    <li>les badges numériques dans les onglets fidèles aux nombres de
+                        lignes dans les tableaux</li>
+                    <li>l'affichage des informations de filtrage</li>
+                    <li>les lignes de cryptos et de monnaies avec informations et
+                        coloration</li>
+                    <li>le tri des lignes en fonction d'une colonne, en ordre
+                        croissant ou décroissant</li>
+                    <li>le nombre de lignes et la page courante en accord avec la
+                        pagination</li>
+                    <li>pour la pagination, le choix des pages, et les boutons
+                        inactifs</li>
+                    <li>les badges de cryptos et monnaies cibles sélectionnées et
+                        correctement colorées</li>
+                    <li>les lignes de cryptomonnaies dont le montant est fonction du
+                        prix et de la quantité</li>
+                    <li>la coloration en bleu ou rouge des champs en cours d'édition
+                    </li>
+                    <li>la coloration et la disponibilité des boutons "confirmer" et
+                        "annuler"</li>
+                    <li class="last">le total du portolio et sa coloration </li>
+                </ul>
+            </li>
+            <li> <b>Une interface graphique réagissant aux sollicitations de
+                    l'utilisateur :</b>
+                <ul>
+                    <li class="first">modification des informations de filtrage</li>
+                    <li>exactitude des données filtrées</li>
+                    <li>déclenchement du tri des lignes en fontion de la colonne
+                        choisie</li>
+                    <li>sélection des lignes de monnaies et leur impact dans le reste
+                        de l'interface</li>
+                    <li>comportement de la pagination conforme à la démonstration</li>
+                    <li>la réaction à la saisie de nouvelles quantité de
+                        cryptomonnaies</li>
+                    <li>l'effet de la confirmation ou de l'annulation sur les quantiés
+                        et totaux</li>
+                    <li class="last">migration des cryptoshttponnaies d'un onglet à l'autre en
+                        fonction de leur quantité</li>
+                </ul>
+            </li>
+        </ol>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Distinction Affichage/Interaction</h3>
+        <p>Pour chacune des fonctionnalités la distinction sera faite entre la
+            capacité de l'application à afficher une partie de son interface
+            graphique en fonction des données du modèle et sa capacité à réagir
+            aux intéractions de l'utilisateur.</p>
+        <p>Par exemple, des points seront accordés si l'application sait
+            afficher les lignes de monnaies bien qu'un clic dessus n'entraine pas
+            de réactions.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Moyens d'évaluation</h3>
+        <p>En changeant de configuration initiale ou en la modifiant il est
+            possible de déterminer si l'application s'adapte correctement à ces
+            changements.</p>
+        <p>Il vous est déjà mis à disposition 3 configurations initiales
+            disposant l'application dans des états très distincts.</p>
+        <p>Votre application sera certainement testée avec d'autres fichiers de
+            configration pour évaluer sa capacité d'adaptation.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Processus de développement</h2>
+        <p>Il est impératif de comprendre la responsabilité de chaque composant
+            de l'<b>architecture SAM</b> (<i>actions</i>, <i>model</i>,
+            <i>state</i>, <i>view</i>) telle qu'elle a été détaillée en cours et
+            explicitée dans les travaux pratiques.
+        </p>
+        <p>Selon les principes de cette architecture, rappelons que :</p>
+        <ul>
+            <li class="first">L'<b>interface Web</b> déclenche des actions en leur fournissant
+                des informations utiles ;</li>
+            <li>Les <b>actions</b> récoltent et préparent les données à présenter
+                au modèle (<i>model</i>) pour qu'il se modifie en conséquence ;</li>
+            <li>Selon les données présentées, le <b>modèle</b> modifie ses
+                propriétés concernées. Il est responsable de la conservation de la
+                cohérence de ses propriétés. <u>Seul lui y a le droit de les
+                    modifier !</u> (les autres composants peuvent toutefois y accéder
+                en lecture) ;</li>
+            <li>Le composant <b>state</b> (état courant de l'application) dérive
+                du modèle autant de propriétés qui seront nécessaires pour fabriquer
+                l'interface graphique. Ces propriétés sont mises à jour à chaque
+                passage à mesure des modifications du modèle ;</li>
+            <li class="last">L'interface graphique est enfin construite par le composant
+                <b>view</b> pour refléter les informations rassemblées dans
+                <i>model</i> et <i>state</i>.
+            </li>
+        </ul>
+        <p>Le suivi scrupuleux de cette méthode vous garantira une structuration
+            maintenable de votre application.</p>
+        <p class="indication"><b>Conseil :</b> Pour chacune des fonctionnalités
+            de l'application, il faudra d'abord se concentrer sur la création ou
+            la dérivation des données nécessaires à son affichage, avant de
+            s'intéresser aux actions déclenchées par l'interface graphique.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Détail des fonctionnalités</h2>
+        <p>Les détails qui suivent expriment le cahier des charges que vous
+            devrez respecter pour chacune des fonctionnalités. En cas de doute sur
+            une fonctionnalité veuillez vous reporter à la démonstration en haut
+            pour connaître le comportement à reproduire.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Filtrage des monnaies</h3>
+        <p>La prise en charge des informations de filtrage n'est prise en compte
+            que lors de la validation (pas caractère par caractère). Cela
+            correspond à l'événement <code
+                class="language-javascript"><span class="token function">onchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>.
+        </p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Sélection des monnaies</h3>
+        <p>Un clic sur les lignes de monnaie entraîne des impacts sur plusieurs
+            aspects de l'interface : </p>
+        <ul>
+            <li class="first">la ligne se colore en orange quand elle est sélectionnée (ou
+                blanc quand désélectionnée)</li>
+            <li>la cryptomonnaie s'ajoute au tableau de monnaies à ajouter, son
+                badge numérique s'incrémente</li>
+            <li>la monnaie cible sélectionnée s'ajoute à la liste déroulante
+                dans l'encart des préférences.</li>
+            <li>les monnaies sélectionnées (préférées) s'affichent sous forme de
+                badges colorés. </li>
+            <li>les badges numériques indiquent le nombre de monnaies
+                sélectionnées.</li>
+            <li>les lignes sont vertes pour les monnaies actives et oranges pour
+                les autres monnaies sélectionnées.</li>
+            <li class="last">une monnaie verte (active) ne peut pas être désélectionnée
+                directement en cliquant dessus : <ul>
+                    <li class="first">un changement de monnaie cible fait passer la précédente en
+                        orange.</li>
+                    <li class="last">il faut que la quantité d'une cryptomonnaie deviennent
+                        nulle pour repasser en orange. À moins que celle-ci soit en
+                        cours de modification.</li>
+                </ul>
+            </li>
+        </ul>
+        <p></p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Gestion de la pagination</h3>
+        <p>Pour un onglet, le nombre de pages dépend du nombre de lignes par
+            page et du nombre de monnaies disponibles.</p>
+        <p>À cela s'ajoute les considérations suivantes :</p>
+        <ul>
+            <li class="first">Les boutons "Précédent" et "Suivant" sont désactivés si on se
+                trouve sur la première ou la dernière page respectivement.</li>
+            <li class="last">Le choix d'une page n'affiche que les lignes de monnaies
+                correspondantes.</li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Tri des colonnes</h3>
+        <p>Le contenu du tableau peut être trié en cliquant sur les entêtes du
+            tableau.</p>
+        <p>Pour chaque colonne, le tri peut être croissant ou décroissant. Deux
+            clics consécutifs sur la même entête inverse l'ordre de tri. </p>
+        <p>Un clic sur une autre entête rétabli le tri précédent pour cette
+            colonne.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Confirmation du changement des quantités</h3>
+        <p>Le changement d'une quantité nécessite une phase de
+            confirmation/annulation avant de devenir effective.</p>
+        <p>Une quantité négative ou non numérique déclenche un affichage en
+            rouge et désactive la confirmation.</p>
+        <p>L'annulation supprime les modifications des quantités en cours et
+            affiche les quantités effectives précédentes.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Affichage des totaux</h3>
+        <p>Les totaux s'affichent en bleu quand ils prennent en compte les
+            modifications de quantité en cours, et en vert quand ces modifications
+            ont été confirmées.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Procédure de soumission du travail réalisé</h2>
+        <p>Le travail est à remettre le <b>vendredi 16 décembre à 23:59</b> au
+            plus tard.</p>
+        <p>Pour préparer la soumission de votre travail, dupliquez le code
+            source de votre application dans un dossier dont le nom sera
+            <code class="language-javascript">ProjetDAI_NOM_Prénom</code> (ou
+            <code class="language-javascript">ProjetDAI_NOM1_Prénom1_NOM2_Prénom2</code> si vous êtes en
+            binôme) que vous compresserez au format <code
+                class="language-javascript"><span class="token punctuation">.</span>zip</code> de manière à
+            obtenir une archive <code
+                class="language-javascript">ProjetDAI_NOM_Prénom<span class="token punctuation">.</span>zip</code> ou
+            <code
+                class="language-javascript">ProjetDAI_NOM1_Prénom1_NOM2_Prénom2<span class="token punctuation">.</span>zip</code>.
+        </p>
+        <p>Vous téléverserez cette archive sur l'<a href="https://elearn.univ-pau.fr/mod/assign/view.php?id=466667">ENT
+                Elearn</a> (une seule soumission par binôme).</p>
+        <p class="indication"><b>Attention :</b> Il est de votre responsabilité
+            de vous assurer que votre application fonctionne parfaitement une fois
+            l'archive décompressée ! Vérifiez-le avant de soumettre cette archive.
+        </p>
+        <p>Il est possible de soumettre plusieurs fois l'archive. Seule la
+            dernière sera prise en compte.</p>
+    </div>
+</body>
+
+</html>

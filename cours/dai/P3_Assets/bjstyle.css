@@ -1,0 +1,189 @@
+body {
+  font-family: "Ubuntu", "Ubuntu Beta", "Bitstream Vera Sans", DejaVu Sans,
+    Tahoma, sans-serif;
+  font-size: 100%;
+}
+article .author {
+  font-weight: bold;
+  color: grey;
+  padding: 10px;
+}
+article h1 {
+  font-weight: bold;
+  font-size: 250%;
+  color: #c6093b;
+  text-align: center;
+  line-height: 100%;
+}
+article h2 {
+  font-weight: bold;
+  font-size: 200%;
+  color: #e95325;
+  border-bottom: 3px solid #e95325;
+}
+article h3 {
+  font-weight: bold;
+  font-size: 180%;
+  color: #f39539;
+}
+article h4 {
+  font-weight: bold;
+  font-size: 150%;
+  color: #946434;
+}
+
+article dt {
+  font-weight: bold;
+}
+article .experiment {
+  border: 2px dashed #c6093b;
+  padding: 20px;
+}
+
+article .experiment b {
+  font-size: 120%;
+}
+
+article .astuce {
+  padding: 10px;
+  background-color: lightgreen;
+}
+article .indication {
+  padding: 10px;
+  background-color: lightgoldenrodyellow;
+}
+
+nav.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+nav.navbar + article {
+  margin-top: 30px;
+}
+
+/*--------------------------------------------------*/
+
+/*
+_a {
+  text-decoration: none;
+}
+_a:link {
+  color: rgb(119, 120, 43);
+}
+_a:visited {
+  color: rgb(92, 92, 33);
+}
+_a:hover {
+  background-color: rgb(208, 229, 178);
+}
+_.link_box {
+  border: 1px dotted rgb(185, 132, 113);
+  font-size: 70%;
+  color: rgb(119, 120, 43);
+  background-color: rgb(255, 245, 187);
+  text-decoration: none;
+}
+_ul {
+  margin: 0pt;
+  padding: 0pt;
+  list-style-type: none;
+}
+_ul > li {
+  margin: 0em 2em;
+  background-image: url(Icones/bullet2.png);
+  background-repeat: no-repeat;
+  background-position: 0pt 0.25em;
+  padding-left: 1.5em;
+}
+_ol {
+  margin: 0pt;
+  padding: 0pt 0pt 0pt 1.5em;
+  list-style-type: decimal;
+}
+_ol > li {
+  margin: 0em 2em;
+}
+_pre.code {
+  border: 1px solid rgb(185, 132, 113);
+  margin: 0em 3em;
+  padding: 10px;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  color: rgb(3, 3, 3);
+  font-family: courier, "courier new", monospace;
+}
+_.nom {
+  color: rgb(67, 111, 64);
+}
+_.title {
+  font-style: italic;
+  color: rgb(149, 113, 16);
+  font-weight: bold;
+}
+_.author {
+  font-family: Georgia, Serif, "Times New Roman", Times;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(102, 102, 102);
+}
+_.code {
+  font-family: "Courier New", Courier, mono;
+}
+_.caption {
+  font-weight: bold;
+  text-align: center;
+}
+_.underlined {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+_#content {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  right: 260px;
+}
+_#screen_div {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  float: left;
+}
+_#en_bref {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px;
+  background-attachment: fixed;
+  background-image: url(Images/bg1.png);
+  position: absolute;
+  top: 290px;
+  width: 190px;
+  right: 30px;
+}
+_.spacer {
+  clear: both;
+}
+_.figure_right {
+  float: right;
+}
+_.announce {
+  text-align: center;
+  font-weight: bold;
+  background: rgb(128, 0, 0);
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  font-size: large;
+  padding: 15px;
+}
+_.announce a {
+  color: #C6CA4C;
+  font-size: x-large;
+}
+_.announce a:hover {
+  color: #FF9431;
+  background: rgb(128, 0, 0);
+  font-size: x-large;
+}
+*/

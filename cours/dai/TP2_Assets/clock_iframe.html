@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Horloge</title>
+  <link rel="stylesheet" href="./clock.css">
+</head>
+
+<body>
+  <section id="time">
+    <time>01:23:45</time>
+    <div>
+      <button class="time" onclick="actions.updateTime()">Heure courante</button>
+      <button class="time" onclick="actions.startTime()">Démarrer</button>
+    </div>
+  </section>
+  <section id="alarms">
+    <div class="alarmes">
+
+    </div>
+    <button class="ajouter" onclick="actions.addAlarm()">Ajouter une alarme</button>
+  </section>
+
+  <script type="text/javascript" src="./clock_obfuscated.js"></script>
+
+
+
+</body>
+
+</html>

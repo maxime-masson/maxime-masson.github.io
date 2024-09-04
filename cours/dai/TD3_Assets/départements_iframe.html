@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Affichage des départements français</title>
+  <meta charset="UTF-8" />
+  <!-- <link rel="stylesheet" type="text/css" href="./monstyle.css" /> -->
+  <!-- Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./bootstrap.min.css" />
+  <script src="./jquery.min(1).js"></script>
+  <script src="./popper.min.js"></script>
+  <script src="./bootstrap.min.js"></script>
+  <style>
+    td {
+      padding: 0 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mise en page avec bootstrap 4
+  https://getbootstrap.com/docs/4.1/components/input-group/ -->
+  <div class="container mt-3">
+    <div class="input-group mt-3 mb-3">
+      <form>
+        <h2>Liste des départements</h2>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Mode d'affichage</span>
+          </div>
+          <select onchange="actions.changeMode({e:event})" class="custom-select">
+            <option value="asList_for" selected="selected">Liste (for)</option>
+            <option value="asList_map">Liste (map)</option>
+            <option value="asTable_for">Tableau (for)</option>
+            <option value="asTable_map">Tableau (map)</option>
+            <option value="asTags">Étiquettes</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Filtre</span>
+          </div>
+          <input type="text" onkeyup="actions.filter({e: event})" class="form-control" />
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <input type="checkbox" onchange="actions.includesRegions({e: event})" />
+            </div>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text">Inclure régions</span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="app">
+      <p>101 occurences</p>
+
+      <ul>
+        <li><b>Ain</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Aisne</b> (Hauts-de-France)</li>
+        <li><b>Allier</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Alpes-de-Haute-Provence</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Hautes-Alpes</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Alpes-Maritimes</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Ardèche</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Ardennes</b> (Grand Est)</li>
+        <li><b>Ariège</b> (Occitanie)</li>
+        <li><b>Aube</b> (Grand Est)</li>
+        <li><b>Aude</b> (Occitanie)</li>
+        <li><b>Aveyron</b> (Occitanie)</li>
+        <li><b>Bouches-du-Rhône</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Calvados</b> (Normandie)</li>
+        <li><b>Cantal</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Charente</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Charente-Maritime</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Cher</b> (Centre-Val de Loire)</li>
+        <li><b>Corrèze</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Corse-du-Sud</b> (Corse)</li>
+        <li><b>Haute-Corse</b> (Corse)</li>
+        <li><b>Côte-d'Or</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Côtes-d'Armor</b> (Bretagne)</li>
+        <li><b>Creuse</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Dordogne</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Doubs</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Drôme</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Eure</b> (Normandie)</li>
+        <li><b>Eure-et-Loir</b> (Centre-Val de Loire)</li>
+        <li><b>Finistère</b> (Bretagne)</li>
+        <li><b>Gard</b> (Occitanie)</li>
+        <li><b>Haute-Garonne</b> (Occitanie)</li>
+        <li><b>Gers</b> (Occitanie)</li>
+        <li><b>Gironde</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Hérault</b> (Occitanie)</li>
+        <li><b>Ille-et-Vilaine</b> (Bretagne)</li>
+        <li><b>Indre</b> (Centre-Val de Loire)</li>
+        <li><b>Indre-et-Loire</b> (Centre-Val de Loire)</li>
+        <li><b>Isère</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Jura</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Landes</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Loir-et-Cher</b> (Centre-Val de Loire)</li>
+        <li><b>Loire</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Haute-Loire</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Loire-Atlantique</b> (Pays de la Loire)</li>
+        <li><b>Loiret</b> (Centre-Val de Loire)</li>
+        <li><b>Lot</b> (Occitanie)</li>
+        <li><b>Lot-et-Garonne</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Lozère</b> (Occitanie)</li>
+        <li><b>Maine-et-Loire</b> (Pays de la Loire)</li>
+        <li><b>Manche</b> (Normandie)</li>
+        <li><b>Marne</b> (Grand Est)</li>
+        <li><b>Haute-Marne</b> (Grand Est)</li>
+        <li><b>Mayenne</b> (Pays de la Loire)</li>
+        <li><b>Meurthe-et-Moselle</b> (Grand Est)</li>
+        <li><b>Meuse</b> (Grand Est)</li>
+        <li><b>Morbihan</b> (Bretagne)</li>
+        <li><b>Moselle</b> (Grand Est)</li>
+        <li><b>Nièvre</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Nord</b> (Hauts-de-France)</li>
+        <li><b>Oise</b> (Hauts-de-France)</li>
+        <li><b>Orne</b> (Normandie)</li>
+        <li><b>Pas-de-Calais</b> (Hauts-de-France)</li>
+        <li><b>Puy-de-Dôme</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Pyrénées-Atlantiques</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Hautes-Pyrénées</b> (Occitanie)</li>
+        <li><b>Pyrénées-Orientales</b> (Occitanie)</li>
+        <li><b>Bas-Rhin</b> (Grand Est)</li>
+        <li><b>Haut-Rhin</b> (Grand Est)</li>
+        <li><b>Rhône</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Haute-Saône</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Saône-et-Loire</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Sarthe</b> (Pays de la Loire)</li>
+        <li><b>Savoie</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Haute-Savoie</b> (Auvergne-Rhône-Alpes)</li>
+        <li><b>Paris</b> (Île-de-France)</li>
+        <li><b>Seine-Maritime</b> (Normandie)</li>
+        <li><b>Seine-et-Marne</b> (Île-de-France)</li>
+        <li><b>Yvelines</b> (Île-de-France)</li>
+        <li><b>Deux-Sèvres</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Somme</b> (Hauts-de-France)</li>
+        <li><b>Tarn</b> (Occitanie)</li>
+        <li><b>Tarn-et-Garonne</b> (Occitanie)</li>
+        <li><b>Var</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Vaucluse</b> (Provence-Alpes-Côte d'Azur)</li>
+        <li><b>Vendée</b> (Pays de la Loire)</li>
+        <li><b>Vienne</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Haute-Vienne</b> (Nouvelle-Aquitaine)</li>
+        <li><b>Vosges</b> (Grand Est)</li>
+        <li><b>Yonne</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Territoire de Belfort</b> (Bourgogne-Franche-Comté)</li>
+        <li><b>Essonne</b> (Île-de-France)</li>
+        <li><b>Hauts-de-Seine</b> (Île-de-France)</li>
+        <li><b>Seine-Saint-Denis</b> (Île-de-France)</li>
+        <li><b>Val-de-Marne</b> (Île-de-France)</li>
+        <li><b>Val-d'Oise</b> (Île-de-France)</li>
+        <li><b>Guadeloupe</b> (Guadeloupe)</li>
+        <li><b>Martinique</b> (Martinique)</li>
+        <li><b>Guyane</b> (Guyane)</li>
+        <li><b>La Réunion</b> (La Réunion)</li>
+        <li><b>Mayotte</b> (Mayotte)</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Inclusion des scripts -->
+  <script type="text/javascript" src="./départements_données.js"></script>
+  <script type="text/javascript" src="./départements_affichage_obfuscated.js"></script>
+</body>
+
+</html>

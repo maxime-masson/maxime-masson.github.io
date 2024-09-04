@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Noté – Application de commande en ligne de fruits et légumes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/unispace');
+
+        body {
+            font-family: "Open Sans", sans-serif !important;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Unispace', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        a {
+            /* text-decoration: none; */
+            color: #117101;
+            /* font-weight: bold;
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            transition: background-color 0.3s; */
+        }
+
+        /* a:hover {
+            background-color: #117101;
+            color: #fff;
+        } */
+
+        /* .code-toolbar {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+
+
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+        .hljs {
+            background: #1E1E1E;
+            color: #DCDCDC;
+        }
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta .hljs-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta .hljs-keyword,
+
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+  font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: #144212;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background-color: #600;
+            display: inline-block;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Projet – Application de commande en ligne
+            <br>de fruits et légumes
+        </h1>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Introduction</h2>
+        <p>Votre mission consiste à développer une application Web de commande de fruits et légumes.</p>
+        <p>Pour obtenir la note maximale, votre interface devra se comporter comme la démonstration
+            en cliquant sur la capture d'écran ci-dessous.</p>
+        <div class="center">
+            <a href="./P2_Assets/Commande de fruits et légumes.xhtml" style="margin: auto; text-align: center;">
+                <div class="img-wrap caption">
+                    <div class="img-wrap caption"><img class="caption" title="Application de démonstration"
+                            src="./P2_Assets/capture.png" alt=""><br><span>Application de démonstration</span>
+                    </div>
+            </a>
+        </div>
+
+
+        <p>Pour cela, vous modifierez et complèterez une maquette qui vous est fournie.</p>
+        <!-- --------------------------------------------------------------- -->
+        <h3>Fonctionnement de l'application</h3>
+        <p>L'application permet de :</p>
+        <ul>
+            <li class="first">filtrer les articles selon leur catégories et origines ;</li>
+            <li>rechercher les articles incluant une chaîne de caractère ;</li>
+            <li>afficher le nombre d'articles filtrés et les filtres associés ;</li>
+            <li>visionner les articles sous forme d'une grille ou d'une liste ;</li>
+            <li>de définir le nombre de lignes par page ;</li>
+            <li>de passer d'une page à l'autre ;</li>
+            <li>de saisir la quantité souhaité d'un article ;</li>
+            <li>de l'ajouter au panier ;</li>
+            <li>de modifier la quantité d'un article déjà dans le panier ;</li>
+            <li>de régler des paramètres</li>
+            <li class="last">d'afficher le panier montrant :<ul>
+                    <li class="first">le récapitulatif de la commande ;</li>
+                    <li>le montant total par article ;</li>
+                    <li class="last">le montant total de la commande ;</li>
+                </ul> et dont on peut : <ul>
+                    <li class="first">modifier la quantité de chaque article ;</li>
+                    <li>sélectionner des lignes pour les effacer ;</li>
+                    <li class="last">envoyer le récapitulatif sous forme de mail.</li>
+                </ul>
+            </li>
+        </ul>
+        <!-- --------------------------------------------------------------- -->
+        <h2>C'est parti !</h2>
+        <p>Vous partirez d'un canevas conséquent de l'application (~1100 lignes) <a
+                href="./P2_Assets/Projet_Commande.zip">Projet_Commande.zip</a> qui
+            fournit la totalité de l'interface en HTML et CSS. De plus, la mécanique interne,
+            structurée autour de l'<a href="/cours/dai/c4.html">
+                architecture SAM</a> gère déjà une partie de cette interface.</p>
+
+        <p>Dans votre dossier <code
+                class="language-javascript"><span class="token constant">L2</span><span class="token operator">/</span><span class="token constant">DAI</span></code>,
+            décompressez l'archive
+            <code class="language-javascript">Projet_Commande<span class="token punctuation">.</span>zip</code>.
+            Seul le fichier <code class="language-javascript">commande<span class="token punctuation">.</span>js</code>
+            est à modifier.
+        </p>
+
+        <div>
+            <div class="code-toolbar">
+                <pre class="prettyprint language-none"
+                    tabindex="0"><code class="language-none"><span class="typ">Projet_Commande</span><span class="pln">
+  </span><span class="pun">├──</span><span class="pln"> commande</span><span class="pun">.</span><span class="pln">xhtml
+  </span><span class="pun">├──</span><span class="pln"> commande</span><span class="pun">.</span><span class="pln">js     </span><span class="com"># seul fichier à modifier</span><span class="pln">
+  </span><span class="pun">├──</span><span class="pln"> commande</span><span class="pun">.</span><span class="pln">css
+  </span><span class="pun">├──</span><span class="pln"> donnees</span><span class="pun">/</span><span class="pln">
+  </span><span class="pun">│</span><span class="pln">   </span><span class="pun">├──</span><span class="pln"> artiPart1</span><span class="pun">.</span><span class="pln">js
+  </span><span class="pun">│</span><span class="pln">   </span><span class="pun">└──</span><span class="pln"> artiPart2</span><span class="pun">.</span><span class="pln">js
+  </span><span class="pun">└──</span><span class="pln"> images</span><span class="pun">/</span><span class="pln">         </span><span class="com"># contient les images des articles</span></code></pre>
+
+            </div>
+        </div>
+
+        <p class="indication"><b>Pour info :</b> L'interface a été construite avec <a
+                href="https://www.beercss.com/">Beercss</a> qui met à disposition un ensemble de
+            classes CSS pour accélérer le développement et obtenir une apparence cohérente.
+            <br><br> Il semble toutefois malheureusement que l'affichage diffère un peu d'un
+            navigateur à l'autre. Pour ce projet, l'apparence de référence sera celle donnée
+            par <b>Firefox</b>.
+
+
+        </p>
+        <!-- --------------------------------------------------------------- -->
+        <h2>Évaluation</h2>
+        <p>Seule la présence des fonctionnalités entrera dans l'évaluation de votre
+            projet. La qualité du code ne sera pas prise en compte, sachant qu'un code de
+            piètre qualité vous empêchera très rapidement d'ajouter de nouvelles
+            fonctionnalités...</p>
+
+        <p class="indication"><b>Attention :</b> Je vous conseille toutefois de résister à
+            la tentation d'intégrer du code que vous n'avez pas développé. Cela se voit
+            facilement quand on a les bons outils et mieux vaut avoir quelques points en moins
+            quand une fonctionnalité manque que de voir sa note divisée par 2, 3, 4, ... en
+            fonction du nombre de projet se partageant le même code...</p>
+
+        <p>Voici les fonctionnalités qui seront évaluées :</p>
+
+        <ol>
+            <li><b>Une interface graphique reflétant toutes les données du modèle :</b>
+                <ul>
+                    <li class="first">votre(vos) nom(s) depuis le bouton utilisateur</li>
+                    <li> <b>Filtres :</b>
+                        <ul>
+                            <li class="first">toutes les catégories et origines présentes dans les articles</li>
+                            <li>les checkbox "Toutes" reflétant l'état d'activation des filtres</li>
+                            <li>le nombre d'articles pour chaque filtre et "Toutes"</li>
+                            <li>la recherche globale ou non</li>
+                            <li>le texte à rechercher</li>
+                            <li>le nombre d'articles suite à l'application des filtres</li>
+                            <li class="last">les filtres et recherche actifs</li>
+                        </ul>
+                    </li>
+
+                    <li><b>Articles sur grille ou en liste :</b>
+                        <ul>
+                            <li class="first">les informations de chaque articles (image, nom, origine, prix unitaire,
+                                quantité)</li>
+                            <li>l'image présente ou non en fonction du paramètre "Articles avec images"</li>
+                            <li>le bon formatage de la boite de saisie de la quantité et du bouton Ajout/Édition</li>
+                            <li class="last"><b>Pagination :</b>
+                                <ul>
+                                    <li class="first">un bouton pour chaque page</li>
+                                    <li>le bon formatage des boutons inactifs</li>
+                                    <li class="last">le nombre de lignes par page</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><b>Panier :</b>
+                        <ul>
+                            <li class="first">les articles mis dans le panier et les informations correspondantes</li>
+                            <li>le calcul des totaux</li>
+                            <li>l'état d'activation des boutons de suppression et d'envoi de la commande</li>
+                            <li class="last">le tri des article selon la colonne précisée dans le modèle</li>
+                        </ul>
+                    </li>
+                    <li class="last"><b>Courrier de commande :</b>
+                        <ul>
+                            <li class="first">le(s) nom(s) du(des) client(s)</li>
+                            <li>le total de la commande</li>
+                            <li class="last">le nom des articles et leur quantité</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><b>Une interface graphique réagissant aux sollicitations de l'utilisateur :</b>
+                <ul>
+                    <li class="first">modification des informations de filtrage</li>
+                    <li>exactitude des données filtrées</li>
+                    <li>saisie ou édition de la quantité des articles</li>
+                    <li>ajout d'un article au panier</li>
+                    <li>modification des quantités dans le panier et eventuellement suppression si nulles</li>
+                    <li>suppression des lignes sélectionnées</li>
+                    <li>tri des articles selon la colonne cliquée</li>
+                    <li class="last">comportement de la pagination conforme à la démonstration</li>
+                </ul>
+            </li>
+        </ol>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Distinction Affichage/Interaction</h3>
+        <p>Pour chacune des fonctionnalités la distinction sera faite entre la capacité de
+            l'application à afficher une partie de son interface graphique en fonction des
+            données du modèle et sa capacité à réagir aux intéractions de l'utilisateur.</p>
+
+        <p>Par exemples, des points seront accordés si les filtres sont bien affichés mais
+            que leur sélection n'entraine pas le filtrage des articles.</p>
+
+        <h3>Moyens d'évaluation</h3>
+
+        <p>En changeant de configuration initiale ou en la modifiant il est possible de
+            déterminer si l'application s'adapte correctement à ces changements.</p>
+
+        <p>Votre application sera certainement testée avec d'autres fichiers de
+            configration pour évaluer sa capacité d'adaptation et l'absence de codage en dur.
+            <b>Testez vous-même la robustesse de votre code en modifiant les fichiers d'entrée</b>
+            (par exemple : ajouter des "oranges" de catégorie "agrumes" provenant du
+            "Sénégal", ou autre...)
+        </p>
+
+        <h2>Processus de développement</h2>
+        <p>Il est impératif de comprendre la responsabilité de chaque composant
+            de l'<b>architecture SAM</b> (<i>actions</i>, <i>model</i>,
+            <i>state</i>, <i>view</i>) telle qu'elle a été détaillée en cours et
+            explicitée dans les travaux pratiques.
+        </p>
+        <p>Selon les principes de cette architecture, rappelons que :</p>
+        <ul>
+            <li class="first">L'<b>interface Web</b> déclenche des actions en leur fournissant
+                des informations utiles ;</li>
+            <li>Les <b>actions</b> récoltent et préparent les données à présenter
+                au modèle (<i>model</i>) pour qu'il se modifie en conséquence ;</li>
+            <li>Selon les données présentées, le <b>modèle</b> modifie ses
+                propriétés concernées. Il est responsable de la conservation de la
+                cohérence de ses propriétés. <u>Seul lui y a le droit de les
+                    modifier !</u> (les autres composants peuvent toutefois y accéder
+                en lecture) ;</li>
+            <li>Le composant <b>state</b> (état courant de l'application) dérive
+                du modèle autant de propriétés qui seront nécessaires pour fabriquer
+                l'interface graphique. Ces propriétés sont mises à jour à chaque
+                passage à mesure des modifications du modèle ;</li>
+            <li class="last">L'interface graphique est enfin construite par le composant
+                <b>view</b> pour refléter les informations rassemblées dans
+                <i>model</i> et <i>state</i>.
+            </li>
+        </ul>
+        <p>Le suivi scrupuleux de cette méthode vous garantira une structuration
+            maintenable de votre application.</p>
+        <p class="indication"><b>Conseil important :</b> Pour chacune des fonctionnalités
+            de l'application, il faudra d'abord se concentrer sur la création ou la dérivation
+            des données nécessaires à son affichage, avant de s'intéresser aux actions
+            déclenchées par l'interface graphique. <br><br> Autrement dit : <b><u>Une fois
+                    que</u> toute l'interface pourra afficher toutes les informations du modèle
+                <u>alors</u> vous pourrez implémenter les actions.</b>
+        </p>
+
+        <!-- ------------------------------------------------------------------------- -->
+        <h2>Détail des fonctionnalités</h2>
+        <p>Les détails qui suivent expriment le cahier des charges que vous devrez
+            respecter pour chacune des fonctionnalités. En cas de doute sur une fonctionnalité
+            veuillez vous reporter à la démonstration pour connaître le comportement à
+            reproduire.</p>
+
+        <!-- ------------------------------------------------------------------------- -->
+        <h3>Filtres</h3>
+        <p>Les items des filtres sont générés à partir des articles du modèle.</p>
+        <p>Le nombre d'article par item est aussi calculé et affiché.</p>
+        <p>L'item "Toutes" n'est présent que dans l'objet <code class="language-javascript">samState</code>
+            et sa valeur est dérivée des autres items : vrai s'ils sont tous à vrai, faut sinon.</p>
+        <p>Un clic dessus active ou désactive tous les items.</p>
+        <p>Quand la recherche "globale" est activée, elle ne cherche pas dans les articles
+            filtrés mais tous les articles du modèle.</p>
+        <!-- ------------------------------------------------------------------------- -->
+        <h3>Affichage de la grille ou liste d'articles</h3>
+        <p>Dans un premier temps, concentrez-vous sur l'affichage de tous les articles, puis
+            tous les articles filtrés.</p>
+        <p>Dans un deuxième temps, prenez en compte les informations de la pagination
+            pour n'afficher que les articles visibles sur la page courante !</p>
+        <!-- ------------------------------------------------------------------------- -->
+        <h3>Ajout d'un article au panier</h3>
+        <p>On distingue trois état pour la quantité d'un article : </p>
+        <ul>
+            <li class="first">Quantité nulle : rien d'inscrit, fond orange, bouton "+" désactivé</li>
+            <li>Quantité non nulle (mais pas dans le panier) : fond orange, bouton "+" activé</li>
+            <li class="last">Quantité non nulle et dans le panier (<code
+                    class="language-javascript">model<span class="token punctuation">.</span>articles<span class="token punctuation">.</span>values<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>inCart<span class="token operator">===</span><span class="token boolean">true</span></code>)
+                : fond gris et bouton "crayon" activé</li>
+        </ul>
+        <h3>Gestion de la pagination</h3>
+        <p>Les informations nécessaires à l'affichage des boutons de pagination sont déjà
+            calculés dans la fonction <code
+                class="language-javascript">samState<span class="token punctuation">.</span><span class="token function">updatePagination</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            et disponibles
+            dans l'objet <code
+                class="language-javascript">samState<span class="token punctuation">.</span>state<span class="token punctuation">.</span>pagination</code>.
+        </p>
+        <p>Les calculs prennent en compte un éventuel changement de la taille de la
+            fenêtre du navigtateur pour augmenter le nombre d'articles à afficher par page afin que
+            toutes les lignes soient complètes.</p>
+        <p>Vous n'aurez donc qu'à vous concentrer sur l'affichage des boutons.</p>
+        <p>Tenez aussi compte des considérations suivantes :</p>
+        <ul>
+            <li class="first">Les boutons "Précédent" et "Suivant" sont désactivés si on se trouve sur la
+                première ou la dernière page respectivement.</li>
+            <li class="last">Le choix d'une page n'affiche que les articles correspondants.</li>
+        </ul>
+
+        <!-- --------------------------------------------------------------- -->
+        <h3>Tri du panier</h3>
+        <p>Le contenu du panier peut être trié en cliquant sur les entêtes du
+            tableau.</p>
+        <p>Pour chaque colonne, le tri peut être croissant ou décroissant. Deux
+            clics consécutifs sur la même entête inverse l'ordre de tri. </p>
+        <p>Un clic sur une autre entête rétabli le tri précédent pour cette
+            colonne.</p>
+
+        <!-- --------------------------------------------------------------- -->
+        <h2>Procédure de soumission du travail réalisé</h2>
+        <p>Le travail est à remettre le <b>vendredi 17 décembre à 23:59</b> au
+            plus tard.</p>
+        <p>Pour préparer la soumission de votre travail, dupliquez le code
+            source de votre application dans un dossier dont le nom sera
+            <code class="language-javascript">ProjetDAI_NOM_Prénom</code> (ou
+            <code class="language-javascript">ProjetDAI_NOM1_Prénom1_NOM2_Prénom2</code> si vous êtes en
+            binôme) que vous compresserez au format <code
+                class="language-javascript"><span class="token punctuation">.</span>zip</code> de manière à
+            obtenir une archive <code
+                class="language-javascript">ProjetDAI_NOM_Prénom<span class="token punctuation">.</span>zip</code> ou
+            <code
+                class="language-javascript">ProjetDAI_NOM1_Prénom1_NOM2_Prénom2<span class="token punctuation">.</span>zip</code>.
+        </p>
+        <p>Vous téléverserez cette archive sur l'<a href="https://elearn.univ-pau.fr/mod/assign/view.php?id=386511">ENT
+                Elearn</a> (une seule soumission par binôme).</p>
+        <p class="indication"><b>Attention :</b> Il est de votre responsabilité
+            de vous assurer que votre application fonctionne parfaitement une fois
+            l'archive décompréssée ! Vérifiez-le avant de soumettre cette archive.
+        </p>
+        <p>Il est possible de soumettre plusieurs fois l'archive. Seule la
+            dernière sera prise en compte.</p>
+    </div>
+</body>
+
+</html>

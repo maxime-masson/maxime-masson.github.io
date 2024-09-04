@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Crypto Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./cryptop.css" />
+</head>
+
+<body>
+    <div id="appId">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-7" />
+                <div class="col-md-5">
+                    <br />
+                    <div class="d-flex justify-content-end">
+                        <div class="input-group">
+                            <div class="input-group-prepend ">
+                                <label class="input-group-text">Config initiale :</label>
+                            </div>
+                            <select class="custom-select" onchange="actions.reinit({e:event})">
+
+                                <option selected="selected">initialModel0</option>
+
+
+                                <option>initialModel1</option>
+
+
+                                <option>initialModel2</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <h1 class="text-center">Portfolio Cryptos</h1>
+            <br />
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="card border-secondary" id="currencies">
+                        <div class="card-header">
+                            <ul class="nav nav-pills card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/cours/dai/P1_Assets/cryptop.xhtml#currencies">
+                                        Cryptos <span class="badge badge-light">19 / 386</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary"
+                                        href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                        onclick="actions.changeTab({tab:&apos;currenciesFiats&apos;})">
+                                        Monnaies cibles
+                                        <span class="badge badge-secondary">10 / 167</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Filtres : </span>
+                                </div>
+                                <input value="coin" id="filterText" type="text" class="form-control"
+                                    placeholder="code ou nom..."
+                                    onchange="actions.updateFilter({e:event, currency:&apos;cryptos&apos;})" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Prix &gt; </span>
+                                </div>
+                                <input id="filterSup" type="number" class="form-control" value="5" min="0"
+                                    onchange="actions.updatePriceFilter({e:event})" />
+                            </div> <br />
+                            <div class="table-responsive">
+                                <table class="col-12 table table-sm table-bordered">
+                                    <thead>
+                                        <th class="align-middle text-center col-2">
+                                            <a href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                onclick="actions.sort({currency:&apos;cryptos&apos;, column:0})">Code</a>
+                                        </th>
+                                        <th class="align-middle text-center col-5">
+                                            <a href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                onclick="actions.sort({currency:&apos;cryptos&apos;, column:1})">Nom</a>
+                                        </th>
+                                        <th class="align-middle text-center col-2">
+                                            <a href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                onclick="actions.sort({currency:&apos;cryptos&apos;, column:2})">Prix</a>
+                                        </th>
+                                        <th class="align-middle text-center col-3">
+                                            <a href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                onclick="actions.sort({currency:&apos;cryptos&apos;, column:3})">Variation</a>
+                                        </th>
+                                    </thead>
+
+                                    <tr class="bg-warning"
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BCH&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BCH.png" />
+                                                BCH </span>
+                                        </td>
+                                        <td><b>Bitcoin Cash / BCC</b></td>
+                                        <td class="text-right"><b>118.59</b></td>
+                                        <td class="text-right">0.867 ↗</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BNB&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BNB.png" />
+                                                BNB </span>
+                                        </td>
+                                        <td><b>Binance Coin</b></td>
+                                        <td class="text-right"><b>331.79</b></td>
+                                        <td class="text-right">-10.479 ↘</td>
+                                    </tr>
+
+
+                                    <tr class="bg-success text-light"
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BTC&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BTC.png" />
+                                                BTC </span>
+                                        </td>
+                                        <td><b>Bitcoin</b></td>
+                                        <td class="text-right"><b>20785.03</b></td>
+                                        <td class="text-right">-285.592 ↘</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BTCZ&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BTCZ.png" />
+                                                BTCZ </span>
+                                        </td>
+                                        <td><b>BitcoinZ</b></td>
+                                        <td class="text-right"><b>21264.28</b></td>
+                                        <td class="text-right">-144.348 ↘</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BTG&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BTG.png" />
+                                                BTG </span>
+                                        </td>
+                                        <td><b>Bitcoin Gold</b></td>
+                                        <td class="text-right"><b>17.62</b></td>
+                                        <td class="text-right">-0.459 ↘</td>
+                                    </tr>
+
+
+                                    <tr class="bg-warning"
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;BTLC&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BTLC.png" />
+                                                BTLC </span>
+                                        </td>
+                                        <td><b>BitLuckCoin</b></td>
+                                        <td class="text-right"><b>9.00</b></td>
+                                        <td class="text-right">-0.061 ↘</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;CLOAK&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./CLOAK.png" />
+                                                CLOAK </span>
+                                        </td>
+                                        <td><b>CloakCoin</b></td>
+                                        <td class="text-right"><b>10.00</b></td>
+                                        <td class="text-right">-0.068 ↘</td>
+                                    </tr>
+
+
+                                    <tr class="bg-warning"
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;DSH&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./DSH.png" />
+                                                DSH </span>
+                                        </td>
+                                        <td><b>Dashcoin</b></td>
+                                        <td class="text-right"><b>252.20</b></td>
+                                        <td class="text-right">-1.712 ↘</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;GMX&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./GMX.png" />
+                                                GMX </span>
+                                        </td>
+                                        <td><b>Goldmaxcoin</b></td>
+                                        <td class="text-right"><b>38.30</b></td>
+                                        <td class="text-right">-0.288 ↘</td>
+                                    </tr>
+
+
+                                    <tr class=""
+                                        onclick="actions.selectCurrency({type:&apos;cryptos&apos;,code:&apos;GRS&apos;})">
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./GRS.png" />
+                                                GRS </span>
+                                        </td>
+                                        <td><b>Groestlcoin </b></td>
+                                        <td class="text-right"><b>10.00</b></td>
+                                        <td class="text-right">-0.068 ↘</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                            <section id="pagination">
+                                <div class="row justify-content-center">
+                                    <nav class="col-auto">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled">
+                                                <a onclick="actions.changePage({index:1,currency:&apos;cryptos&apos;})"
+                                                    class="page-link"
+                                                    href="/cours/dai/P1_Assets/cryptop.xhtml#currencies">&lt;</a>
+                                            </li>
+
+                                            <li class="page-item active">
+                                                <a class="page-link"
+                                                    href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                    onclick="actions.changePage({index:1,currency:&apos;cryptos&apos;})">1</a>
+                                            </li>
+
+                                            <li class="page-item ">
+                                                <a class="page-link"
+                                                    href="/cours/dai/P1_Assets/cryptop.xhtml#currencies"
+                                                    onclick="actions.changePage({index:2,currency:&apos;cryptos&apos;})">2</a>
+                                            </li>
+
+                                            <li class="page-item ">
+                                                <a onclick="actions.changePage({index:2,currency:&apos;cryptos&apos;})"
+                                                    class="page-link"
+                                                    href="/cours/dai/P1_Assets/cryptop.xhtml#currencies">&gt;</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <div class="col-auto">
+                                        <div class="input-group mb-3">
+                                            <select class="custom-select" id="selectTo"
+                                                onchange="actions.changeRowsPerPage({e:event, currency:&apos;cryptos&apos;})">
+
+                                                <option value="0">5</option>
+
+
+                                                <option selected="selected" value="1">10</option>
+
+
+                                                <option value="2">15</option>
+
+                                            </select>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">par page</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="card-footer text-muted"> Cryptos préférées :
+
+                            <span class="badge badge-warning">BCH</span>
+
+
+                            <span class="badge badge-success">BTC</span>
+
+
+                            <span class="badge badge-warning">BTLC</span>
+
+
+                            <span class="badge badge-warning">DSH</span>
+
+
+                            <span class="badge badge-success">ETH</span>
+
+
+                            <span class="badge badge-success">LTC</span>
+
+
+                            <span class="badge badge-warning">XMR</span>
+
+                        </div>
+                    </div>
+
+                    <br />
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="card border-secondary">
+                        <div class="card-header d-flex justify-content-between">
+                            <h5 class=""> Préférences </h5>
+                            <h5 class="text-secondary"><abbr title="par Bruno Jobard et lui-même">Crédits</abbr></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Monnaie
+                                        cible</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01"
+                                    onchange="actions.changeTarget({e:event, debug:&apos;true&apos;})">
+
+                                    <option value="CUP" disabled="disabled">CUP - Cuban Peso</option>
+
+
+                                    <option value="EUR" selected="selected">EUR - Euro</option>
+
+
+                                    <option value="GBP" disabled="disabled">GBP - British Pound Sterling</option>
+
+
+                                    <option value="JEP" disabled="disabled">JEP - Jersey Pound</option>
+
+
+                                    <option value="TTD" disabled="disabled">TTD - Trinidad and Tobago Dollar</option>
+
+
+                                    <option value="USD" disabled="disabled">USD - United States Dollar</option>
+
+                                </select>
+                            </div>
+                            <p />
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Données</label>
+                                </div>
+                                <select class="custom-select"
+                                    onchange="actions.changeDataMode({e:event, target:&apos;EUR&apos;, debug:&apos;true&apos;})">
+
+                                    <option value="online">En ligne</option>
+
+
+                                    <option value="offline" selected="selected">Hors ligne</option>
+
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" disabled="disabled"
+                                        onclick="actions.updateOnlineCurrenciesData({target: &apos;EUR&apos;, debug:&apos;true&apos;})">
+                                        Actualiser</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="card border-secondary text-center" id="wallet">
+                        <div class="card-header">
+                            <ul class="nav nav-pills card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active"
+                                        href="/cours/dai/P1_Assets/cryptop.xhtml#wallet">Portfolio
+                                        <span class="badge badge-light">3</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-secondary" href="/cours/dai/P1_Assets/cryptop.xhtml#wallet"
+                                        onclick="actions.changeTab({tab:&apos;walletAjouter&apos;})">
+                                        Ajouter <span class="badge badge-secondary">4</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body text-center">
+
+                            <br />
+                            <div class="table-responsive">
+                                <table class="col-12 table table-sm table-bordered">
+                                    <thead>
+                                        <th class="align-middle text-center col-1"> Code </th>
+                                        <th class="align-middle text-center col-4"> Nom </th>
+                                        <th class="align-middle text-center col-2"> Prix </th>
+                                        <th class="align-middle text-center col-3"> Qté </th>
+                                        <th class="align-middle text-center col-2"> Total </th>
+                                    </thead>
+
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./BTC.png" />
+                                                BTC </span>
+                                        </td>
+                                        <td><b>Bitcoin</b></td>
+                                        <td class="text-right">20785.03</td>
+                                        <td class="text-right">
+                                            <input type="text" class="form-control " value="1"
+                                                onchange="actions.changeCoinQuantity({e:event, code:&apos;BTC&apos;})" />
+                                        </td>
+                                        <td class="text-right"><span class=""><b>20785.03</b></span></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./ETH.png" />
+                                                ETH </span>
+                                        </td>
+                                        <td><b>Ethereum</b></td>
+                                        <td class="text-right">1591.82</td>
+                                        <td class="text-right">
+                                            <input type="text" class="form-control text-primary" value="13"
+                                                onchange="actions.changeCoinQuantity({e:event, code:&apos;ETH&apos;})" />
+                                        </td>
+                                        <td class="text-right"><span class="text-primary"><b>20693.62</b></span></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="badge badge-pill badge-light">
+                                                <img src="./LTC.png" />
+                                                LTC </span>
+                                        </td>
+                                        <td><b>Litecoin</b></td>
+                                        <td class="text-right">69.44</td>
+                                        <td class="text-right">
+                                            <input type="text" class="form-control text-primary" value="21"
+                                                onchange="actions.changeCoinQuantity({e:event, code:&apos;LTC&apos;})" />
+                                        </td>
+                                        <td class="text-right"><span class="text-primary"><b>1458.18</b></span></td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                            <div class="input-group d-flex justify-content-end">
+                                <div class="input-group-prepend">
+                                    <button onclick="actions.confirmCoinsEdition({which:&apos;posQuantities&apos;})"
+                                        class="btn btn-primary">Confirmer</button>
+                                </div>
+                                <div class="input-group-append">
+                                    <button onclick="actions.cancelCoinsEdition({which:&apos;posQuantities&apos;})"
+                                        class="btn btn-secondary">Annuler</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <h3><span class="badge badge-primary">Total : 42936.83 EUR</span></h3>
+                        </div>
+                    </div>
+
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="./coinlayer.js"></script>
+    <script type="text/javascript" src="./data_coinlayer_list.js"></script>
+    <script type="text/javascript" src="./data_coinlayer_live.js"></script>
+    <script type="text/javascript" src="./data_fiat_currencies.js"></script>
+    <script type="text/javascript" src="./coinlayer_utils.js"></script>
+    <script type="text/javascript" src="./cryptop__config0.js"></script>
+    <script type="text/javascript" src="./cryptop__config1.js"></script>
+    <script type="text/javascript" src="./cryptop__config2.js"></script>
+    <script type="text/javascript" src="./cryptop__main.js"></script>
+    <script type="text/javascript" src="./cryptop__utils.js"></script>
+    <script type="text/javascript" src="./sam_obfuscated.js"></script>
+</body>
+
+</html>

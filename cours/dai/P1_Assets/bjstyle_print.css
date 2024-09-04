@@ -1,0 +1,21 @@
+
+body { /* Modifications : la couleur de fond de page - la police - l'unité utilisée pour la taille de la police  */
+  background-color :#fff;
+  _font-size :12pt;
+  margin :0;
+  padding: 0;
+  border :none;
+}
+
+nav.navbar { /* Les éléments qui ne seront pas affichés  */
+  display: none;
+}
+
+body, article, .grid, div[class*="col_*"] {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  border: thin solid grey;
+}
