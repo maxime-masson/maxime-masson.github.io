@@ -40,6 +40,17 @@ actions = {
   },
   doneItem(data) {
     model.samPresent({ doneItem: data.index });
+  },
+  removeDoneItems() {
+    let activeItems = model.items.filter(v => !v.done);
+    model.samPresent({ removedDoneItems: activeItems });
+  },
+  toggleEditMode() {
+    model.samPresent({ toggleEditMode: '' });
+  },
+  editItem(data) {
+    let text = data.e.target.value;
+    model.samPresent({ editItem: text, index: data.index })
   }
 };
 //-------------------------------------------------------------------- Model ---
@@ -75,6 +86,15 @@ model = {
       this.items[index].done = !this.items[index].done;
       console.log(index + ' : ' + this.items[index].done); // TODO: pour débug...
     }
+    if (has.call(data, 'removedDoneItems')) {
+      this.items = data.removedDoneItems;
+    }
+    if (has.call(data, 'toggleEditMode')) {
+      this.isEditMode = !this.isEditMode;
+    }
+    if (has.call(data, 'editItem')) {
+      this.items[data.index].text = data.editItem;
+    }
 
     // Demande à l'état de l'application de prendre en compte la modification
     // du modèle
@@ -87,6 +107,10 @@ model = {
 state = {
 
   samUpdate(model) {
+
+    // check if model.items has done set to true
+    this.hasDoneItems = model.items.filter(v => v.done).length > 0;
+
     this.samRepresent(model);
     // this.samNap(model);
   },
@@ -117,6 +141,11 @@ view = {
   normalInterface(model, state) {
     let li_items = model.isEditMode ? this.editItems(model, state)
       : this.listItems(model, state);
+    let rmvButtonAttr = state.hasDoneItems ? 'onclick="actions.removeDoneItems()"'
+      : 'disabled="disabled"';
+    let edtButtonAttr = model.items.length ? 'onclick="actions.toggleEditMode()"'
+      : 'disabled="disabled"';
+    let edtButtonText = model.isEditMode ? 'Todo Mode' : 'Edit Mode';
     return `
       <style type="text/css">
       .done {
@@ -136,6 +165,8 @@ view = {
       <ul>
       	${li_items}
       </ul>
+      <button ${rmvButtonAttr}>Remove done items</button>
+      <button ${edtButtonAttr}>${edtButtonText}</button>
       `;
   },
 
@@ -143,5 +174,12 @@ view = {
     let li_items = model.items.map((v, i) =>
       `<li onclick="actions.doneItem({index:${i}})" ${v.done ? 'class="done"' : ''}>${v.text}</li>`).join('\n');
     return li_items;
-  }
+  },
+
+  editItems(model, state) {
+    let li_items = model.items.map((v, i) =>
+      `<li><input onchange="actions.editItem({e:event, index:${i}})" value="${v.text}" /></li>`).join('\n');
+    return li_items;
+  },
+
 };
