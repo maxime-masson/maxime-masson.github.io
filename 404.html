@@ -2,23 +2,27 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Moving to UPPA...</title>
+    <title>Redirecting...</title>
     <script type="text/javascript">
-      // 1. Your NEW University Base URL
       var newBase = "https://mmasson003.perso.univ-pau.fr";
+      var path = window.location.pathname.toLowerCase(); // Convert to lowercase for easier matching
 
-      // 2. Get the current path (e.g., /project1)
-      var path = window.location.pathname;
-
-      // 3. Redirect instantly to the new site
-      // This sends them to https://mmasson003.perso.univ-pau.fr/project1
-      window.location.replace(newBase + path + window.location.search);
+      // 1. Check for specific video redirects
+      if (path.includes("textbi")) {
+        window.location.replace(newBase + "/videos/textbi.mp4");
+      } 
+      else if (path.includes("mobilityetl")) {
+        window.location.replace(newBase + "/videos/etl.mp4");
+      } 
+      // 2. Everything else goes to the homepage
+      else {
+        window.location.replace(newBase + "/");
+      }
     </script>
     
-    <link rel="canonical" href="https://mmasson003.perso.univ-pau.fr/">
-    <meta http-equiv="refresh" content="0; url=https://mmasson003.perso.univ-pau.fr/">
+    <meta http-equiv="refresh" content="2; url=https://mmasson003.perso.univ-pau.fr/">
   </head>
   <body>
-    <p>Site moved to <a href="https://mmasson003.perso.univ-pau.fr/">UPPA</a>. Redirecting...</p>
+    <p>Redirecting to <a href="https://mmasson003.perso.univ-pau.fr/">our new site at UPPA</a>...</p>
   </body>
 </html>
